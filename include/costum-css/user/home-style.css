@@ -1,0 +1,16 @@
+.back-ground {
+    background-color: white;
+    /*-webkit-box-shadow: 10px 0px 5px -6px rgba(168,168,168,1);
+    -moz-box-shadow: 10px 0px 5px -6px rgba(168,168,168,1);
+    box-shadow: 10px 0px 5px -6px rgba(168,168,168,1);*/
+}
+
+.card {
+    min-height: 100px;
+
+    border-left-color: rgba(52, 235, 198);
+    border-left-width: 5px;
+    -webkit-box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.54);
+    -moz-box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.54);
+    box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.54);
+}

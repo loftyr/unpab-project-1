@@ -1,0 +1,42 @@
+.side-left {
+    position: absolute;
+    background-color: rgba(189, 180, 179);
+    width: 100%;
+    min-height: 720px;
+    /*top: 130px;*/
+    border-right-style: solid;
+
+}
+
+.side-right {
+    position: absolute;
+    background-color: rgba(189, 180, 179);
+    width: 100%;
+    min-height: 720px;
+    /*top: 130px;*/
+    border-left-style: solid;
+}
+
+.header-1 {
+    padding-bottom: 100px;
+}
+
+.header-2 {
+    padding-bottom: 100px;
+}
+
+.header-3 {
+    padding-bottom: 90px;
+}
+
+.header-logo {
+    position: relative;
+    max-width: 90px;
+}
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
