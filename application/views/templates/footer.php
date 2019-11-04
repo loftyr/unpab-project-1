@@ -10,6 +10,7 @@
         <script src="<?= base_url('include/popper.min.js') ?>"></script>
         <script src="<?= base_url('include/bootstrap/js/bootstrap.js') ?>"></script>
         <script src="<?= base_url('include/jquery.timeago.js') ?>"></script>
+        <script src="<?= base_url('include/JqueryUI/jquery-ui.js') ?>"></script>
         <script src="<?= base_url('include/sweetAlert2/sweetalert2.all.min.js') ?>"></script>
         <script src="<?= base_url('include/jquery.easing.1.3.js') ?>"></script>
         <script src="<?= base_url('include/jquery.mask.min.js') ?>"></script>

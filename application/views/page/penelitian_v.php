@@ -9,7 +9,7 @@
         </select>
     </div>
     <!--  -->
-        
+
     <!--  -->
     <div class="m-3">
         <!--  -->
@@ -25,10 +25,10 @@
             </li>
         </ul>
         <!--  -->
-        
+
         <!--  -->
         <div class="tab-content" id="content-tabs">
-            
+
             <!--  -->
             <div class="tab-pane fade show active" id="data-penelitian">
                 <div class="row pt-2">
@@ -50,7 +50,7 @@
                             </tr>
                         </thead>
                         <tbody id="body-tabel-1">
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -78,7 +78,7 @@
                             </tr>
                         </thead>
                         <tbody id="body-tabel-2">
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -105,21 +105,21 @@
                             </tr>
                         </thead>
                         <tbody id="body-tabel-3">
-                            
+
                         </tbody>
                     </table>
                 </div>
                 <!--  -->
             </div>
             <!--  -->
-    
+
 
         </div>
         <!--  -->
 
     </div>
     <!--  -->
-    
+
 </div>
 
 <!-- Modal 1-->
@@ -170,7 +170,7 @@
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-6">
                             <select name="Bidang" id="Bidang" class="form-control">
-                                <?php foreach($Ref_ProgramStudi as $value) :?>
+                                <?php foreach ($Ref_ProgramStudi as $value) : ?>
                                     <option value="<?= $value->Nama_ProgramStudi ?>"><?= $value->Nama_ProgramStudi ?></option>
                                 <?php endforeach; ?>
                             </select>
@@ -210,21 +210,21 @@
                             <input type="file" class="form-control" id="File" name="File">
                             <small id="info" class="form-text text-muted">Max File 1 MB</small>
                         </div>
-                    </div>             
+                    </div>
                 </form>
                 <!--  -->
-        
+
                 <!-- Loading -->
                 <div class="progress" style="display: none;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> 
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <!--  -->
             </div>
             <!-- Akhir Body -->
-            
+
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <bnt class="btn btn-primary" id="btnSave-1">Save</bnt>
+                <button class="btn btn-primary" id="btnSave-1">Save</button>
             </div>
             <!--  -->
         </div>

@@ -1,11 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class fasilitaspendukung_m extends CI_Model
+class kegiatan_m extends CI_Model
 {
-    var $table      = 'ta_fasilitas_pendukung'; /*Tabel Ta Penelitian*/
-    var $table2     = 'ta_anggota_Penelitian';
-    var $table3     = 'ta_tim_pendukung';
+    var $table      = 'ta_kegiatan'; /*Tabel Ta */
 
     public function getData($tahun)
     { //get all Data Staff

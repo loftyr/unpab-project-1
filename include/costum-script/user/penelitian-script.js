@@ -118,9 +118,9 @@ function draw_data(result) {
         }
         output += '<td class="text-center">';
         output += '<button dataID="' + Kode + '" class="btn btn-sm mr-2" id="view-anggota" data-toggle="tooltip" data-placement="top" title="Lihat Anggota"><i class="fas fa-book"></i></button>';
-        output += '<button dataID="' + Kode + '" class="btn btn-sm btn-info" id="view-tim-pendukung" data-toggle="tooltip" data-placement="bottom" title="Lihat Tim Pendukung"><i class="fas fa-book"></i></button>'
-        output += '</td>'
-        output += '</tr>'
+        output += '<button dataID="' + Kode + '" class="btn btn-sm btn-info" id="view-tim-pendukung" data-toggle="tooltip" data-placement="bottom" title="Lihat Tim Pendukung"><i class="fas fa-book"></i></button>';
+        output += '</td>';
+        output += '</tr>';
 
         $('#body-tabel-1').append(output);
     }

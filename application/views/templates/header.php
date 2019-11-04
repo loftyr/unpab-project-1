@@ -25,6 +25,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" href="<?= base_url('include/select2/css/select2.css') ?>">
     <!-- Custom styles for this page -->
     <link rel="stylesheet" href="<?= base_url('include/datatables/dataTables.bootstrap4.min.css') ?>">
+    <!-- Jquery UI -->
+    <link rel="stylesheet" href="<?= base_url('include/JqueryUI/jquery-ui.css') ?>">
     <!-- Costum CSS -->
     <link rel="stylesheet" href="<?= base_url('include/costum-css/user/base-style.css') ?>">
 
