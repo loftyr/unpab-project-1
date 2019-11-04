@@ -1,11 +1,13 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Sumberdayalppm extends CI_Controller {
+class Sumberdayalppm extends CI_Controller
+{
 
-// Create 25-Oktober-2019
+    // Create 25-Oktober-2019
 
-    public function index(){
+    public function index()
+    {
         $dataheader['judul']    = 'Sumber Daya Staf Pendukung LPPM';
         $dataheader['css']      = 'sumberdaya-style.css'; // 
         $datafooter['js']       = 'sumberdaya-script.js'; // 
@@ -17,56 +19,58 @@ class Sumberdayalppm extends CI_Controller {
         $this->load->view('templates/footer', $datafooter);
     }
 
-    public function getData($tahun){
+    public function getData($tahun)
+    {
         $data   = $this->sumberdayalppm_m->getData($tahun);
         $no     = 1;
         foreach ($data as $value) {
             echo '
                 <tr>
-                  <td>'.$no++.'</td>
-                  <td>'.$value->Nik.'</td>
-                  <td>'.$value->Nama.'</td>
-                  <td>'.$value->JenisKelamin.'</td>
-                  <td>'.$value->Jabatan.'</td>
-                  <td>'.$value->UnitKerja.'</td>
-                  <td>'.$value->JenjangPendidikan.'</td>
+                  <td>' . $no++ . '</td>
+                  <td>' . $value->Nidn . '</td>
+                  <td>' . $value->Nama . '</td>
+                  <td>' . $value->JenisKelamin . '</td>
+                  <td>' . $value->Jabatan . '</td>
+                  <td>' . $value->UnitKerja . '</td>
+                  <td>' . $value->JenjangPendidikan . '</td>
                 </tr>
             ';
         }
     }
 
-    public function save() {
-        $this->form_validation->set_rules('Nik', 'Nik', 'required');
+    public function save()
+    {
+        $this->form_validation->set_rules('Nidn', 'Nidn', 'required');
         $this->form_validation->set_rules('Nama', 'Nama', 'required');
+        $this->form_validation->set_rules('Jk', 'Jk', 'required');
         $this->form_validation->set_rules('Jabatan', 'Jabatan', 'required');
+        $this->form_validation->set_rules('JenjangPendidikan', 'JenjangPendidikan', 'required');
 
         if ($this->form_validation->run() == false) {
-            $result['Msg']          = 'Please Fill All Field !!!';
+            $result['Msg']          = 'Data Belum Lengkap !!!';
             $result['Status']       = false;
-        }else{
+        } else {
             $data = [
                 'Tahun'             => htmlspecialchars($this->input->post('Tahun')),
-                'Nik'               => htmlspecialchars($this->input->post('Nik')),
+                'Nidn'              => htmlspecialchars($this->input->post('Nidn')),
                 'Nama'              => $this->input->post('Nama'),
                 'JenisKelamin'      => htmlspecialchars($this->input->post('Jk')),
                 'Jabatan'           => htmlspecialchars($this->input->post('Jabatan')),
                 'UnitKerja'         => htmlspecialchars($this->input->post('UnitKerja')),
                 'JenjangPendidikan' => htmlspecialchars($this->input->post('JenjangPendidikan'))
-                ]; 
+            ];
 
             $hasil = $this->sumberdayalppm_m->saveData($data);
 
-            if($hasil == true){
+            if ($hasil == true) {
                 $result['Msg']       = 'Data Berhasil Disimpan . . .';
                 $result['Status']    = true;
-            }else{
+            } else {
                 $result['Msg']       = $this->db->error()['message'];
                 $result['Status']    = false;
             }
-            
         }
 
         echo json_encode($result);
     }
-
 }

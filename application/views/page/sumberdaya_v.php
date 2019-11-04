@@ -9,7 +9,7 @@
         </select>
     </div>
     <!--  -->
-    
+
     <div class="row pt-2 justify-content-end">
         <div class="col-sm-1">
             <button class="btn btn-info" id="btnTambah">+</button>
@@ -21,7 +21,7 @@
         <table class="table table-hover tabel-1">
             <thead>
                 <tr>
-                    <th class="col text-center" style="width: 10%;">No</th>
+                    <th class="col text-center" style="width: 4%;">No</th>
                     <th class="col text-center" style="width: 15%;">NIK Pegawai</th>
                     <th class="col text-center" style="width: 20%;">Nama</th>
                     <th class="col text-center" style="width: 15%;">Jenis Kelamin</th>
@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody id="body-tabel-1">
-                
+
             </tbody>
         </table>
     </div>
@@ -61,15 +61,15 @@
                         <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="Tahun" name="Tahun">
+                            <input type="text" class="form-control" id="Tahun" name="Tahun" value="<?= date('Y'); ?>">
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Nik">NIK</label>
+                    <div class=" form-group row">
+                        <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Nik" name="Nik">
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="Nidn" name="Nidn" onkeypress="return Angka(event)">
                         </div>
                     </div>
 
@@ -86,6 +86,7 @@
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <select name="Jk" id="Jk" class="form-control">
+                                <option value="">Pilih</option>
                                 <option value="Laki-Laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </select>
@@ -111,16 +112,24 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="JenjangPendidikan">Jenjang Pendidikan</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="JenjangPendidikan" name="JenjangPendidikan">
+                        <div class="col-sm-4">
+                            <select name="Jk" id="Jk" class="form-control">
+                                <option value="">Pilih</option>
+                                <option value="S-3">S-3</option>
+                                <option value="S-2">S-2</option>
+                                <option value="S-1">S-1</option>
+                                <option value="D-III">D-III</option>
+                                <option value="D-II">D-II</option>
+                                <option value="D-I">D-I</option>
+                            </select>
                         </div>
                     </div>
                 </form>
                 <!--  -->
-                
+
                 <!-- Loading -->
                 <div class="progress" style="display: none;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> 
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <!--  -->
             </div>
@@ -128,7 +137,7 @@
 
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <bnt class="btn btn-primary" id="btnSave">Save</bnt>
+                <button class="btn btn-primary" id="btnSave">Save</button>
             </div>
             <!--  -->
         </div>
