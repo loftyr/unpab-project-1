@@ -12,7 +12,7 @@
 
     <div class="row pt-2 justify-content-end">
         <div class="col-sm-1">
-            <button class="btn btn-info" id="btnTambah">+</button>
+            <button class="btn btn-info" id="btnAdd-1"><i class="fas fa-plus"></i></button>
         </div>
     </div>
 
@@ -22,12 +22,13 @@
             <thead>
                 <tr>
                     <th class="col text-center" style="width: 4%;">No</th>
-                    <th class="col text-center" style="width: 15%;">NIK Pegawai</th>
-                    <th class="col text-center" style="width: 20%;">Nama</th>
-                    <th class="col text-center" style="width: 15%;">Jenis Kelamin</th>
-                    <th class="col text-center" style="width: 20%;">Jabatan</th>
-                    <th class="col text-center" style="width: 10%;">Unit Kerja</th>
-                    <th class="col text-center" style="width: 10%;">Jenjang Pendidikan</th>
+                    <th class="text-center" style="max-width: 150px;">Unit Pelaksana</th>
+                    <th class="text-center" style="max-width: 250px;">Nama Kegiatan</th>
+                    <th class="text-center" style="width: 15%;">Institusi Mitra</th>
+                    <th class="text-center" style="width: 20%;">No. Kontrak</th>
+                    <th class="text-center" style="width: 10%;">Nilai Kontrak</th>
+                    <th class="text-center" style="width: 10%;">Dokumen</th>
+                    <th class="text-center" style="width: 10%;">Aksi</th>
                 </tr>
             </thead>
             <tbody id="body-tabel-1">
@@ -36,16 +37,17 @@
         </table>
     </div>
     <!--  -->
+
 </div>
 
-<!-- Modal -->
-<div class="modal fade" tabindex="-1" id="modal-staff" role="dialog">
+<!-- Modal 1-->
+<div class="modal fade" tabindex="-1" id="modal-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <!-- Content -->
         <div class="modal-content">
             <!-- Judul Modal  -->
             <div class="modal-header">
-                <h5 class="modal-title" id="title-modal">Modal</h5>
+                <h5 class="modal-title" id="title-modal-1">Modal</h5>
                 <button class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -55,7 +57,7 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <!--  -->
-                <form action="" id="form" link="<?= base_url(); ?>" enctype="multipart/form-data">
+                <form action="" id="form-1" link="<?= base_url(); ?>" enctype="multipart/form-data">
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
@@ -65,63 +67,55 @@
                         </div>
                     </div>
 
-                    <div class=" form-group row">
-                        <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="Nidn" name="Nidn" onkeypress="return Angka(event)">
-                        </div>
-                    </div>
-
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Nama">Nama Pegawai</label>
+                        <label class="col-sm-2 col-form-label" for="Unit">Unit Pelaksana</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Nama" name="Nama">
+                            <input type="text" class="form-control" id="Unit" name="Unit">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Jk">Jenis Kelamin</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
-                        <div class="col-sm-4">
-                            <select name="Jk" id="Jk" class="form-control">
-                                <option value="">Pilih</option>
-                                <option value="Laki-Laki">Laki-Laki</option>
-                                <option value="Perempuan">Perempuan</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Jabatan">Jabatan</label>
+                        <label class="col-sm-2 col-form-label" for="Nama_Keg">Nama Kegiatan</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Jabatan" name="Jabatan">
+                            <textarea class="form-control" name="Nama_Keg" id="Nama_Keg" rows="2"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="UnitKerja">Unit Kerja</label>
+                        <label class="col-sm-2 col-form-label" for="Institusi_Mitra">Institusi Mitra Keilmuan</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="UnitKerja" name="UnitKerja">
+                            <input type="text" class="form-control" id="Institusi_Mitra" name="Institusi_Mitra">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="JenjangPendidikan">Jenjang Pendidikan</label>
+                        <label class="col-sm-2 col-form-label" for="No_Kontrak">No. Kontrak</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
-                        <div class="col-sm-4">
-                            <select name="JenjangPendidikan" id="JenjangPendidikan" class="form-control">
-                                <option value="">Pilih</option>
-                                <option value="S-3">S-3</option>
-                                <option value="S-2">S-2</option>
-                                <option value="S-1">S-1</option>
-                                <option value="D-III">D-III</option>
-                                <option value="D-II">D-II</option>
-                                <option value="D-I">D-I</option>
-                            </select>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="No_Kontrak" name="No_Kontrak">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="Nilai">Nilai Kontrak</label>
+                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
+                        <div class="col-sm-9 input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Rp.</span>
+                            </div>
+                            <input type="text" class="form-control uang" id="Nilai" name="Nilai">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="File">File</label>
+                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control" id="File" name="File">
+                            <small id="info" class="form-text text-muted">Max File 1 MB</small>
                         </div>
                     </div>
                 </form>
@@ -137,10 +131,11 @@
 
             <!-- Modal Footer -->
             <div class="modal-footer">
-                <button class="btn btn-primary" id="btnSave">Save</button>
+                <button class="btn btn-primary" id="btnSave-1">Save</button>
             </div>
             <!--  -->
         </div>
         <!-- Akhir Content -->
     </div>
 </div>
+<!--  -->

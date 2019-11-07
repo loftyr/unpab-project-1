@@ -23,6 +23,11 @@ body{
     position: relative;
     display: flex;
     height: 100%;
+    overflow: hidden;
+}
+
+.PressMe, .btnPressBack {
+    display: none;
 }
 
 .side-left {
@@ -75,4 +80,27 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: 500px;
+    }
+
+    .PressMe, .btnPressBack {
+        display: block;
+    }
+
+    .side-left, .side-right {
+        position: absolute;
+        width: 100%;
+    }
+    
+    .side-right {
+        display: none;
+    }
+    
+    .side-right.in {
+        display: block;
+    }
 }

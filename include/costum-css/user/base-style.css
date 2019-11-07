@@ -329,7 +329,7 @@ body {
 
 }
 
-@media (max-width: 1199) {
+@media (max-width: 1199px) {
     .img-left {
         margin-left: 20px;
     }

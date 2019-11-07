@@ -1,7 +1,7 @@
 <div class="box animated fadeIn">
     <div class="body-box">
         <!--  -->
-        <div class="side-left">
+        <div class="side-left animated">
             <div class="box-1">
                 <H4>LEMBAGA PENELITIAN DAN PENGABDIAN MASYARAKAT</H4>
                 <H4>UNIVERSITAS PEMBANGUNAN PANCA BUDI</H4>
@@ -23,6 +23,9 @@
                 <div class="img">
                     <img src="<?= base_url('file/app/logo unpab 1.jpg') ?>" alt="">
                 </div>
+                <div class="PressMe col">
+                    <button class="btn btninfo btnPressMe">Press Me For Login >>></button>
+                </div>
             </div>
             <div class="row">
                 <h4>KINERJA DOSEN TETAP UNIVERSITAS PEMBANGUNAN PANCA BUDI</h4>
@@ -31,7 +34,7 @@
         <!--  -->
 
         <!--  -->
-        <div class="side-right">
+        <div class="side-right animated">
             <div class="login col-sm-8">
                 <form action="<?= base_url('home/authLogin') ?>" method="post">
                     <div class="form-group">
@@ -48,8 +51,10 @@
                     </div>
                     <?= $this->session->flashdata('message'); ?>
                 </form>
+                <div class="form-group">
+                    <button class="btn btninfo btnPressBack form-control">Back</button>
+                </div>
             </div>
-        </div>
-        <!--  -->
+        </div> <!-- -->
     </div>
 </div>

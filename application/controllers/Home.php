@@ -10,7 +10,7 @@ class Home extends CI_Controller
     {
         $dataheader['judul']    = 'Lembaga Penelitian dan Pengabdian Masyarakat';
         $dataheader['css']      = 'login-style.css'; //
-        $datafooter['js']       = ''; //home-script.js
+        $datafooter['js']       = 'login-script.js'; //
 
         $this->load->view('templates/headerlogin', $dataheader);
         $this->load->view('login_v');
