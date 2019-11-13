@@ -23,8 +23,12 @@ class Home extends CI_Controller
         $dataheader['css']      = 'home-style.css'; // 
         $datafooter['js']       = 'home-script.js'; // 
 
+        $data['Tahun']          = $this->base_m->getTahun();
+        $data['data1']          = $this->base_m->getData1();
+        $data['data2']          = $this->base_m->getData2();
+
         $this->load->view('templates/header', $dataheader);
-        $this->load->view('page/home_v');
+        $this->load->view('page/home_v', $data);
         $this->load->view('templates/footer', $datafooter);
     }
 
@@ -44,6 +48,7 @@ class Home extends CI_Controller
                 // Check Password User
                 if (password_verify($pass, $dataUser['password'])) {
                     $data = [
+                        'id_user'   => $dataUser['id_user'],
                         'username'  => $dataUser['username'],
                         'Level'     => $dataUser['Level']
                     ];

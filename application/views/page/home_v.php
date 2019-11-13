@@ -3,9 +3,9 @@
     <div class="pt-3 pl-3">
         <label for="Tahun" class="">Pilih Tahun</label>
         <select class="form-control col-sm-3 select-2" name="" id="Tahun">
-            <option value="">2020</option>
-            <option value="">2019</option>
-            <option value="">2018</option>
+            <?php foreach ($Tahun as $key) : ?>
+                <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
+            <?php endforeach; ?>
         </select>
     </div>
     <!--  -->
@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Dosen Tetap Perguruan Tinggi</div>
-                    <h5>247</h5>
+                    <h5><?= $data1 ?></h5>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Sumber Data Staf Pendukung</div>
-                    <h5>247</h5>
+                    <h5><?= $data2 ?></h5>
                 </div>
             </div>
         </div>

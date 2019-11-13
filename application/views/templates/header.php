@@ -72,8 +72,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <li>
                     <a href="#">Sumberdaya Penelitian dan Pengabdian</a>
                     <ul class="sub-menu-1">
-                        <li><a href="#">Dosen Tetap Perguruan Tinggi</a></li>
-                        <li><a href="#">Sumber Daya Staf Pendukung</a></li>
+                        <li><a href="<?= base_url('Sumberdayalppm/Dosen') ?>">Dosen Tetap Perguruan Tinggi</a></li>
+                        <li><a href="<?= base_url('Sumberdayalppm/Staff') ?>">Sumber Daya Staf Pendukung</a></li>
                         <li><a href="#">Peneliti Asing</a></li>
                         <li>
                             <a href="#">Sumber Dana PPM Ristekdikti</a>
