@@ -13,10 +13,35 @@ class buku_m extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function getDataEdit($id)
-    { //get Data
+    public function getDataPenelitian($tahun)
+    { //get all Data
         $this->db->from($this->table);
-        $this->db->where('Id_Buku', $id);
+        $this->db->where('Tahun', $tahun);
+        $this->db->where('Source', '1'); //Penelitian
+        return $this->db->get()->result();
+    }
+
+    public function getEditPenelitian($Id_Buku)
+    { //get all Data
+        $this->db->from($this->table);
+        $this->db->where('Id_Buku', $Id_Buku);
+        $this->db->where('Source', '1'); //Penelitian
+        return $this->db->get()->result();
+    }
+
+    public function getDataPengabdian($tahun)
+    { //get all Data
+        $this->db->from($this->table);
+        $this->db->where('Tahun', $tahun);
+        $this->db->where('Source', '2'); //Pengabdian
+        return $this->db->get()->result();
+    }
+
+    public function getEditPengabdian($Id_Buku)
+    { //get all Data
+        $this->db->from($this->table);
+        $this->db->where('Id_Buku', $Id_Buku);
+        $this->db->where('Source', '2'); //Pengabdian
         return $this->db->get()->result();
     }
 
@@ -24,6 +49,13 @@ class buku_m extends CI_Model
     { //get Data
         $this->db->from($this->table2);
         $this->db->where('Id_Buku', $Id_Buku);
+        return $this->db->get()->result();
+    }
+
+    public function getEditPenulis($Id)
+    { //get Data
+        $this->db->from($this->table2);
+        $this->db->where('Id', $Id);
         return $this->db->get()->result();
     }
 
@@ -50,9 +82,20 @@ class buku_m extends CI_Model
     }
 
 
-    public function saveEdit($where, $data)
+    public function saveEditData($where, $data)
     {
         $query = $this->db->update($this->table, $data, $where);
+
+        if (!$query) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function saveEditPenulis($where, $data)
+    {
+        $query = $this->db->update($this->table2, $data, $where);
 
         if (!$query) {
             return false;

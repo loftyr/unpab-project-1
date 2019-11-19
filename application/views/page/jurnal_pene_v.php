@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
             <li class="breadcrumb-item"><a href="#">LPPM</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Jurnal</li>
+            <li class="breadcrumb-item active" aria-current="page">Jurnal Penelitian</li>
         </ol>
     </nav>
     <!--  -->
@@ -25,10 +25,10 @@
         <!--  -->
         <ul class="nav nav-tabs pl-2 pr-2" id="tab-1" role="tablist">
             <li class="nav-item">
-                <a href="#data-tab-1" class="nav-link active" id="nav-1" data-toggle="tab" role="tab">Penelitian</a>
+                <a href="#data-tab-1" class="nav-link active" id="nav-1" data-toggle="tab" role="tab">Jurnal Penelitian</a>
             </li>
             <li class="nav-item">
-                <a href="#data-tab-2" class="nav-link" id="nav-2" data-toggle="tab" role="tab">Anggota Penelitian</a>
+                <a href="#data-tab-2" class="nav-link" id="nav-2" data-toggle="tab" role="tab">Penulis Jurnal</a>
             </li>
         </ul>
         <!--  -->
@@ -82,7 +82,7 @@
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 10%;">No</th>
-                                <th class="text-center" style="width: 15%;">Kd_Jurnal</th>
+                                <th class="text-center" style="width: 15%;">Kode Jurnal</th>
                                 <th class="text-center" style="width: 20%;">Nama Penulis</th>
                                 <th class="text-center" style="width: 10%;">Aksi</th>
                             </tr>
@@ -127,7 +127,7 @@
                         <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="Tahun" name="Tahun" value="<?= date('Y'); ?>">
+                            <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
                     </div>
 
@@ -184,6 +184,19 @@
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="Url" name="Url">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="Publikasi">Publikasi</label>
+                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
+                        <div class="col-sm-9">
+                            <select name="Publikasi" id="Publikasi" class="form-control">
+                                <option value="">Pilih</option>
+                                <option value="Jurnal Internasional">Jurnal Internasional</option>
+                                <option value="Jurnal Nasional Terakreditasi">Jurnal Nasional Terakreditasi</option>
+                                <option value="Jurnal Nasional Tidak Terakreditasi">Jurnal Nasional Tidak Terakreditasi</option>
+                            </select>
                         </div>
                     </div>
 

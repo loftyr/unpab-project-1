@@ -1,6 +1,6 @@
 var method_1, method_2, method_3;
-var Kd_Penelitian_1 = 0;
-var Kd_Penelitian_2 = 0;
+var Kd_Pengabdian_1 = 0;
+var Kd_Pengabdian_2 = 0;
 const modal_1 = $('#modal-1');
 const modal_2 = $('#modal-2');
 const modal_3 = $('#modal-3');
@@ -70,9 +70,9 @@ $(document).on('click', '#view-anggota', function () {
 
     SelectTahun.disabled = true;
 
-    Kd_Penelitian_1 = $(this).attr('dataID'); //Kd_Penelitian
-    $('#Kd-Penelitian-1').val(Kd_Penelitian_1);
-    loadAnggota(Kd_Penelitian_1);
+    Kd_Pengabdian_1 = $(this).attr('dataID'); //Kd_Pengabdian
+    $('#Kd-Pengabdian-1').val(Kd_Pengabdian_1);
+    loadAnggota(Kd_Pengabdian_1);
 });
 
 $(document).on('click', '#view-tim-pendukung', function () {
@@ -80,9 +80,9 @@ $(document).on('click', '#view-tim-pendukung', function () {
 
     SelectTahun.disabled = true;
 
-    Kd_Penelitian_2 = $(this).attr('dataID'); //Kd_Penelitian
-    $('#Kd-Penelitian-2').val(Kd_Penelitian_2);
-    loadPendukung(Kd_Penelitian_2);
+    Kd_Pengabdian_2 = $(this).attr('dataID'); //Kd_Pengabdian
+    $('#Kd-Pengabdian-2').val(Kd_Pengabdian_2);
+    loadPendukung(Kd_Pengabdian_2);
 });
 
 $('#Tahun').on('change', function () {
@@ -127,10 +127,10 @@ $(document).ready(function () {
 
 // CRUD
 // Create and Update
-// Create and Update Penelitian Asing 
+// Create and Update Pengabdian Asing 
 $(document).on('click', '#btnAdd-1', function () {
     method_1 = 'tambah';
-    judulModal_1.html("Tambah Data Penelitian");
+    judulModal_1.html("Tambah Data Pengabdian");
     btnSave_1.html("Save Data");
     modal_1.modal({
         backdrop: 'static',
@@ -143,7 +143,7 @@ $(document).on('click', '#btnAdd-2', function () {
     method_2 = 'tambah';
     judulModal_2.html("Tambah Anggota");
     btnSave_2.html("Save Data");
-    $('#Kd-Penelitian-1').attr(Kd_Penelitian_1);
+    $('#Kd-Pengabdian-1').attr(Kd_Pengabdian_1);
     modal_2.modal({
         backdrop: 'static',
         keyboard: false
@@ -175,12 +175,12 @@ $(document).on('click', '.btnEdit-1', function () {
     var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getEditAsing',
+        url: 'getEditInternal',
         data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
-            $('#id').val(result[0].Kd_Penelitian);
+            $('#id').val(result[0].Kd_Pengabdian);
             $('#Tahun-1').val(result[0].Tahun);
             $('#Judul').val(result[0].Judul);
             $('#Skema').val(result[0].Skema);
@@ -210,7 +210,7 @@ $(document).on('click', '.btnEdit-2', function () {
         dataType: 'JSON',
         success: function (result) {
             $('#id-2').val(result[0].No_Id);
-            $('#Kd-Penelitian-1').val(result[0].Kd_Penelitian);
+            $('#Kd-Pengabdian-1').val(result[0].Kd_Pengabdian);
             $('#Nidn').val(result[0].Nidn);
             $('#Nama-1').val(result[0].Nama);
             $('#Jabatan-1').val(result[0].Jabatan);
@@ -237,7 +237,7 @@ $(document).on('click', '.btnEdit-3', function () {
         dataType: 'JSON',
         success: function (result) {
             $('#id-3').val(result[0].No_Id);
-            $('#Kd-Penelitian-2').val(result[0].Kd_Penelitian);
+            $('#Kd-Pengabdian-2').val(result[0].Kd_Pengabdian);
             $('#Nama-2').val(result[0].Nama);
             $('#Jabatan-2').val(result[0].Jabatan);
         }
@@ -250,7 +250,7 @@ clickSave_1.addEventListener('click', function (event) {
     var form = document.querySelector("#form-1");
 
     if (method_1 == 'tambah') {
-        url = 'saveDataAsing';
+        url = 'saveDataInternal';
     } else {
         url = 'saveEditData';
     }
@@ -357,7 +357,7 @@ clickSave_2.addEventListener('click', function () {
                     timer: 1500
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        loadAnggota(Kd_Penelitian_1);
+                        loadAnggota(Kd_Pengabdian_1);
                     }
                 })
             }
@@ -411,7 +411,7 @@ clickSave_3.addEventListener('click', function () {
                     timer: 1500
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        loadPendukung(Kd_Penelitian_2);
+                        loadPendukung(Kd_Pengabdian_2);
                     }
                 })
             }
@@ -427,7 +427,7 @@ function draw_data(result) {
     var no = 0;
 
     for (index in result) {
-        var Kode = result[index].Kd_Penelitian;
+        var Kode = result[index].Kd_Pengabdian;
         var Judul = result[index].Judul;
         var Nama_Prodi = result[index].Nama_Prodi;
         var Dana = result[index].Dana;
@@ -443,7 +443,7 @@ function draw_data(result) {
         if (Doc == null) {
             output += '<td><a title="No Link">PDF</a></td>';
         } else {
-            output += '<td><a href="../file/upload/documents/document penelitian/' + Doc + '" target="_blank">PDF</a></td>';
+            output += '<td><a href="../file/upload/documents/document pengabdian/' + Doc + '" target="_blank">PDF</a></td>';
         }
         output += '<td class="text-center">';
         output += '<button dataID="' + Kode + '" class="btn btn-sm mr-1" id="view-anggota" data-toggle="tooltip" data-placement="top" title="Lihat Anggota"><i class="fas fa-book"></i></button>';
@@ -465,7 +465,7 @@ function draw_data_1(result) {
 
     for (index in result) {
         var No_Id = result[index].No_Id;
-        var Kd_Penelitian = result[index].Kd_Penelitian;
+        var Kd_Pengabdian = result[index].Kd_Pengabdian;
         var Nidn = result[index].Nidn;
         var Nama = result[index].Nama;
         var Jabatan = result[index].Jabatan;
@@ -478,8 +478,8 @@ function draw_data_1(result) {
         output += '<td>' + Nama + '</td>';
         output += '<td>' + Jabatan + '</td>';
         output += '<td class="text-center">';
-        output += '<button Kd_Penelitian="' + Kd_Penelitian + '" dataID="' + No_Id + '" class="btn btn-danger btn-sm mb-1 btnHapus-2 mr-1"> <i class="fa fa-trash"></i></button>';
-        output += '<button Kd_Penelitian="' + Kd_Penelitian + '" dataID="' + No_Id + '" class="btn btn-info btn-sm mb-1 btnEdit-2"> <i class="fa fa-edit"></i></button>';
+        output += '<button Kd_Pengabdian="' + Kd_Pengabdian + '" dataID="' + No_Id + '" class="btn btn-danger btn-sm mb-1 btnHapus-2 mr-1"> <i class="fa fa-trash"></i></button>';
+        output += '<button Kd_Pengabdian="' + Kd_Pengabdian + '" dataID="' + No_Id + '" class="btn btn-info btn-sm mb-1 btnEdit-2"> <i class="fa fa-edit"></i></button>';
         output += '</td>'
         output += '</tr>'
 
@@ -494,7 +494,7 @@ function draw_data_2(result) {
 
     for (index in result) {
         var No_Id = result[index].No_Id;
-        var Kd_Penelitian = result[index].Kd_Penelitian;
+        var Kd_Pengabdian = result[index].Kd_Pengabdian;
         var Nama = result[index].Nama;
         var Jabatan = result[index].Jabatan;
 
@@ -505,8 +505,8 @@ function draw_data_2(result) {
         output += '<td>' + Nama + '</td>';
         output += '<td>' + Jabatan + '</td>';
         output += '<td class="text-center">';
-        output += '<button Kd_Penelitian="' + Kd_Penelitian + '" dataID="' + No_Id + '" class="btn btn-danger btn-sm mb-1 btnHapus-3 mr-1"> <i class="fa fa-trash"></i></button>';
-        output += '<button Kd_Penelitian="' + Kd_Penelitian + '" dataID="' + No_Id + '" class="btn btn-info btn-sm mb-1 btnEdit-3"> <i class="fa fa-edit"></i></button>';
+        output += '<button Kd_Pengabdian="' + Kd_Pengabdian + '" dataID="' + No_Id + '" class="btn btn-danger btn-sm mb-1 btnHapus-3 mr-1"> <i class="fa fa-trash"></i></button>';
+        output += '<button Kd_Pengabdian="' + Kd_Pengabdian + '" dataID="' + No_Id + '" class="btn btn-info btn-sm mb-1 btnEdit-3"> <i class="fa fa-edit"></i></button>';
         output += '</td>'
         output += '</tr>'
 
@@ -520,7 +520,7 @@ function getData($tahun) {
     $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="6" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
-        url: 'getDataAsing/' + $tahun,
+        url: 'getDataInternal/' + $tahun,
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
@@ -531,12 +531,12 @@ function getData($tahun) {
     });
 }
 
-function loadAnggota(Kd_Penelitian) {
+function loadAnggota(Kd_Pengabdian) {
     $('#body-tabel-2').html('<tr class="animated fadeIn"><td colspan="5" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
         url: 'getAnggota/',
-        data: { Kd_Penelitian: Kd_Penelitian },
+        data: { Kd_Pengabdian: Kd_Pengabdian },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
@@ -553,12 +553,12 @@ function loadAnggota(Kd_Penelitian) {
     });
 };
 
-function loadPendukung(Kd_Penelitian) {
+function loadPendukung(Kd_Pengabdian) {
     $('#body-tabel-3').html('<tr class="animated fadeIn"><td colspan="4" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
         url: 'getPendukung/',
-        data: { Kd_Penelitian: Kd_Penelitian },
+        data: { Kd_Pengabdian: Kd_Pengabdian },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
@@ -650,7 +650,7 @@ $(document).on('click', '.btnHapus-2', function () {
     }).then((result) => {
         if (result.value) {
             var id = $(this).attr('dataID');
-            var Kd_Penelitian = $(this).attr('Kd_Penelitian');
+            var Kd_Pengabdian = $(this).attr('Kd_Pengabdian');
 
             $.ajax({
                 url: "deleteAnggota/" + id,
@@ -666,7 +666,7 @@ $(document).on('click', '.btnHapus-2', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadAnggota(Kd_Penelitian);
+                                loadAnggota(Kd_Pengabdian);
                             }
                         })
                     } else {
@@ -678,7 +678,7 @@ $(document).on('click', '.btnHapus-2', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadAnggota(Kd_Penelitian);
+                                loadAnggota(Kd_Pengabdian);
                             }
                         })
                     }
@@ -711,7 +711,7 @@ $(document).on('click', '.btnHapus-3', function () {
     }).then((result) => {
         if (result.value) {
             var id = $(this).attr('dataID');
-            var Kd_Penelitian = $(this).attr('Kd_Penelitian');
+            var Kd_Pengabdian = $(this).attr('Kd_Pengabdian');
 
 
             $.ajax({
@@ -728,7 +728,7 @@ $(document).on('click', '.btnHapus-3', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadPendukung(Kd_Penelitian);
+                                loadPendukung(Kd_Pengabdian);
                             }
                         })
                     } else {
@@ -740,7 +740,7 @@ $(document).on('click', '.btnHapus-3', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadPendukung(Kd_Penelitian);
+                                loadPendukung(Kd_Pengabdian);
                             }
                         })
                     }

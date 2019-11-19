@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
             <li class="breadcrumb-item"><a href="#">Penelitian</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Asing</li>
+            <li class="breadcrumb-item active" aria-current="page">Internal Perguruan Tinggi</li>
         </ol>
     </nav>
     <!--  -->

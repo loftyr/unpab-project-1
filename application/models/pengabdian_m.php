@@ -1,65 +1,47 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class penelitian_m extends CI_Model
+class pengabdian_m extends CI_Model
 {
     var $program    = 'ref_programstudi';
     var $staff      = 'ta_staff';
-    var $table      = 'ta_penelitian'; /*Tabel Ta Penelitian*/
-    var $table2     = 'ta_anggota_Penelitian';
-    var $table3     = 'ta_tim_pendukung';
+    var $table      = 'ta_pengabdian'; /*Tabel Ta Pengabdian*/
+    var $table2     = 'ta_anggota_pengabdian';
+    var $table3     = 'ta_pendukung_pengabdian';
 
     public function getDataRistekdikti($tahun)
     { //get all Data 
-        $this->db->select('A.Kd_Penelitian, A.Tahun, A.Judul, A.Sumber_Dana, A.Dana, A.Dokumen, B.Nama_Prodi');
+        $this->db->select('A.Kd_Pengabdian, A.Tahun, A.Judul, A.Sumber_Dana, A.Dana, A.Dokumen, B.Nama_Prodi');
         $this->db->from($this->table . ' A');
         $this->db->join($this->program . ' B', ' A.Kd_Fakultas = B.Kd_Fakultas AND A.Kd_Prodi = B.Kd_Prodi', 'INNER');
         $this->db->where('A.Tahun', $tahun);
-        $this->db->where('A.Source', '1'); // Penelitian Ristekdikti
+        $this->db->where('A.Source', '1'); // Pengabdian Ristekdikti
         return $this->db->get()->result();
     }
 
     public function getDataInternal($tahun)
     { //get all Data 
-        $this->db->select('A.Kd_Penelitian, A.Tahun, A.Judul, A.Sumber_Dana, A.Dana, A.Dokumen, B.Nama_Prodi');
+        $this->db->select('A.Kd_Pengabdian, A.Tahun, A.Judul, A.Sumber_Dana, A.Dana, A.Dokumen, B.Nama_Prodi');
         $this->db->from($this->table . ' A');
         $this->db->join($this->program . ' B', ' A.Kd_Fakultas = B.Kd_Fakultas AND A.Kd_Prodi = B.Kd_Prodi', 'INNER');
         $this->db->where('A.Tahun', $tahun);
-        $this->db->where('A.Source', '2'); // Penelitian Internal
+        $this->db->where('A.Source', '2'); // Pengabdian Internal
         return $this->db->get()->result();
     }
 
-    public function getDataAsing($tahun)
-    { //get all Data 
-        $this->db->select('A.Kd_Penelitian, A.Tahun, A.Judul, A.Sumber_Dana, A.Dana, A.Dokumen, B.Nama_Prodi');
-        $this->db->from($this->table . ' A');
-        $this->db->join($this->program . ' B', ' A.Kd_Fakultas = B.Kd_Fakultas AND A.Kd_Prodi = B.Kd_Prodi', 'INNER');
-        $this->db->where('A.Tahun', $tahun);
-        $this->db->where('A.Source', '3'); // Penelitian Asing
-        return $this->db->get()->result();
-    }
-
-    public function getEditRistekdikti($Kd_Penelitian)
+    public function getEditRistekdikti($Kd_Pengabdian)
     { //get all Data 
         $this->db->from($this->table);
-        $this->db->where('Kd_Penelitian', $Kd_Penelitian);
-        $this->db->where('Source', '1'); // Penelitian Ristekdikti
+        $this->db->where('Kd_Pengabdian', $Kd_Pengabdian);
+        $this->db->where('Source', '1'); // Pengabdian Ristekdikti
         return $this->db->get()->result();
     }
 
-    public function getEditInternal($Kd_Penelitian)
+    public function getEditInternal($Kd_Pengabdian)
     { //get all Data 
         $this->db->from($this->table);
-        $this->db->where('Kd_Penelitian', $Kd_Penelitian);
-        $this->db->where('Source', '2'); // Penelitian Internal
-        return $this->db->get()->result();
-    }
-
-    public function getEditAsing($Kd_Penelitian)
-    { //get all Data 
-        $this->db->from($this->table);
-        $this->db->where('Kd_Penelitian', $Kd_Penelitian);
-        $this->db->where('Source', '3'); // Penelitian Asing
+        $this->db->where('Kd_Pengabdian', $Kd_Pengabdian);
+        $this->db->where('Source', '2'); // Pengabdian Internal
         return $this->db->get()->result();
     }
 
@@ -77,9 +59,9 @@ class penelitian_m extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function deleteId($Kd_Penelitian)
+    public function deleteId($Kd_Pengabdian)
     {
-        $this->db->where('Kd_Penelitian', $Kd_Penelitian);
+        $this->db->where('Kd_Pengabdian', $Kd_Pengabdian);
         $query = $this->db->delete($this->table);
 
         if (!$query) {
@@ -134,21 +116,21 @@ class penelitian_m extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function getAnggota($Kd_Penelitian)
+    public function getAnggota($Kd_Pengabdian)
     {
         $this->db->from($this->table2);
-        $this->db->where('Kd_Penelitian', $Kd_Penelitian);
+        $this->db->where('Kd_Pengabdian', $Kd_Pengabdian);
         return $this->db->get()->result();
     }
 
-    public function getPendukung($Kd_Penelitian)
+    public function getPendukung($Kd_Pengabdian)
     {
         $this->db->from($this->table3);
-        $this->db->where('Kd_Penelitian', $Kd_Penelitian);
+        $this->db->where('Kd_Pengabdian', $Kd_Pengabdian);
         return $this->db->get()->result();
     }
 
-    public function savePenelitian($data)
+    public function savePengabdian($data)
     {
         $query  = $this->db->insert($this->table, $data);
 

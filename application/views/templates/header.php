@@ -74,22 +74,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <ul class="sub-menu-1">
                         <li><a href="<?= base_url('Sumberdayalppm/Dosen') ?>">Dosen Tetap Perguruan Tinggi</a></li>
                         <li><a href="<?= base_url('Sumberdayalppm/Staff') ?>">Sumber Daya Staf Pendukung</a></li>
-                        <li><a href="#">Peneliti Asing</a></li>
+                        <li><a href="<?= base_url('Penelitian/asing') ?>">Peneliti Asing</a></li>
                         <li>
                             <a href="#">Sumber Dana PPM Ristekdikti</a>
                             <ul class="sub-menu-2">
-                                <li><a href="#">Penelitian</a></li>
-                                <li><a href="#">Pengabdian Masyarakat</a></li>
+                                <li><a href="<?= base_url('Penelitian/ristekdikti') ?>">Penelitian</a></li>
+                                <li><a href="<?= base_url('Pengabdian/ristekdikti') ?>">Pengabdian Masyarakat</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">Sumber Dana PPM Internal Perguruan Tinggi</a>
                             <ul class="sub-menu-2">
-                                <li><a href="#">Penelitian</a></li>
-                                <li><a href="#">Pengabdian Masyarakat</a></li>
+                                <li><a href="<?= base_url('Penelitian/internal') ?>">Penelitian</a></li>
+                                <li><a href="<?= base_url('Pengabdian/internal') ?>">Pengabdian Masyarakat</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Fasilitas Penunjang PPM</a></li>
+                        <li><a href="<?= base_url('fasilitaspendukung') ?>">Fasilitas Penunjang PPM</a></li>
                         <li><a href="#">Evaluasi Diri</a></li>
                     </ul>
                 </li>
@@ -121,7 +121,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <li>
                             <a href="#">Penelitian</a>
                             <ul class="sub-menu-2">
-                                <li><a href="#">Publikasi Jurnal</a></li>
+                                <li><a href="<?= base_url('Jurnal/penelitian') ?>">Publikasi Jurnal</a></li>
                                 <li><a href="#">Buku Ajar / Teks</a></li>
                                 <li><a href="#">Pemakalah Forum Ilmiah</a></li>
                                 <li><a href="#">Hak Kekayaan Intelektual (HKI)</a></li>
@@ -131,7 +131,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <li>
                             <a href="#">Pengabdian Masyarakat</a>
                             <ul class="sub-menu-2">
-                                <li><a href="#">Publikasi Jurnal</a></li>
+                                <li><a href="<?= base_url('Jurnal/pengabdian') ?>">Publikasi Jurnal</a></li>
                                 <li><a href="#">Buku Ajar / Teks</a></li>
                                 <li><a href="#">Pemakalah Forum Ilmiah</a></li>
                                 <li><a href="#">Hak Kekayaan Intelektual (HKI)</a></li>

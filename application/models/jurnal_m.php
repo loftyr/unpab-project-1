@@ -13,10 +13,35 @@ class jurnal_m extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function getDataEdit($id)
+    public function getDataPenelitian($tahun)
+    { //get all Data
+        $this->db->from($this->table);
+        $this->db->where('Tahun', $tahun);
+        $this->db->where('Source', '1'); // Penelitian
+        return $this->db->get()->result();
+    }
+
+    public function getDataPengabdian($tahun)
+    { //get all Data
+        $this->db->from($this->table);
+        $this->db->where('Tahun', $tahun);
+        $this->db->where('Source', '2'); // Penelitian
+        return $this->db->get()->result();
+    }
+
+    public function getEditPenelitian($Kd_Jurnal)
     { //get Data
         $this->db->from($this->table);
-        $this->db->where('Id', $id);
+        $this->db->where('Kd_Jurnal', $Kd_Jurnal);
+        $this->db->where('Source', '1');
+        return $this->db->get()->result();
+    }
+
+    public function getEditPengabdian($Kd_Jurnal)
+    { //get Data
+        $this->db->from($this->table);
+        $this->db->where('Kd_Jurnal', $Kd_Jurnal);
+        $this->db->where('Source', '2');
         return $this->db->get()->result();
     }
 
@@ -38,7 +63,7 @@ class jurnal_m extends CI_Model
         }
     }
 
-    public function saveData2($data)
+    public function saveDataPenulis($data)
     {
         $query  = $this->db->insert($this->table2, $data);
 
@@ -49,7 +74,7 @@ class jurnal_m extends CI_Model
         }
     }
 
-    public function saveEdit($where, $data)
+    public function saveEditData($where, $data)
     {
         $query = $this->db->update($this->table, $data, $where);
 
@@ -64,6 +89,18 @@ class jurnal_m extends CI_Model
     {
         $this->db->where('Kd_Jurnal', $id);
         $query = $this->db->delete($this->table);
+
+        if (!$query) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function deletePenulis($id)
+    {
+        $this->db->where('Id', $id);
+        $query = $this->db->delete($this->table2);
 
         if (!$query) {
             return false;

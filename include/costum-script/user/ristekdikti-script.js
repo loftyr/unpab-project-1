@@ -175,7 +175,7 @@ $(document).on('click', '.btnEdit-1', function () {
     var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getEditAsing',
+        url: 'getEditRistekdikti',
         data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
@@ -250,7 +250,7 @@ clickSave_1.addEventListener('click', function (event) {
     var form = document.querySelector("#form-1");
 
     if (method_1 == 'tambah') {
-        url = 'saveDataAsing';
+        url = 'saveDataRistekdikti';
     } else {
         url = 'saveEditData';
     }
@@ -520,7 +520,7 @@ function getData($tahun) {
     $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="6" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
-        url: 'getDataAsing/' + $tahun,
+        url: 'getDataRistekdikti/' + $tahun,
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {

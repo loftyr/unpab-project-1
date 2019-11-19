@@ -22,7 +22,7 @@
 
     <div class="row pt-2 justify-content-end">
         <div class="col-sm-1">
-            <button class="btn btn-info" id="btnAdd-1">+</button>
+            <button class="btn btn-info" id="btnAdd-1"><i class="fas fa-plus"></i></button>
         </div>
     </div>
 
@@ -31,14 +31,14 @@
         <table class="table table-hover tabel-1">
             <thead>
                 <tr>
-                    <th class="col text-center" style="width: 4%;">No</th>
-                    <th class="col text-center" style="width: 15%;">Unit Pendukung</th>
-                    <th class="col text-center" style="width: 10%;">No. SK</th>
-                    <th class="col text-center" style="width: 25%;">Fasilitas & Peralatan Pendukung</th>
-                    <th class="col text-center" style="width: 10%;">Status</th>
-                    <th class="col text-center" style="width: 20%;">Keterangan</th>
-                    <th class="col text-center" style="width: 6%;">Dokumen</th>
-                    <th class="col text-center" style="width: 5%;">Aksi</th>
+                    <th class="text-center" style="width: 4%;">No</th>
+                    <th class="text-center" style="width: 15%;">Unit Pendukung</th>
+                    <th class="text-center" style="width: 10%;">No. SK</th>
+                    <th class="text-center" style="width: 25%;">Fasilitas & Peralatan Pendukung</th>
+                    <th class="text-center" style="width: 10%;">Status</th>
+                    <th class="text-center" style="width: 20%;">Keterangan</th>
+                    <th class="text-center" style="width: 6%;">Dokumen</th>
+                    <th class="text-center" style="width: 5%;">Aksi</th>
                 </tr>
             </thead>
             <tbody id="body-tabel-1">
@@ -69,10 +69,10 @@
                 <form action="" id="form-1" link="<?= base_url(); ?>" enctype="multipart/form-data">
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
+                        <label class="col-sm-2 col-form-label" for="Tahun-1">Tahun</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="Tahun" name="Tahun" value="<?= date('Y'); ?>">
+                            <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
                     </div>
 

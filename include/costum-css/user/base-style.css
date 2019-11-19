@@ -66,14 +66,14 @@ body {
 }
 
 .menu-utama li:hover, .menu-utama li.active-menu {
-    background: rgba(1, 60, 255, 0.322);
+    background: rgba(255, 255, 255, 0.322);
     transition: .2s;
 }
 
 .sub-menu-1, .sub-menu-2 {
     position: absolute;
     display: none;
-    background: rgba(31, 146, 253, 0.651);
+    background: rgba(102, 102, 102);
     width: 260px;
     min-width: 255px;
     z-index: 10;

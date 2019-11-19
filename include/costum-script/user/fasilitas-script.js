@@ -1,4 +1,4 @@
-var method_1;
+var method;
 const modal_1 = $('#modal-1');
 const judulModal_1 = $('#title-modal-1');
 const btnSave_1 = $('#btnSave-1');
@@ -32,7 +32,8 @@ function draw_data(result) {
             output += '<td><a href="file/upload/documents/document fasilitas pendukung/' + Doc + '" target="_blank">PDF</a></td>';
         }
         output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus"  id="view-anggota" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit" title="Edit"><i class="fas fa-edit"></i></button>';
         output += '</td>';
         output += '</tr>';
 
@@ -42,7 +43,7 @@ function draw_data(result) {
 }
 
 $(document).on('click', '#btnAdd-1', function () {
-    method_1 = 'tambah';
+    method = 'tambah';
     judulModal_1.html("Tambah Data Fasilitas Pendukung LPPM");
     btnSave_1.html("Save Data");
     modal_1.modal({
@@ -50,6 +51,35 @@ $(document).on('click', '#btnAdd-1', function () {
         keyboard: false
     });
     modal_1.modal("show");
+});
+
+$(document).on('click', '.btnEdit', function () {
+    method = 'edit';
+    judulModal_1.html("Edit Fasilitas Pendukung LPPM");
+    btnSave_1.html("Save Change");
+    modal_1.modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+    modal_1.modal("show");
+
+    var edit_id = $(this).attr('dataID');
+
+    $.ajax({
+        url: 'Fasilitaspendukung/getEditFasilitas',
+        data: { id: edit_id },
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (result) {
+            $('#id').val(result[0].Id);
+            $('#Tahun-1').val(result[0].Tahun);
+            $('#No').val(result[0].No_Surat);
+            $('#Unit').val(result[0].Nama_Unit);
+            $('#Fasilitas').val(result[0].Fasilitas);
+            $('#Status').val(result[0].Status);
+            $('#Ket').val(result[0].Keterangan);
+        }
+    });
 });
 
 $('#Tahun').on('change', function () {
@@ -89,10 +119,10 @@ clickSave_1.addEventListener('click', function (event) {
     var base_url = $('#form-1').attr('link');
     var form = document.querySelector("#form-1");
 
-    if (method_1 == 'tambah') {
+    if (method == 'tambah') {
         url = base_url + 'Fasilitaspendukung/save';
     } else {
-        url = base_url + 'Fasilitaspendukung/saveEdit';
+        url = base_url + 'Fasilitaspendukung/saveEditFasilitas';
     }
 
     $('.progress').show();

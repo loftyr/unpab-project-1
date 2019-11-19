@@ -3,8 +3,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Penelitian</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Asing</li>
+            <li class="breadcrumb-item"><a href="#">Pengabdian</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ristekdikti</li>
         </ol>
     </nav>
     <!--  -->
@@ -25,10 +25,10 @@
         <!--  -->
         <ul class="nav nav-tabs pl-2 pr-2" id="tab-1" role="tablist">
             <li class="nav-item">
-                <a href="#data-1" class="nav-link active" id="nav-1" data-toggle="tab" role="tab">Penelitian</a>
+                <a href="#data-1" class="nav-link active" id="nav-1" data-toggle="tab" role="tab">Pengabdian</a>
             </li>
             <li class="nav-item">
-                <a href="#data-2" class="nav-link" id="nav-2" data-toggle="tab" role="tab">Anggota Penelitian</a>
+                <a href="#data-2" class="nav-link" id="nav-2" data-toggle="tab" role="tab">Anggota Pengabdian</a>
             </li>
             <li class="nav-item">
                 <a href="#data-3" class="nav-link" id="nav-3" data-toggle="tab" role="tab">Tim Pendukung</a>
@@ -43,7 +43,7 @@
             <div class="tab-pane fade show active" id="data-1">
                 <div class="row pt-2">
                     <div class="col-sm-1">
-                        <button class="btn btn-info btn-sm" id="btnAdd-1">Tambah Penelitian</button>
+                        <button class="btn btn-info btn-sm" id="btnAdd-1">Tambah Pengabdian</button>
                     </div>
                 </div>
                 <!--  -->
@@ -52,7 +52,7 @@
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 3%;">No</th>
-                                <th class="text-center" style="">Judul Penelitian</th>
+                                <th class="text-center" style="">Judul Pengabdian</th>
                                 <th class="text-center" style="">Program Studi</th>
                                 <th class="text-center" style="">Dana</th>
                                 <th class="text-center" style="max-width: 80px;">Dokumen</th>
@@ -72,7 +72,7 @@
             <div class="tab-pane fade" id="data-2">
                 <div class="row pt-2">
                     <div class="col-sm-1">
-                        <button class="btn btn-info btn-sm" id="btnAdd-2" disabled="" Kd_Penelitian="">Tambah Anggota Penelitian</button>
+                        <button class="btn btn-info btn-sm" id="btnAdd-2" disabled="" Kd_Pengabdian="">Tambah Anggota Pengabdian</button>
                     </div>
                 </div>
                 <!--  -->
@@ -263,7 +263,7 @@
             <div class="modal-body">
                 <form id="form-2" link="<?= base_url(); ?>">
                     <input type="hidden" id="id-2" name="id-2">
-                    <input type="hidden" id="Kd-Penelitian-1" name="Kd-Penelitian-1">
+                    <input type="hidden" id="Kd-Pengabdian-1" name="Kd-Pengabdian-1">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
@@ -317,7 +317,7 @@
                 <form id="form-3" link="<?= base_url(); ?>">
                     <input type="hidden" id="id-3" name="id-3">
 
-                    <input type="hidden" id="Kd-Penelitian-2" name="Kd-Penelitian-2">
+                    <input type="hidden" id="Kd-Pengabdian-2" name="Kd-Pengabdian-2">
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nama-2">Nama</label>

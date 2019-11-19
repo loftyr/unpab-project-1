@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
             <li class="breadcrumb-item"><a href="#">LPPM</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Jurnal</li>
+            <li class="breadcrumb-item active" aria-current="page">Buku Ajar / Teks Penelitian</li>
         </ol>
     </nav>
     <!--  -->
@@ -25,10 +25,10 @@
         <!--  -->
         <ul class="nav nav-tabs pl-2 pr-2" id="tab-1" role="tablist">
             <li class="nav-item">
-                <a href="#data-tab-1" class="nav-link active" id="nav-1" data-toggle="tab" role="tab">Penelitian</a>
+                <a href="#data-tab-1" class="nav-link active" id="nav-1" data-toggle="tab" role="tab">Buku Ajar / Teks</a>
             </li>
             <li class="nav-item">
-                <a href="#data-tab-2" class="nav-link" id="nav-2" data-toggle="tab" role="tab">Anggota Penelitian</a>
+                <a href="#data-tab-2" class="nav-link" id="nav-2" data-toggle="tab" role="tab">Penulis Buku Ajar / Teks</a>
             </li>
         </ul>
         <!--  -->
@@ -40,7 +40,7 @@
             <div class="tab-pane fade show active" id="data-tab-1">
                 <div class="row pt-2">
                     <div class="col-sm-1">
-                        <button class="btn btn-info btn-sm" id="btnAdd-1">Tambah Jurnal</button>
+                        <button class="btn btn-info btn-sm" id="btnAdd-1">Tambah Buku Ajar / Teks</button>
                     </div>
                 </div>
                 <!--  -->
@@ -49,14 +49,13 @@
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 50px;">No</th>
-                                <th class="" style="max-width: 260px;">Judul</th>
-                                <th class="">Jurnal</th>
-                                <th class="">ISSN</th>
-                                <th class="">Vol</th>
-                                <th class="">No</th>
-                                <th class="">Halaman</th>
-                                <th class="">URL</th>
-                                <th class="">Berkas Jurnal </th>
+                                <th class="text-center">NIDN</th>
+                                <th class="text-center" style="max-width: 150px;">Nama</th>
+                                <th class="text-center" style="max-width: 260px;">Judul</th>
+                                <th class="text-center">ISBN</th>
+                                <th class="text-center">Jumlah Halaman</th>
+                                <th class="text-center">Penerbit</th>
+                                <th class="text-center">Berkas Jurnal </th>
                                 <th class="text-center" style="max-width: 80px;">Aksi</th>
                             </tr>
                         </thead>
@@ -82,8 +81,9 @@
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 10%;">No</th>
-                                <th class="text-center" style="width: 15%;">Kd_Jurnal</th>
+                                <th class="text-center" style="width: 15%;">Id Buku</th>
                                 <th class="text-center" style="width: 20%;">Nama Penulis</th>
+                                <th class="text-center" style="width: 20%;">Penulis Ke.</th>
                                 <th class="text-center" style="width: 10%;">Aksi</th>
                             </tr>
                         </thead>
@@ -127,7 +127,7 @@
                         <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="Tahun" name="Tahun" value="<?= date('Y'); ?>">
+                            <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
                     </div>
 
@@ -140,50 +140,44 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Jurnal">Jurnal</label>
+                        <label class="col-sm-2 col-form-label" for="Isbn">ISBN</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Jurnal" name="Jurnal">
+                            <input type="text" class="form-control" id="Isbn" name="Isbn">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="ISSN">ISSN</label>
+                        <label class="col-sm-2 col-form-label" for="Penerbit">Penerbit</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="ISSN" name="ISSN">
+                            <input type="text" class="form-control" id="Penerbit" name="Penerbit">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Volume">Volume</label>
+                        <label class="col-sm-2 col-form-label" for="Jml_Hal">Jumlah Halaman</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="Volume" name="Volume">
+                            <input type="text" class="form-control" id="Jml_Hal" name="Jml_Hal">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="No">No</label>
+                        <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="No" name="No">
+                            <input type="text" class="form-control" id="Nidn" name="Nidn">
+                            <small id="info" class="form-text text-muted">*Press Enter For Search NIDN</small>
+                            <small class="form-text text-muted" id="result-cek"></small>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Halaman">Halaman</label>
+                        <label class="col-sm-2 col-form-label" for="Pencipta">Pencipta</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
-                            <input type="text" class="form-control" id="Halaman" name="Halaman">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Url">URL</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" id="Url" name="Url">
+                            <input type="text" class="form-control" id="Pencipta" name="Pencipta" readonly>
                         </div>
                     </div>
 
@@ -230,7 +224,8 @@
             </div>
             <div class="modal-body">
                 <form id="form-2" link="<?= base_url(); ?>">
-                    <input type="hidden" id="Kd_Jurnal" name="Kd_Jurnal">
+                    <input type="hidden" id="Id-Buku" name="Id-Buku">
+                    <input type="hidden" id="id-2" name="id-2">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun-2">Tahun</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
@@ -244,6 +239,14 @@
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="Nama" name="Nama">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="Urut">Penulis Ke.</label>
+                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="Urut" name="Urut">
                         </div>
                     </div>
 
