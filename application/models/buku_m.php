@@ -49,6 +49,7 @@ class buku_m extends CI_Model
     { //get Data
         $this->db->from($this->table2);
         $this->db->where('Id_Buku', $Id_Buku);
+        $this->db->order_by('Urut', 'DESC');
         return $this->db->get()->result();
     }
 

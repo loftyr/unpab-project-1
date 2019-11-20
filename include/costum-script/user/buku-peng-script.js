@@ -22,7 +22,7 @@ $(document).on('keypress', '#Nidn', function (e) {
 
         $.ajax({
             type: "POST",
-            url: "../penelitian/ceknidn",
+            url: "../Pengabdian/ceknidn",
             data: { nidn: id },
             dataType: "JSON",
             success: function (result) {
@@ -96,7 +96,7 @@ $(document).on('click', '#btnAdd-1', function () {
 
 $(document).on('click', '.btnEdit-1', function () {
     method_1 = 'edit';
-    judulModal_1.html("Edit Buku Ajar / Teks Penelitian");
+    judulModal_1.html("Edit Buku Ajar / Teks Pengabdian");
     btnSave_1.html("Save Change");
     modal_1.modal({
         backdrop: 'static',
@@ -107,7 +107,7 @@ $(document).on('click', '.btnEdit-1', function () {
     var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getEditPenelitian',
+        url: 'getEditPengabdian',
         data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
@@ -127,7 +127,7 @@ $(document).on('click', '.btnEdit-1', function () {
 
 $(document).on('click', '#btnAdd-2', function () {
     method_2 = 'tambah';
-    judulModal_2.html("Tambah Penulis Buku Ajar / Teks Penelitian");
+    judulModal_2.html("Tambah Penulis Buku Ajar / Teks Pengabdian");
     btnSave_2.html("Save Data");
     $('#Id_Buku').attr(Id_Buku);
     modal_2.modal({
@@ -139,7 +139,7 @@ $(document).on('click', '#btnAdd-2', function () {
 
 $(document).on('click', '.btnEdit-2', function () {
     method_2 = 'edit';
-    judulModal_2.html("Edit Penulis Buku Ajar / Teks Penelitian");
+    judulModal_2.html("Edit Penulis Buku Ajar / Teks Pengabdian");
     btnSave_2.html("Save Change");
     modal_2.modal({
         backdrop: 'static',
@@ -171,7 +171,7 @@ clickSave_1.addEventListener('click', function (event) {
     var form = document.querySelector("#form-1");
 
     if (method_1 == 'tambah') {
-        url = 'savePenelitian';
+        url = 'savePengabdian';
     } else {
         url = 'saveEditData';
     }
@@ -366,7 +366,7 @@ function getData($tahun) {
     $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="9" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
-        url: 'getDataPenelitian/' + $tahun,
+        url: 'getDataPengabdian/' + $tahun,
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {

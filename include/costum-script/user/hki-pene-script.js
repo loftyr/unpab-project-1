@@ -1,4 +1,4 @@
-var method_1, method_2;
+var method_1, Id_Hki;
 var Kd_Jurnal = 0;
 const modal_1 = $('#modal-1');
 const modal_2 = $('#modal-2');
@@ -9,7 +9,6 @@ const btnSave_2 = $('#btnSave-2');
 const clickSave_1 = document.querySelector('#btnSave-1');
 const clickSave_2 = document.querySelector('#btnSave-2');
 const add_2 = document.querySelector('#btnAdd-2');
-
 
 $('#Tahun').on('change', function () {
     var Tahun = document.getElementById("Tahun").value;
@@ -28,10 +27,10 @@ $(document).on('keypress', '#Nidn', function (e) {
             success: function (result) {
                 if (result.status == true) {
                     $('#result-cek').text(result.ket);
-                    $('#Pencipta').val(result.data);
+                    $('#Nama').val(result.data);
                 } else {
                     $('#result-cek').text(result.ket);
-                    $('#Pencipta').val('');
+                    $('#Nama').val('');
                 }
             },
             error: function (xhr, stat, err) {
@@ -45,17 +44,17 @@ $(document).on('keyup', '#Nidn', function (e) {
     var id = $('#Nidn').val();
     if (id == '') {
         $('#result-cek').text('');
-        $('#Pencipta').val('');
+        $('#Nama').val('');
     }
 });
-
 $(document).on('click', '.btnLihat', function () {
     $('#nav-2').tab('show');
 
-    Id_Buku = $(this).attr('dataID'); //Id Buku
-    $('#Id-Buku').val(Id_Buku);
+    Id_Hki = $(this).attr('dataID'); //Id 
+    $('#Id_Hki').val(Id_Hki);
 
-    loadData(Id_Buku);
+    // console.log(Id_Hki);
+    loadData(Id_Hki);
 });
 
 $(document).ready(function () {
@@ -96,7 +95,7 @@ $(document).on('click', '#btnAdd-1', function () {
 
 $(document).on('click', '.btnEdit-1', function () {
     method_1 = 'edit';
-    judulModal_1.html("Edit Buku Ajar / Teks Penelitian");
+    judulModal_1.html("Edit HKI Penelitian");
     btnSave_1.html("Save Change");
     modal_1.modal({
         backdrop: 'static',
@@ -112,24 +111,22 @@ $(document).on('click', '.btnEdit-1', function () {
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
-            $('#id').val(result[0].Id_Buku);
-            $('#Judul').val(result[0].Judul);
+            $('#id').val(result[0].Id_Hki);
             $('#Tahun-1').val(result[0].Tahun);
-            $('#Isbn').val(result[0].ISBN);
-            $('#Penerbit').val(result[0].Penerbit);
-            $('#Jml_Hal').val(result[0].Jml_Hal);
-            $('#Nidn').val(result[0].Nidn);
-            $('#Halaman').val(result[0].Halaman);
-            $('#Pencipta').val(result[0].Pencipta);
+            $('#Judul').val(result[0].Judul);
+            $('#Jenis').val(result[0].Jenis);
+            $('#No_Pendaftaran').val(result[0].No_Pendaftaran);
+            $('#No_Sertifikat').val(result[0].No_Sertifikat);
+            $('#Status').val(result[0].Status);
         }
     });
 });
 
 $(document).on('click', '#btnAdd-2', function () {
     method_2 = 'tambah';
-    judulModal_2.html("Tambah Penulis Buku Ajar / Teks Penelitian");
+    judulModal_2.html("Tambah Penulis");
     btnSave_2.html("Save Data");
-    $('#Id_Buku').attr(Id_Buku);
+    $('#Id_Hki').attr(Id_Hki);
     modal_2.modal({
         backdrop: 'static',
         keyboard: false
@@ -139,7 +136,7 @@ $(document).on('click', '#btnAdd-2', function () {
 
 $(document).on('click', '.btnEdit-2', function () {
     method_2 = 'edit';
-    judulModal_2.html("Edit Penulis Buku Ajar / Teks Penelitian");
+    judulModal_2.html("Edit Pencipta HKI Penelitian");
     btnSave_2.html("Save Change");
     modal_2.modal({
         backdrop: 'static',
@@ -150,14 +147,15 @@ $(document).on('click', '.btnEdit-2', function () {
     var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getEditPenulis',
+        url: 'getEditPencipta',
         data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
             $('#id-2').val(result[0].Id);
-            $('#Id-Buku').val(result[0].Id_Buku);
+            $('#Id_Hki').val(result[0].Id_Hki);
             $('#Tahun-2').val(result[0].Tahun);
+            $('#Nidn').val(result[0].Nidn);
             $('#Nama').val(result[0].Nama);
             $('#Urut').val(result[0].Urut);
         }
@@ -243,10 +241,11 @@ clickSave_2.addEventListener('click', function () {
     if (method_2 == 'tambah') {
         url = 'save2';
     } else {
-        url = 'saveEditPenulis';
+        url = 'saveEdit2';
     }
 
     clickSave_2.disabled = true;
+
 
     $.ajax({
         url: url,
@@ -258,6 +257,7 @@ clickSave_2.addEventListener('click', function () {
         cache: false,
         success: function (result) {
             clickSave_2.disabled = false;
+
 
             if (result.Status == false) {
                 Swal.fire({
@@ -278,7 +278,7 @@ clickSave_2.addEventListener('click', function () {
                     timer: 1500
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        loadData(Id_Buku);
+                        loadData(Id_Hki);
                     }
                 })
             }
@@ -289,40 +289,38 @@ clickSave_2.addEventListener('click', function () {
     });
 });
 
-//Read
+// Read
 function draw_data(result) {
     var no = 0;
 
     for (index in result) {
-        var id = result[index].Id_Buku;
+        var id = result[index].Id_Hki;
         var Tahun = result[index].Tahun;
-        var Nidn = result[index].Nidn;
-        var Pencipta = result[index].Pencipta;
         var Judul = result[index].Judul;
-        var ISBN = result[index].ISBN;
-        var Jml_Hal = result[index].Jml_Hal;
-        var Penerbit = result[index].Penerbit;
+        var Jenis = result[index].Jenis;
+        var Status = result[index].Status;
+        var No_Pendaftaran = result[index].No_Pendaftaran;
+        var No_Sertifikat = result[index].No_Sertifikat;
         var Doc = result[index].Dokumen;
 
         no += 1;
 
         var output = '<tr>';
         output += '<td>' + no + '</td>';
-        output += '<td>' + Nidn + '</td>';
-        output += '<td>' + Pencipta + '</td>';
         output += '<td>' + Judul + '</td>';
-        output += '<td>' + ISBN + '</td>';
-        output += '<td>' + Jml_Hal + '</td>';
-        output += '<td>' + Penerbit + '</td>';
+        output += '<td>' + Jenis + '</td>';
+        output += '<td>' + No_Pendaftaran + '</td>';
+        output += '<td>' + Status + '</td>';
+        output += '<td>' + No_Sertifikat + '</td>';
         if (Doc == null) {
             output += '<td><a title="No Link">PDF</a></td>';
         } else {
-            output += '<td><a href="file/upload/documents/document buku/' + Doc + '" target="_blank">PDF</a></td>';
+            output += '<td><a href="../file/upload/documents/document hki/' + Doc + '" target="_blank">PDF</a></td>';
         }
         output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus-1 mr-2"><i class="fas fa-trash"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnLihat mr-2"><i class="fas fa-book"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit-1"><i class="fas fa-edit"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus mr-2"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnLihat"  data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-book"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-primary btn-sm btnEdit-1" title="Lihat"><i class="fas fa-edit"></i></button>';
         output += '</td>';
         output += '</tr>';
 
@@ -338,8 +336,9 @@ function draw_data_2(result) {
 
     for (index in result) {
         var Id = result[index].Id;
-        var Id_Buku = result[index].Id_Buku;
+        var Id_Hki = result[index].Id_Hki;
         var Tahun = result[index].Tahun;
+        var Nidn = result[index].Nidn;
         var Nama = result[index].Nama;
         var Urut = result[index].Urut;
 
@@ -347,12 +346,13 @@ function draw_data_2(result) {
 
         var output = '<tr>';
         output += '<td>' + no + '</td>';
-        output += '<td>' + Id_Buku + '</td>';
+        output += '<td>' + Id_Hki + '</td>';
+        output += '<td>' + Nidn + '</td>';
         output += '<td>' + Nama + '</td>';
         output += '<td>' + Urut + '</td>';
         output += '<td>';
-        output += '<button Id-Buku="' + Id_Buku + '" dataID="' + Id + '" class="btn btn-info btn-sm btnEdit-2 mr-2"><i class="fas fa-edit"></i></button>';
-        output += '<button Id-Buku="' + Id_Buku + '" dataID="' + Id + '" class="btn btn-danger btn-sm btnHapus-2 mr-2"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + Id + '" dataKode="' + Id_Hki + '"  class="btn btn-danger btn-sm mb-1 btnHapus-2 mr-1"> <i class="fa fa-trash"></i></button>';
+        output += '<button dataID="' + Id + '" dataKode="' + Id_Hki + '"  class="btn btn-info btn-sm mb-1 btnEdit-2"> <i class="fa fa-edit"></i></button>';
         output += '</td>'
         output += '</tr>'
 
@@ -377,12 +377,12 @@ function getData($tahun) {
     });
 }
 
-function loadData(Id_Buku) {
-    $('#body-tabel-2').html('<tr class="animated fadeIn"><td colspan="5" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
+function loadData(Id_Hki) {
+    $('#body-tabel-2').html('<tr class="animated fadeIn"><td colspan="6" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
-        url: 'getPenulis/',
-        data: { Id_Buku: Id_Buku },
+        url: 'getPencipta/',
+        data: { Id_Hki: Id_Hki },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
@@ -399,8 +399,8 @@ function loadData(Id_Buku) {
     });
 };
 
-//Delete 
-$(document).on('click', '.btnHapus-1', function () {
+// Delete
+$(document).on('click', '.btnHapus', function () {
     var Tahun = document.getElementById("Tahun").value;
     Swal.fire({
         title: 'Are You Sure?',
@@ -473,7 +473,7 @@ $(document).on('click', '.btnHapus-2', function () {
     }).then((result) => {
         if (result.value) {
             var id = $(this).attr('dataID');
-            var Id_Buku = $(this).attr('Id-Buku');
+            var Kd_Hki = $(this).attr('dataKode');
 
             $.ajax({
                 url: "deleteData2/" + id,
@@ -489,7 +489,7 @@ $(document).on('click', '.btnHapus-2', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadData(Id_Buku);
+                                loadData(Kd_Hki);
                             }
                         })
                     } else {
@@ -501,7 +501,7 @@ $(document).on('click', '.btnHapus-2', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadData(Id_Buku);
+                                loadData(Kd_Hki);
                             }
                         })
                     }

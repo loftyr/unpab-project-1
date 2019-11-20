@@ -35,13 +35,13 @@ class Buku extends CI_Controller
     public function pengabdian()
     {
         $dataheader['judul']    = 'Buku Ajar / Teks';
-        $dataheader['css']      = 'buku-style.css'; // 
-        $datafooter['js']       = 'buku-script.js'; // 
+        $dataheader['css']      = 'buku-peng-style.css'; // 
+        $datafooter['js']       = 'buku-peng-script.js'; // 
 
         $data['Tahun']          = $this->base_m->getTahun();
 
         $this->load->view('templates/header', $dataheader);
-        $this->load->view('page/buku_v', $data);
+        $this->load->view('page/buku_peng_v', $data);
         $this->load->view('templates/footer', $datafooter);
     }
 
@@ -61,6 +61,13 @@ class Buku extends CI_Controller
     public function getDataPengabdian($tahun)
     {
         $data   = $this->buku_m->getDataPengabdian($tahun);
+        echo json_encode($data);
+    }
+
+    public function getEditPengabdian()
+    {
+        $Id_Buku = $this->input->post('id');
+        $data   = $this->buku_m->getEditPengabdian($Id_Buku);
         echo json_encode($data);
     }
 
@@ -155,7 +162,83 @@ class Buku extends CI_Controller
         echo json_encode($result);
     }
 
-    public function saveEditPenelitian()
+    public function savePengabdian()
+    {
+        $this->form_validation->set_rules('Judul', 'Judul', 'required');
+        $this->form_validation->set_rules('Isbn', 'Isbn', 'required');
+        $this->form_validation->set_rules('Pencipta', 'Pencipta', 'required');
+        $this->form_validation->set_rules('Nidn', 'Nidn', 'required');
+        $this->form_validation->set_rules('Penerbit', 'Penerbit', 'required');
+
+        $config['upload_path']      = '././file/upload/documents/document buku/';
+        $config['allowed_types']    = 'pdf';
+        $config['max_size']         = 1000;
+        $config['encrypt_name']     = false;
+
+        if ($this->form_validation->run() == false) {
+            $result['Msg']          = 'Mohon Lengkapi Data !!!';
+            $result['MsgUpload']    = '';
+            $result['Status']       = false;
+        } else {
+            if (!empty($_FILES['File']['name'])) {
+                $this->upload->initialize($config);
+                if ($this->upload->do_upload("File")) {
+                    $datafile  = array('upload_data' => $this->upload->data());
+                    $filename  = $datafile['upload_data']['file_name'];
+
+                    $data = [
+                        'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
+                        'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
+                        'Pencipta'  => htmlspecialchars($this->input->post('Pencipta')),
+                        'Judul'     => htmlspecialchars($this->input->post('Judul')),
+                        'ISBN'      => htmlspecialchars($this->input->post('Isbn')),
+                        'Jml_Hal'   => htmlspecialchars($this->input->post('Jml_Hal')),
+                        'Penerbit'  => htmlspecialchars($this->input->post('Penerbit')),
+                        'Dokumen'   => $filename,
+                        'Source'    => '2', // Pengabdian
+                        'Tgl_Input'    => date('Y-m-d H:i:s'),
+                        'User_Input'   => $this->session->userdata['logged_in']['id_user']
+                    ];
+                } else {
+                    $result['Msg']       = $this->upload->display_errors();
+                    $result['MsgUpload'] = $this->upload->display_errors();
+                    $result['Status']    = false;
+                    echo json_encode($result);
+                    die;
+                }
+                // var_dump("Proses Upload Sukses");
+            } else {
+                $data = [
+                    'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
+                    'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
+                    'Pencipta'  => htmlspecialchars($this->input->post('Pencipta')),
+                    'Judul'     => htmlspecialchars($this->input->post('Judul')),
+                    'ISBN'      => htmlspecialchars($this->input->post('Isbn')),
+                    'Jml_Hal'   => htmlspecialchars($this->input->post('Jml_Hal')),
+                    'Penerbit'  => htmlspecialchars($this->input->post('Penerbit')),
+                    'Source'    => '2', // Pengabdian
+                    'Tgl_Input'    => date('Y-m-d H:i:s'),
+                    'User_Input'   => $this->session->userdata['logged_in']['id_user']
+                ];
+            }
+
+            $hasil = $this->buku_m->saveData($data);
+
+            if ($hasil == true) {
+                $result['Msg']       = 'Data Berhasil Disimpan . . .';
+                $result['MsgUpload'] = $this->upload->display_errors();
+                $result['Status']    = true;
+            } else {
+                $result['Msg']       = $this->db->error()['message'];
+                $result['MsgUpload'] = $this->upload->display_errors();
+                $result['Status']    = false;
+            }
+        }
+
+        echo json_encode($result);
+    }
+
+    public function saveEditData()
     {
         $this->form_validation->set_rules('Judul', 'Judul', 'required');
         $this->form_validation->set_rules('Isbn', 'Isbn', 'required');
@@ -239,85 +322,10 @@ class Buku extends CI_Controller
         echo json_encode($result);
     }
 
-    public function savePengabdian()
-    {
-        $this->form_validation->set_rules('Judul', 'Judul', 'required');
-        $this->form_validation->set_rules('Isbn', 'Isbn', 'required');
-        $this->form_validation->set_rules('Pencipta', 'Pencipta', 'required');
-        $this->form_validation->set_rules('Nidn', 'Nidn', 'required');
-        $this->form_validation->set_rules('Penerbit', 'Penerbit', 'required');
-
-        $config['upload_path']      = '././file/upload/documents/document buku/';
-        $config['allowed_types']    = 'pdf';
-        $config['max_size']         = 1000;
-        $config['encrypt_name']     = false;
-
-        if ($this->form_validation->run() == false) {
-            $result['Msg']          = 'Mohon Lengkapi Data !!!';
-            $result['MsgUpload']    = '';
-            $result['Status']       = false;
-        } else {
-            if (!empty($_FILES['File']['name'])) {
-                $this->upload->initialize($config);
-                if ($this->upload->do_upload("File")) {
-                    $datafile  = array('upload_data' => $this->upload->data());
-                    $filename  = $datafile['upload_data']['file_name'];
-
-                    $data = [
-                        'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
-                        'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
-                        'Pencipta'  => htmlspecialchars($this->input->post('Pencipta')),
-                        'Judul'     => htmlspecialchars($this->input->post('Judul')),
-                        'ISBN'      => htmlspecialchars($this->input->post('Isbn')),
-                        'Jml_Hal'   => htmlspecialchars($this->input->post('Jml_Hal')),
-                        'Penerbit'  => htmlspecialchars($this->input->post('Penerbit')),
-                        'Dokumen'   => $filename,
-                        'Source'    => '2',
-                        'Tgl_Input'    => date('Y-m-d H:i:s'),
-                        'User_Input'   => $this->session->userdata['logged_in']['id_user']
-                    ];
-                } else {
-                    $result['Msg']       = $this->upload->display_errors();
-                    $result['MsgUpload'] = $this->upload->display_errors();
-                    $result['Status']    = false;
-                    echo json_encode($result);
-                    die;
-                }
-                // var_dump("Proses Upload Sukses");
-            } else {
-                $data = [
-                    'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
-                    'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
-                    'Pencipta'  => htmlspecialchars($this->input->post('Pencipta')),
-                    'Judul'     => htmlspecialchars($this->input->post('Judul')),
-                    'ISBN'      => htmlspecialchars($this->input->post('Isbn')),
-                    'Jml_Hal'   => htmlspecialchars($this->input->post('Jml_Hal')),
-                    'Penerbit'  => htmlspecialchars($this->input->post('Penerbit')),
-                    'Source'    => '1',
-                    'Tgl_Input'    => date('Y-m-d H:i:s'),
-                    'User_Input'   => $this->session->userdata['logged_in']['id_user']
-                ];
-            }
-
-            $hasil = $this->buku_m->saveData($data);
-
-            if ($hasil == true) {
-                $result['Msg']       = 'Data Berhasil Disimpan . . .';
-                $result['MsgUpload'] = $this->upload->display_errors();
-                $result['Status']    = true;
-            } else {
-                $result['Msg']       = $this->db->error()['message'];
-                $result['MsgUpload'] = $this->upload->display_errors();
-                $result['Status']    = false;
-            }
-        }
-
-        echo json_encode($result);
-    }
-
     public function save2()
     {
         $this->form_validation->set_rules('Nama', 'Nama', 'required');
+        $this->form_validation->set_rules('Id-Buku', 'Id-Buku', 'required');
 
         if ($this->form_validation->run() == false) {
             $result['Msg']          = 'Mohon Lengkapi Data !!!';
@@ -325,7 +333,7 @@ class Buku extends CI_Controller
             $result['Status']       = false;
         } else {
             $data = [
-                'Id_Buku'   => htmlspecialchars($this->input->post('Id_Buku')),
+                'Id_Buku'   => htmlspecialchars($this->input->post('Id-Buku')),
                 'Tahun'     => htmlspecialchars($this->input->post('Tahun-2')),
                 'Nama'      => htmlspecialchars($this->input->post('Nama')),
                 'Urut'      => htmlspecialchars($this->input->post('Urut')),

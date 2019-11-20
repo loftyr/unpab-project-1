@@ -122,9 +122,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <a href="#">Penelitian</a>
                             <ul class="sub-menu-2">
                                 <li><a href="<?= base_url('Jurnal/penelitian') ?>">Publikasi Jurnal</a></li>
-                                <li><a href="#">Buku Ajar / Teks</a></li>
+                                <li><a href="<?= base_url('Buku/penelitian') ?>">Buku Ajar / Teks</a></li>
                                 <li><a href="#">Pemakalah Forum Ilmiah</a></li>
-                                <li><a href="#">Hak Kekayaan Intelektual (HKI)</a></li>
+                                <li><a href="<?= base_url('Hki/penelitian') ?>">Hak Kekayaan Intelektual (HKI)</a></li>
                                 <li><a href="#">Luaran Lainnya</a></li>
                             </ul>
                         </li>
@@ -132,9 +132,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <a href="#">Pengabdian Masyarakat</a>
                             <ul class="sub-menu-2">
                                 <li><a href="<?= base_url('Jurnal/pengabdian') ?>">Publikasi Jurnal</a></li>
-                                <li><a href="#">Buku Ajar / Teks</a></li>
+                                <li><a href="<?= base_url('Buku/pengabdian') ?>">Buku Ajar / Teks</a></li>
                                 <li><a href="#">Pemakalah Forum Ilmiah</a></li>
-                                <li><a href="#">Hak Kekayaan Intelektual (HKI)</a></li>
+                                <li><a href="<?= base_url('Hki/pengabdian') ?>">Hak Kekayaan Intelektual (HKI)</a></li>
                                 <li><a href="#">Luaran Lainnya</a></li>
                             </ul>
                         </li>
