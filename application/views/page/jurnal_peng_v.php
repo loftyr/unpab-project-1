@@ -83,6 +83,7 @@
                             <tr>
                                 <th class="col text-center" style="width: 10%;">No</th>
                                 <th class="text-center" style="width: 15%;">Kode Jurnal</th>
+                                <th class="text-center" style="width: 20%;">Nidn</th>
                                 <th class="text-center" style="width: 20%;">Nama Penulis</th>
                                 <th class="text-center" style="width: 10%;">Aksi</th>
                             </tr>
@@ -253,10 +254,20 @@
                     </div>
 
                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
+                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="Nidn" name="Nidn">
+                            <small id="info" class="form-text text-muted">*Press Enter For Search NIDN</small>
+                            <small class="form-text text-muted" id="result-cek"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nama">Nama Penulis</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="Nama" name="Nama">
+                            <input type="text" class="form-control" id="Nama" name="Nama" readonly>
                         </div>
                     </div>
 

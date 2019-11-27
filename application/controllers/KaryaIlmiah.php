@@ -57,7 +57,7 @@ class KaryaIlmiah extends CI_Controller
         echo json_encode($data);
     }
 
-    public function getEditPenelitian($tahun)
+    public function getEditPenelitian()
     {
         $Id     = $this->input->post('id');
         $data   = $this->karyailmiah_m->getEditPenelitian($Id);
@@ -70,7 +70,7 @@ class KaryaIlmiah extends CI_Controller
         echo json_encode($data);
     }
 
-    public function getEditPengabdian($tahun)
+    public function getEditPengabdian()
     {
         $Id     = $this->input->post('id');
         $data   = $this->karyailmiah_m->getEditPengabdian($Id);
@@ -96,6 +96,7 @@ class KaryaIlmiah extends CI_Controller
     public function savePenelitian()
     {
         $this->form_validation->set_rules('Nidn', 'Nidn', 'required');
+        $this->form_validation->set_rules('Publikasi', 'Publikasi', 'required');
         $this->form_validation->set_rules('Nama', 'Nama', 'required');
         $this->form_validation->set_rules('Judul', 'Judul', 'required');
         $this->form_validation->set_rules('Institusi', 'Institusi', 'required');
@@ -117,7 +118,7 @@ class KaryaIlmiah extends CI_Controller
                     $filename  = $datafile['upload_data']['file_name'];
 
                     $data = [
-                        'Tahun'     => htmlspecialchars($this->input->post('Tahun')),
+                        'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
                         'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
                         'Nama'      => htmlspecialchars($this->input->post('Nama')),
                         'Judul'     => htmlspecialchars($this->input->post('Judul')),
@@ -126,10 +127,11 @@ class KaryaIlmiah extends CI_Controller
                         'Tempat'    => htmlspecialchars($this->input->post('Tempat')),
                         'Forum'     => htmlspecialchars($this->input->post('Forum')),
                         'Status'    => htmlspecialchars($this->input->post('Status')),
+                        'Publikasi'    => htmlspecialchars($this->input->post('Publikasi')),
                         'Dokumen'   => $filename,
                         'Source'    => '1', // Penelitian
-                        'Tgl_Update'    => date('Y-m-d H:i:s'),
-                        'User_Update'   => $this->session->userdata['logged_in']['id_user']
+                        'Tgl_Input  '    => date('Y-m-d H:i:s'),
+                        'User_Input '   => $this->session->userdata['logged_in']['id_user']
 
                     ];
                 } else {
@@ -142,7 +144,7 @@ class KaryaIlmiah extends CI_Controller
                 // var_dump("Proses Upload Sukses");
             } else {
                 $data = [
-                    'Tahun'     => htmlspecialchars($this->input->post('Tahun')),
+                    'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
                     'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
                     'Nama'      => htmlspecialchars($this->input->post('Nama')),
                     'Judul'     => htmlspecialchars($this->input->post('Judul')),
@@ -151,10 +153,11 @@ class KaryaIlmiah extends CI_Controller
                     'Tempat'    => htmlspecialchars($this->input->post('Tempat')),
                     'Forum'     => htmlspecialchars($this->input->post('Forum')),
                     'Status'    => htmlspecialchars($this->input->post('Status')),
+                    'Publikasi'    => htmlspecialchars($this->input->post('Publikasi')),
                     'Dokumen'   => null,
                     'Source'    => '1', // Penelitian
-                    'Tgl_Update'    => date('Y-m-d H:i:s'),
-                    'User_Update'   => $this->session->userdata['logged_in']['id_user']
+                    'Tgl_Input  '    => date('Y-m-d H:i:s'),
+                    'User_Input '   => $this->session->userdata['logged_in']['id_user']
 
                 ];
             }
@@ -175,10 +178,10 @@ class KaryaIlmiah extends CI_Controller
         echo json_encode($result);
     }
 
-    public function saveEditData()
+    public function savePengabdian()
     {
-        $this->form_validation->set_rules('id', 'id', 'required');
         $this->form_validation->set_rules('Nidn', 'Nidn', 'required');
+        $this->form_validation->set_rules('Publikasi', 'Publikasi', 'required');
         $this->form_validation->set_rules('Nama', 'Nama', 'required');
         $this->form_validation->set_rules('Judul', 'Judul', 'required');
         $this->form_validation->set_rules('Institusi', 'Institusi', 'required');
@@ -200,7 +203,7 @@ class KaryaIlmiah extends CI_Controller
                     $filename  = $datafile['upload_data']['file_name'];
 
                     $data = [
-                        'Tahun'     => htmlspecialchars($this->input->post('Tahun')),
+                        'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
                         'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
                         'Nama'      => htmlspecialchars($this->input->post('Nama')),
                         'Judul'     => htmlspecialchars($this->input->post('Judul')),
@@ -209,8 +212,97 @@ class KaryaIlmiah extends CI_Controller
                         'Tempat'    => htmlspecialchars($this->input->post('Tempat')),
                         'Forum'     => htmlspecialchars($this->input->post('Forum')),
                         'Status'    => htmlspecialchars($this->input->post('Status')),
+                        'Publikasi'    => htmlspecialchars($this->input->post('Publikasi')),
                         'Dokumen'   => $filename,
-                        'Source'    => '1', // Penelitian
+                        'Source'    => '2', // Pengabdian
+                        'Tgl_Input  '    => date('Y-m-d H:i:s'),
+                        'User_Input '   => $this->session->userdata['logged_in']['id_user']
+
+                    ];
+                } else {
+                    $result['Msg']       = $this->upload->display_errors();
+                    $result['MsgUpload'] = $this->upload->display_errors();
+                    $result['Status']    = false;
+                    echo json_encode($result);
+                    die;
+                }
+                // var_dump("Proses Upload Sukses");
+            } else {
+                $data = [
+                    'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
+                    'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
+                    'Nama'      => htmlspecialchars($this->input->post('Nama')),
+                    'Judul'     => htmlspecialchars($this->input->post('Judul')),
+                    'Institusi' => htmlspecialchars($this->input->post('Institusi')),
+                    'Halaman'   => htmlspecialchars($this->input->post('Halaman')),
+                    'Tempat'    => htmlspecialchars($this->input->post('Tempat')),
+                    'Forum'     => htmlspecialchars($this->input->post('Forum')),
+                    'Status'    => htmlspecialchars($this->input->post('Status')),
+                    'Publikasi'    => htmlspecialchars($this->input->post('Publikasi')),
+                    'Dokumen'   => null,
+                    'Source'    => '2', // Pengabdian
+                    'Tgl_Input  '    => date('Y-m-d H:i:s'),
+                    'User_Input '   => $this->session->userdata['logged_in']['id_user']
+
+                ];
+            }
+
+            $hasil = $this->karyailmiah_m->saveData($data);
+
+            if ($hasil == true) {
+                $result['Msg']       = 'Data Berhasil Disimpan . . .';
+                $result['MsgUpload'] = $this->upload->display_errors();
+                $result['Status']    = true;
+            } else {
+                $result['Msg']       = $this->db->error()['message'];
+                $result['MsgUpload'] = $this->upload->display_errors();
+                $result['Status']    = false;
+            }
+        }
+
+        echo json_encode($result);
+    }
+
+
+    public function saveEditData()
+    {
+        $this->form_validation->set_rules('id', 'id', 'required');
+        $this->form_validation->set_rules('Nidn', 'Nidn', 'required');
+        $this->form_validation->set_rules('Publikasi', 'Publikasi', 'required');
+        $this->form_validation->set_rules('Nama', 'Nama', 'required');
+        $this->form_validation->set_rules('Judul', 'Judul', 'required');
+        $this->form_validation->set_rules('Institusi', 'Institusi', 'required');
+
+        $Id_Karya   = $this->input->post('id');
+
+        $config['upload_path']      = '././file/upload/documents/document karya ilmiah/';
+        $config['allowed_types']    = 'pdf';
+        $config['max_size']         = 1000;
+        $config['encrypt_name']     = false;
+
+        if ($this->form_validation->run() == false) {
+            $result['Msg']          = 'Mohon Lengkapi Data !!!';
+            $result['MsgUpload']    = '';
+            $result['Status']       = false;
+        } else {
+            if (!empty($_FILES['File']['name'])) {
+                $this->upload->initialize($config);
+                if ($this->upload->do_upload("File")) {
+                    $datafile  = array('upload_data' => $this->upload->data());
+                    $filename  = $datafile['upload_data']['file_name'];
+
+                    $data = [
+                        'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
+                        'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
+                        'Nama'      => htmlspecialchars($this->input->post('Nama')),
+                        'Judul'     => htmlspecialchars($this->input->post('Judul')),
+                        'Institusi' => htmlspecialchars($this->input->post('Institusi')),
+                        'Halaman'   => htmlspecialchars($this->input->post('Halaman')),
+                        'Tempat'    => htmlspecialchars($this->input->post('Tempat')),
+                        'Forum'     => htmlspecialchars($this->input->post('Forum')),
+                        'Status'    => htmlspecialchars($this->input->post('Status')),
+                        'Publikasi'    => htmlspecialchars($this->input->post('Publikasi')),
+                        'Dokumen'   => $filename,
                         'Tgl_Update'    => date('Y-m-d H:i:s'),
                         'User_Update'   => $this->session->userdata['logged_in']['id_user']
 
@@ -225,7 +317,7 @@ class KaryaIlmiah extends CI_Controller
                 // var_dump("Proses Upload Sukses");
             } else {
                 $data = [
-                    'Tahun'     => htmlspecialchars($this->input->post('Tahun')),
+                    'Tahun'     => htmlspecialchars($this->input->post('Tahun-1')),
                     'Nidn'      => htmlspecialchars($this->input->post('Nidn')),
                     'Nama'      => htmlspecialchars($this->input->post('Nama')),
                     'Judul'     => htmlspecialchars($this->input->post('Judul')),
@@ -234,18 +326,21 @@ class KaryaIlmiah extends CI_Controller
                     'Tempat'    => htmlspecialchars($this->input->post('Tempat')),
                     'Forum'     => htmlspecialchars($this->input->post('Forum')),
                     'Status'    => htmlspecialchars($this->input->post('Status')),
-                    'Dokumen'   => null,
-                    'Source'    => '1', // Penelitian
+                    'Publikasi'    => htmlspecialchars($this->input->post('Publikasi')),
                     'Tgl_Update'    => date('Y-m-d H:i:s'),
                     'User_Update'   => $this->session->userdata['logged_in']['id_user']
 
                 ];
             }
 
-            $hasil = $this->karyailmiah_m->saveData($data);
+            $where = [
+                'Id_Karya' => $Id_Karya
+            ];
+
+            $hasil = $this->karyailmiah_m->saveEditData($where, $data);
 
             if ($hasil == true) {
-                $result['Msg']       = 'Data Berhasil Disimpan . . .';
+                $result['Msg']       = 'Perubahan Data Berhasil Disimpan . . .';
                 $result['MsgUpload'] = $this->upload->display_errors();
                 $result['Status']    = true;
             } else {
@@ -268,16 +363,58 @@ class KaryaIlmiah extends CI_Controller
             $result['Status']       = false;
         } else {
             $data = [
-                'Id_Karya'   => htmlspecialchars($this->input->post('Id_Karya')),
-                'Tahun'     => htmlspecialchars($this->input->post('Tahun-2')),
-                'Nama_Penulis' => htmlspecialchars($this->input->post('Nama_Penulis')),
-                'Urut'      => htmlspecialchars($this->input->post('Urut'))
+                'Id_Karya'      => htmlspecialchars($this->input->post('Id_Karya')),
+                'Tahun'         => htmlspecialchars($this->input->post('Tahun-2')),
+                'Nama_Penulis'  => htmlspecialchars($this->input->post('Nama_Penulis')),
+                'Urut'          => htmlspecialchars($this->input->post('Urut')),
+                'Tgl_Input'     => date('Y-m-d H:i:s'),
+                'User_Input'    => $this->session->userdata['logged_in']['id_user']
             ];
 
             $hasil = $this->karyailmiah_m->saveData2($data);
 
             if ($hasil == true) {
                 $result['Msg']       = 'Data Berhasil Disimpan . . .';
+                $result['MsgUpload'] = $this->upload->display_errors();
+                $result['Status']    = true;
+            } else {
+                $result['Msg']       = $this->db->error()['message'];
+                $result['MsgUpload'] = $this->upload->display_errors();
+                $result['Status']    = false;
+            }
+        }
+
+        echo json_encode($result);
+    }
+
+    public function saveEdit2()
+    {
+        $this->form_validation->set_rules('id-2', 'id-2', 'required');
+        $this->form_validation->set_rules('Nama_Penulis', 'Nama_Penulis', 'required');
+
+        $Id     = $this->input->post('id-2');
+
+        if ($this->form_validation->run() == false) {
+            $result['Msg']          = 'Mohon Lengkapi Data !!!';
+            $result['MsgUpload']    = '';
+            $result['Status']       = false;
+        } else {
+            $data = [
+                'Tahun'         => htmlspecialchars($this->input->post('Tahun-2')),
+                'Nama_Penulis'  => htmlspecialchars($this->input->post('Nama_Penulis')),
+                'Urut'          => htmlspecialchars($this->input->post('Urut')),
+                'Tgl_Update'    => date('Y-m-d H:i:s'),
+                'User_Update'   => $this->session->userdata['logged_in']['id_user']
+            ];
+
+            $where  = [
+                'Id' => $Id
+            ];
+
+            $hasil = $this->karyailmiah_m->saveEdit2($where, $data);
+
+            if ($hasil == true) {
+                $result['Msg']       = 'Perubahan Data Berhasil Disimpan . . .';
                 $result['MsgUpload'] = $this->upload->display_errors();
                 $result['Status']    = true;
             } else {
@@ -299,6 +436,21 @@ class KaryaIlmiah extends CI_Controller
 
         if ($query == true) {
             @unlink('././file/upload/documents/document karya ilmiah/' . $link);
+            $result['Msg']      = 'Data Berhasil Di Hapus . . .';
+            $result['Status']   = true;
+        } else {
+            $result['Msg']      = $this->db->error()['message'];
+            $result['Status']   = false;
+        }
+
+        echo json_encode($result);
+    }
+
+    public function deleteDataPenulis($id)
+    {
+        $query  = $this->karyailmiah_m->deleteDataPenulis($id);
+
+        if ($query == true) {
             $result['Msg']      = 'Data Berhasil Di Hapus . . .';
             $result['Status']   = true;
         } else {

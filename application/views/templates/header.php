@@ -68,7 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="container">
         <div class="menu">
             <ul class="menu-utama">
-                <li><a href="#">Beranda</a></li>
+                <li><a href="<?= base_url('Home') ?>">Beranda</a></li>
                 <li>
                     <a href="#">Sumberdaya Penelitian dan Pengabdian</a>
                     <ul class="sub-menu-1">
@@ -97,19 +97,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <a href="#">Manajemen Penelitian dan Pengabdian</a>
                     <ul class="sub-menu-1">
                         <li>
-                            <a href="#">Penelitian</a>
+                            <a href="#">Pedoman</a>
                             <ul class="sub-menu-2">
-                                <li><a href="#">Standar Mutu Penelitian</a></li>
-                                <li><a href="#">Pedoman Penelitian</a></li>
-                                <li><a href="#">Prosedur Penelitian</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Pengabdian</a>
-                            <ul class="sub-menu-2">
-                                <li><a href="#">Standar Mutu Pengabdian</a></li>
-                                <li><a href="#">Pedoman Pengabdian</a></li>
-                                <li><a href="#">Prosedur Mutu Pengabdian</a></li>
+                                <li><a href="#">Penelitian</a></li>
+                                <li><a href="#">Pengabdian</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Income Generating</a></li>
@@ -123,9 +114,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <ul class="sub-menu-2">
                                 <li><a href="<?= base_url('Jurnal/penelitian') ?>">Publikasi Jurnal</a></li>
                                 <li><a href="<?= base_url('Buku/penelitian') ?>">Buku Ajar / Teks</a></li>
-                                <li><a href="#">Pemakalah Forum Ilmiah</a></li>
+                                <li><a href="<?= base_url('Karyailmiah/penelitian') ?>">Pemakalah Forum Ilmiah</a></li>
                                 <li><a href="<?= base_url('Hki/penelitian') ?>">Hak Kekayaan Intelektual (HKI)</a></li>
-                                <li><a href="#">Luaran Lainnya</a></li>
+                                <li><a href="<?= base_url('Kegiatan/penelitian') ?>">Luaran Lainnya</a></li>
                             </ul>
                         </li>
                         <li>
@@ -133,9 +124,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <ul class="sub-menu-2">
                                 <li><a href="<?= base_url('Jurnal/pengabdian') ?>">Publikasi Jurnal</a></li>
                                 <li><a href="<?= base_url('Buku/pengabdian') ?>">Buku Ajar / Teks</a></li>
-                                <li><a href="#">Pemakalah Forum Ilmiah</a></li>
+                                <li><a href="<?= base_url('Karyailmiah/pengabdian') ?>">Pemakalah Forum Ilmiah</a></li>
                                 <li><a href="<?= base_url('Hki/pengabdian') ?>">Hak Kekayaan Intelektual (HKI)</a></li>
-                                <li><a href="#">Luaran Lainnya</a></li>
+                                <li><a href="<?= base_url('Kegiatan/pengabdian') ?>">Luaran Lainnya</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -143,14 +134,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <li>
                     <a href="#">Perjanjian Kerjasama</a>
                     <ul class="sub-menu-1">
-                        <li><a href="#">Perjanjian Kerjasama (MoU/MoA)</a></li>
-                        <li><a href="#">Unit Bisnis Hasil Riset</a></li>
+                        <li><a href="<?= base_url('Kerjasama/memo') ?>">Perjanjian Kerjasama (MoU/MoA)</a></li>
+                        <li><a href="<?= base_url('Kerjasama/hasil') ?>">Unit Bisnis Hasil Riset</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">Evaluasi Diri</a>
                     <ul class="sub-menu-1">
-                        <li><a href="#">Rekapitulasi Kinerja Perprodi</a></li>
+                        <li><a href="<?= base_url('Evaluasi/prodi') ?>">Rekapitulasi Kinerja Perprodi</a></li>
                         <li><a href="#">Rekapitulasi Kinerja Keseluruhan</a></li>
                     </ul>
                 </li>

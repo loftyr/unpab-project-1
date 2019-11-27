@@ -35,7 +35,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Sumber Dana Penelitian Ristekdikti</div>
-                    <h5>247</h5>
+                    <h5><?= $data3 ?></h5>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Sumber Dana Penelitian Internal Perguruan Tinggi</div>
-                    <h5>247</h5>
+                    <h5><?= $data4 ?></h5>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Sumber Dana Pengabdian Ristekdikti</div>
-                    <h5>247</h5>
+                    <h5><?= $data5 ?></h5>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Sumber Dana Pengabdian Internal Perguruan Tinggi</div>
-                    <h5>247</h5>
+                    <h5><?= $data6 ?></h5>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Data Peneliti Asing</div>
-                    <h5>247</h5>
+                    <h5><?= $data7 ?></h5>
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Fasilitas Penunjang PPM</div>
-                    <h5>247</h5>
+                    <h5><?= $data8 ?></h5>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Penyelenggaraan Forum Ilmiah</div>
-                    <h5>247</h5>
+                    <h5>0</h5>
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Publikasi Jurnal</div>
-                    <h5>247</h5>
+                    <h5><?= $data10 ?></h5>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Pemakalah Forum Ilmiah</div>
-                    <h5>247</h5>
+                    <h5><?= $data9 ?></h5>
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Buku Ajar / Teks</div>
-                    <h5>247</h5>
+                    <h5><?= $data11 ?></h5>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Hak Kekayaan Intelektual</div>
-                    <h5>247</h5>
+                    <h5><?= $data12 ?></h5>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="">Perjanjian Kerjasama</div>
-                    <h5>247</h5>
+                    <h5><?= $data13 ?></h5>
                 </div>
             </div>
         </div>

@@ -114,4 +114,16 @@ class karyailmiah_m extends CI_Model
             return true;
         }
     }
+
+    public function deleteDataPenulis($id)
+    {
+        $this->db->where('Id', $id);
+        $query = $this->db->delete($this->table2);
+
+        if (!$query) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

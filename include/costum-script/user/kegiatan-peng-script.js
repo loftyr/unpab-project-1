@@ -1,67 +1,45 @@
 var method_1;
 const modal_1 = $('#modal-1');
 const judulModal_1 = $('#title-modal-1');
-const btnSave_1 = $('#btnSave');
-const clickSave_1 = document.querySelector('#btnSave');
+const btnSave_1 = $('#btnSave-1');
+const clickSave_1 = document.querySelector('#btnSave-1');
 
 $('#Tahun').on('change', function () {
     var Tahun = document.getElementById("Tahun").value;
-    getDataDosen(Tahun);
-});
-
-$('#Nidn').on('focusout', function () {
-    cekNidn = document.getElementById("Nidn").value;
-
-    $.ajax({
-        type: "POST",
-        url: "../penelitian/ceknidn",
-        data: { nidn: cekNidn },
-        dataType: "JSON",
-        success: function (result) {
-            if (result.status == true) {
-                clickSave_1.disabled = true;
-                $('#result-cek').text('Nidn Telah Digunakan pada Nama ' + result.data);
-            } else {
-                clickSave_1.disabled = false;
-                $('#result-cek').text(null);
-            }
-        },
-        error: function (xhr, stat, err) {
-            console.log('Tidak Diketahui');
-        }
-    });
+    getData(Tahun);
 });
 
 $(document).ready(function () {
-    $('.tabel-1').DataTable();
+    $('.tabel-1').DataTable({
+        "scrollX": true
+    });
+
+    $('.tgl-picker').datepicker({ dateFormat: 'yy-mm-dd', maxDate: '0' });
 
     var Tahun = document.getElementById("Tahun").value;
-    getDataDosen(Tahun);
+    getData(Tahun);
 
     $('#modal-1').on('hidden.bs.modal', function (e) {
-        $(this).find('#form').trigger('reset');
+        $(this).find('#form-1').trigger('reset');
     });
 });
 
-
-
-// Function CRUD
-
-// Create or Update
-$(document).on('click', '#btnAdd', function () {
+//CRUD
+//Create and Update
+$(document).on('click', '#btnAdd-1', function () {
     method_1 = 'tambah';
-    judulModal_1.html("Tambah Dosen");
+    judulModal_1.html("Tambah Data Kegiatan Unit/Instansi");
     btnSave_1.html("Save Data");
     modal_1.modal({
         backdrop: 'static',
         keyboard: false
     });
     modal_1.modal("show");
-})
+});
 
 $(document).on('click', '.btnEdit', function () {
-    method = 'edit';
-    judulModal_1.html("Edit Dosen");
+    method_1 = 'edit';
+    judulModal_1.html("Edit Kegiatan");
     btnSave_1.html("Save Change");
     modal_1.modal({
         backdrop: 'static',
@@ -72,18 +50,21 @@ $(document).on('click', '.btnEdit', function () {
     var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getEditDosen',
+        url: 'getEditPengabdian',
         data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
-            $('#id').val(result[0].id);
-            $('#Nidn').val(result[0].Nidn);
+            $('#id').val(result[0].Id);
             $('#Tahun-1').val(result[0].Tahun);
-            $('#Nama_Dosen').val(result[0].Nama);
-            $('#Jk').val(result[0].Jk);
+            $('#Nama-Keg').val(result[0].Nama_Keg);
+            $('#Tingkat').val(result[0].Tingkat_Forum);
             $('#Prodi').val(result[0].Kd_Fakultas + '.' + result[0].Kd_Prodi);
-            $('#Pendidikan').val(result[0].Jenjang);
+            $('#Mitra').val(result[0].Mitra);
+            $('#Tempat').val(result[0].Tempat);
+            $('#Tgl-Start').val(result[0].Tgl_Start);
+            $('#Tgl-End').val(result[0].Tgl_End);
+            $('#Narasumber').val(result[0].Narasumber);
         }
     });
 });
@@ -91,13 +72,13 @@ $(document).on('click', '.btnEdit', function () {
 clickSave_1.addEventListener('click', function (event) {
     event.preventDefault();
     var url;
-    var base_url = $('#form').attr('link');
-    var form = document.querySelector("#form");
+    var base_url = $('#form-1').attr('link');
+    var form = document.querySelector("#form-1");
 
     if (method_1 == 'tambah') {
-        url = 'save2';
+        url = 'savePengabdian';
     } else {
-        url = 'saveEdit2';
+        url = 'saveEditData';
     }
 
     $('.progress').show();
@@ -131,7 +112,7 @@ clickSave_1.addEventListener('click', function (event) {
             if (result.Status == false) {
                 Swal.fire({
                     position: 'top-end',
-                    type: 'error',
+                    type: 'info',
                     title: result.Msg,
                     showConfirmButton: false,
                     timer: 1500
@@ -148,7 +129,7 @@ clickSave_1.addEventListener('click', function (event) {
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         var Tahun = document.getElementById("Tahun").value;
-                        getDataDosen(Tahun);
+                        getData(Tahun);
                     }
                 })
             }
@@ -159,46 +140,52 @@ clickSave_1.addEventListener('click', function (event) {
     });
 });
 
-
 // Read
 function draw_data(result) {
     var no = 0;
 
     for (index in result) {
-        var id = result[index].id;
+        var id = result[index].Id;
         var Tahun = result[index].Tahun;
-        var Nidn = result[index].Nidn;
-        var Nama = result[index].Nama;
-        var Jk = result[index].Jk;
+        var Tingkat_Forum = result[index].Tingkat_Forum;
+        var Nama_Keg = result[index].Nama_Keg;
         var Nama_Prodi = result[index].Nama_Prodi;
-        var Jenjang = result[index].Jenjang;
+        var Mitra = result[index].Mitra;
+        var Tempat = result[index].Tempat;
+        var Tgl_Start = result[index].Tgl_Start;
+        var Tgl_End = result[index].Tgl_End;
+        var Narasumber = result[index].Narasumber;
 
         no += 1;
 
         var output = '<tr>';
         output += '<td>' + no + '</td>';
-        output += '<td>' + Nidn + '</td>';
-        output += '<td>' + Nama + '</td>';
-        output += '<td>' + Jk + '</td>';
+        output += '<td>' + Tingkat_Forum + '</td>';
+        output += '<td>' + Nama_Keg + '</td>';
         output += '<td>' + Nama_Prodi + '</td>';
-        output += '<td>' + Jenjang + '</td>';
+        output += '<td>' + Mitra + '</td>';
+        output += '<td>' + Tempat + '</td>';
+        output += '<td>' + Tgl_Start + '</td>';
+        output += '<td>' + Tgl_End + '</td>';
+        output += '<td>' + Narasumber + '</td>';
         output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus" title="Hapus"><i class="fas fa-trash"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit" title="Edit"><i class="fas fa-edit"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus mr-1"  id="btnHapus" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-edit"></i></button>';
         output += '</td>';
         output += '</tr>';
 
         $('#body-tabel-1').append(output);
     }
-    $('.tabel-1').DataTable();
+    $('.tabel-1').DataTable({
+        "scrollX": true
+    });
 }
 
-
-function getDataDosen($tahun) {
-    $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="8" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
+function getData($tahun) {
+    $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="10" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
-        url: 'getDataDosen/' + $tahun,
+        url: 'getDataPengabdian/' + $tahun,
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
@@ -212,7 +199,6 @@ function getDataDosen($tahun) {
 // Delete
 $(document).on('click', '.btnHapus', function () {
     var Tahun = document.getElementById("Tahun").value;
-
     Swal.fire({
         title: 'Are You Sure?',
         text: 'Delete This Data !!!',
@@ -239,7 +225,7 @@ $(document).on('click', '.btnHapus', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                getDataDosen(Tahun);
+                                getData(Tahun);
                             }
                         })
                     } else {
@@ -251,7 +237,7 @@ $(document).on('click', '.btnHapus', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                getDataDosen(Tahun);
+                                getData(Tahun);
                             }
                         })
                     }

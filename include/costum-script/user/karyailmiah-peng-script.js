@@ -1,5 +1,5 @@
-var method_1;
-var Kd_Jurnal = 0;
+var method_1, method_2;
+var Id_Karya = 0;
 const modal_1 = $('#modal-1');
 const modal_2 = $('#modal-2');
 const judulModal_1 = $('#title-modal-1');
@@ -10,6 +10,20 @@ const clickSave_1 = document.querySelector('#btnSave-1');
 const clickSave_2 = document.querySelector('#btnSave-2');
 const add_2 = document.querySelector('#btnAdd-2');
 
+$(document).on('click', '.btnLihat', function () {
+    $('#nav-2').tab('show');
+
+    Id_Karya = $(this).attr('dataID'); //Id Buku
+    $('#Id_Karya').val(Id_Karya);
+
+    console.log(Id_Karya);
+    loadData(Id_Karya);
+});
+
+$('#Tahun').on('change', function () {
+    var Tahun = document.getElementById("Tahun").value;
+    getData(Tahun);
+});
 
 $(document).on('keypress', '#Nidn', function (e) {
     if (e.keyCode === 13) {
@@ -44,82 +58,30 @@ $(document).on('keyup', '#Nidn', function (e) {
     }
 });
 
-function draw_data(result) {
-    var no = 0;
-
-    for (index in result) {
-        var id = result[index].Kd_Jurnal;
-        var Tahun = result[index].Tahun;
-        var Judul = result[index].Judul;
-        var Jurnal = result[index].Jurnal;
-        var ISSN = result[index].ISSN;
-        var Volume = result[index].Volume;
-        var Nomor = result[index].Nomor;
-        var Halaman = result[index].Halaman;
-        var URL = result[index].Url;
-        var Doc = result[index].Dokumen;
-
-        no += 1;
-
-        var output = '<tr>';
-        output += '<td>' + no + '</td>';
-        output += '<td>' + Judul + '</td>';
-        output += '<td>' + Jurnal + '</td>';
-        output += '<td>' + ISSN + '</td>';
-        output += '<td>' + Volume + '</td>';
-        output += '<td>' + Nomor + '</td>';
-        output += '<td>' + Halaman + '</td>';
-        output += '<td>' + URL + '</td>';
-        if (Doc == null) {
-            output += '<td><a title="No Link">PDF</a></td>';
-        } else {
-            output += '<td><a href="../file/upload/documents/document jurnal/' + Doc + '" target="_blank">PDF</a></td>';
-        }
-        output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus-1 mr-2"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit-1"  data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-edit"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnLihat"  data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-book"></i></button>';
-        output += '</td>';
-        output += '</tr>';
-
-        $('#body-tabel-1').append(output);
-    }
+$(document).ready(function () {
     $('.tabel-1').DataTable({
         "scrollX": true
     });
-}
-
-function draw_data_2(result) {
-    var no = 0;
-
-    for (index in result) {
-        var Id = result[index].Id;
-        var Kd_Jurnal = result[index].Kd_Jurnal;
-        var Nidn = result[index].Nidn;
-        var Tahun = result[index].Tahun;
-        var Nama = result[index].Nama;
-
-        no += 1;
-
-        var output = '<tr>';
-        output += '<td>' + no + '</td>';
-        output += '<td>' + Kd_Jurnal + '</td>';
-        output += '<td>' + Nidn + '</td>';
-        output += '<td>' + Nama + '</td>';
-        output += '<td>';
-        output += '<div class="row"><div class="col-sm-12"><button dataID="' + Id + '" Kd_Jurnal="' + Kd_Jurnal + '" class="btn btn-danger btn-sm mb-1 btnHapus-2"> <i class="fa fa-trash"></i></button></div></div>';
-        output += '</td>'
-        output += '</tr>'
-
-        $('#body-tabel-2').append(output);
-    }
 
     $('.tabel-2').DataTable();
-}
 
+    var Tahun = document.getElementById("Tahun").value;
+    getData(Tahun);
+
+    $('#modal-1').on('hidden.bs.modal', function (e) {
+        $(this).find('#form-1').trigger('reset');
+    });
+
+    $('#modal-2').on('hidden.bs.modal', function (e) {
+        $(this).find('#form-2').trigger('reset');
+    });
+});
+
+//CRUD
+// Cread and Update
 $(document).on('click', '#btnAdd-1', function () {
     method_1 = 'tambah';
-    judulModal_1.html("Tambah Data Pedoman LPPM");
+    judulModal_1.html("Tambah Karya Ilmiah");
     btnSave_1.html("Save Data");
     modal_1.modal({
         backdrop: 'static',
@@ -130,7 +92,7 @@ $(document).on('click', '#btnAdd-1', function () {
 
 $(document).on('click', '.btnEdit-1', function () {
     method_1 = 'edit';
-    judulModal_1.html("Edit Jurnal Pengabdian");
+    judulModal_1.html("Edit Karya Ilmiah");
     btnSave_1.html("Save Change");
     modal_1.modal({
         backdrop: 'static',
@@ -146,15 +108,16 @@ $(document).on('click', '.btnEdit-1', function () {
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
-            $('#id').val(result[0].Kd_Jurnal);
-            $('#Judul').val(result[0].Judul);
+            $('#id').val(result[0].Id_Karya);
             $('#Tahun-1').val(result[0].Tahun);
-            $('#Jurnal').val(result[0].Jurnal);
-            $('#ISSN').val(result[0].ISSN);
-            $('#Volume').val(result[0].Volume);
-            $('#No').val(result[0].Nomor);
+            $('#Nidn').val(result[0].Nidn);
+            $('#Nama').val(result[0].Nama);
+            $('#Status').val(result[0].Status);
+            $('#Judul').val(result[0].Judul);
+            $('#Forum').val(result[0].Forum);
+            $('#Institusi').val(result[0].Institusi);
+            $('#Tempat').val(result[0].Tempat);
             $('#Halaman').val(result[0].Halaman);
-            $('#Url').val(result[0].Url);
             $('#Publikasi').val(result[0].Publikasi);
         }
     });
@@ -164,7 +127,7 @@ $(document).on('click', '#btnAdd-2', function () {
     method_2 = 'tambah';
     judulModal_2.html("Tambah Penulis");
     btnSave_2.html("Save Data");
-    $('#Kd_Jurnal').attr(Kd_Jurnal);
+    $('#Id_Karya').attr(Id_Karya);
     modal_2.modal({
         backdrop: 'static',
         keyboard: false
@@ -172,67 +135,30 @@ $(document).on('click', '#btnAdd-2', function () {
     modal_2.modal("show");
 });
 
-$('#Tahun').on('change', function () {
-    var Tahun = document.getElementById("Tahun").value;
-    getData(Tahun);
-});
+$(document).on('click', '.btnEdit-2', function () {
+    method_2 = 'edit';
+    judulModal_2.html("Edit Penulis Karya Ilmiah Pengabdian");
+    btnSave_2.html("Save Change");
+    modal_2.modal({
+        backdrop: 'static',
+        keyboard: false
+    });
+    modal_2.modal("show");
 
-function getData($tahun) {
-    $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="11" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
+    var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getDataPengabdian/' + $tahun,
+        url: 'getEditPenulis',
+        data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
-            $('.tabel-1').DataTable().destroy(); //Id Tabel
-            $('#body-tabel-1').html(''); //Id Tabel Body
-            draw_data(result);
+            $('#id-2').val(result[0].Id);
+            $('#Id_Karya').val(result[0].Id_Karya);
+            $('#Tahun-2').val(result[0].Tahun);
+            $('#Nama_Penulis').val(result[0].Nama_Penulis);
+            $('#Urut').val(result[0].Urut);
         }
-    });
-}
-
-function loadData(Kd_Jurnal) {
-    $('#body-tabel-2').html('<tr class="animated fadeIn"><td colspan="4" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
-
-    $.ajax({
-        url: 'getPenulis/',
-        data: { Kd_Jurnal: Kd_Jurnal },
-        type: 'POST',
-        dataType: 'JSON',
-        success: function (result) {
-            $('.tabel-2').DataTable().destroy(); //Id Tabel
-            $('#body-tabel-2').html(''); //Id Tabel Body
-
-            if (result == null) {
-                $('#body-tabel-2').html('');
-            } else {
-                add_2.disabled = false;
-                draw_data_2(result);
-            }
-        }
-    });
-};
-
-$(document).ready(function () {
-    $('.tabel-1').DataTable({
-        "scrollX": true
-    });
-    $('.tabel-2').DataTable();
-
-    $('.nav-link').on('click', function () {
-        add_2.disabled = true;
-    });
-
-    var Tahun = document.getElementById("Tahun").value;
-    getData(Tahun);
-
-    $('#modal-1').on('hidden.bs.modal', function (e) {
-        $(this).find('#form-1').trigger('reset');
-    });
-
-    $('#modal-2').on('hidden.bs.modal', function (e) {
-        $(this).find('#form-2').trigger('reset');
     });
 });
 
@@ -245,7 +171,7 @@ clickSave_1.addEventListener('click', function (event) {
     if (method_1 == 'tambah') {
         url = 'savePengabdian';
     } else {
-        url = 'saveEdit';
+        url = 'saveEditData';
     }
 
     $('.progress').show();
@@ -307,7 +233,176 @@ clickSave_1.addEventListener('click', function (event) {
     });
 });
 
-$(document).on('click', '.btnHapus-1', function () {
+clickSave_2.addEventListener('click', function () {
+    var url;
+    var base_url = $('#form-2').attr('link');
+    var form = document.querySelector("#form-2");
+
+    if (method_2 == 'tambah') {
+        url = 'save2';
+    } else {
+        url = 'saveEdit2';
+    }
+
+    clickSave_2.disabled = true;
+
+    $.ajax({
+        url: url,
+        data: new FormData(form),
+        type: "POST",
+        dataType: "JSON",
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function (result) {
+            clickSave_2.disabled = false;
+
+            if (result.Status == false) {
+                Swal.fire({
+                    position: 'top-end',
+                    type: 'error',
+                    title: result.Msg,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            } else {
+                modal_2.modal("hide");
+
+                Swal.fire({
+                    position: 'top-end',
+                    type: 'success',
+                    title: result.Msg,
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then((result) => {
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        loadData(Id_Karya);
+                    }
+                })
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Error');
+        }
+    });
+});
+
+//Read 
+function draw_data(result) {
+    var no = 0;
+
+    for (index in result) {
+        var id = result[index].Id_Karya;
+        var Tahun = result[index].Tahun;
+        var Nidn = result[index].Nidn;
+        var Nama = result[index].Nama;
+        var Status = result[index].Status;
+        var Judul = result[index].Judul;
+        var Forum = result[index].Forum;
+        var Institusi = result[index].Institusi;
+        var Halaman = result[index].Halaman;
+        var Tempat = result[index].Tempat;
+        var Doc = result[index].Dokumen;
+
+        no += 1;
+
+        var output = '<tr>';
+        output += '<td>' + no + '</td>';
+        output += '<td>' + Nidn + '</td>';
+        output += '<td>' + Nama + '</td>';
+        output += '<td>' + Status + '</td>';
+        output += '<td>' + Judul + '</td>';
+        output += '<td>' + Forum + '</td>';
+        output += '<td>' + Institusi + '</td>';
+        output += '<td>' + Halaman + '</td>';
+        output += '<td>' + Tempat + '</td>';
+        if (Doc == null) {
+            output += '<td><a title="No Link">PDF</a></td>';
+        } else {
+            output += '<td><a href="../file/upload/documents/document karya ilmiah/' + Doc + '" target="_blank">PDF</a></td>';
+        }
+        output += '<td class="text-center">';
+        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus mr-1"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnLihat mr-1"  data-toggle="tooltip" data-placement="buttom" title="Lihat"><i class="fas fa-book"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit-1"  data-toggle="tooltip" data-placement="buttom" title="Lihat"><i class="fas fa-edit"></i></button>';
+        output += '</td>';
+        output += '</tr>';
+
+        $('#body-tabel-1').append(output);
+    }
+    $('.tabel-1').DataTable({
+        "scrollX": true
+    });
+}
+
+function draw_data_2(result) {
+    var no = 0;
+
+    for (index in result) {
+        var Id = result[index].Id;
+        var Id_Karya = result[index].Id_Karya;
+        var Tahun = result[index].Tahun;
+        var Nama = result[index].Nama_Penulis;
+        var Urut = result[index].Urut;
+
+        no += 1;
+
+        var output = '<tr>';
+        output += '<td>' + no + '</td>';
+        output += '<td>' + Id_Karya + '</td>';
+        output += '<td>' + Nama + '</td>';
+        output += '<td>' + Urut + '</td>';
+        output += '<td>';
+        output += '<button dataID="' + Id + '" class="btn btn-danger btn-sm mb-1 btnHapus-2 mr-1"> <i class="fa fa-trash"></i></button>';
+        output += '<button dataID="' + Id + '" class="btn btn-info btn-sm mb-1 btnEdit-2"> <i class="fa fa-edit"></i></button>';
+        output += '</td>'
+        output += '</tr>'
+
+        $('#body-tabel-2').append(output);
+    }
+
+    $('.tabel-2').DataTable();
+}
+
+function getData($tahun) {
+    $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="11" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
+
+    $.ajax({
+        url: 'getDataPengabdian/' + $tahun,
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (result) {
+            $('.tabel-1').DataTable().destroy(); //Id Tabel
+            $('#body-tabel-1').html(''); //Id Tabel Body
+            draw_data(result);
+        }
+    });
+}
+
+function loadData(Id_Karya) {
+    $('#body-tabel-2').html('<tr class="animated fadeIn"><td colspan="5" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
+
+    $.ajax({
+        url: 'getPenulis/',
+        data: { Id_Karya: Id_Karya },
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (result) {
+            $('.tabel-2').DataTable().destroy(); //Id Tabel
+            $('#body-tabel-2').html(''); //Id Tabel Body
+
+            if (result == null) {
+                $('#body-tabel-2').html('');
+            } else {
+                add_2.disabled = false;
+                draw_data_2(result);
+            }
+        }
+    });
+};
+
+//Delete 
+$(document).on('click', '.btnHapus', function () {
     var Tahun = document.getElementById("Tahun").value;
     Swal.fire({
         title: 'Are You Sure?',
@@ -379,10 +474,9 @@ $(document).on('click', '.btnHapus-2', function () {
     }).then((result) => {
         if (result.value) {
             var id = $(this).attr('dataID');
-            var Kd_Jurnal = $(this).attr('Kd_Jurnal');
 
             $.ajax({
-                url: "deletePenulis/" + id,
+                url: "deleteDataPenulis/" + id,
                 type: 'GET',
                 dataType: 'JSON',
                 success: function (result) {
@@ -395,7 +489,7 @@ $(document).on('click', '.btnHapus-2', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadData(Kd_Jurnal);
+                                loadData(Id_Karya);
                             }
                         })
                     } else {
@@ -407,7 +501,7 @@ $(document).on('click', '.btnHapus-2', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                loadData(Kd_Jurnal);
+                                loadData(Id_Karya);
                             }
                         })
                     }
@@ -424,66 +518,4 @@ $(document).on('click', '.btnHapus-2', function () {
             })
         }
     })
-});
-
-$(document).on('click', '.btnLihat', function () {
-    $('#nav-2').tab('show');
-
-    Kd_Jurnal = $(this).attr('dataID'); //Kd_Jurnal
-    $('#Kd_Jurnal').val(Kd_Jurnal);
-    loadData(Kd_Jurnal);
-});
-
-clickSave_2.addEventListener('click', function () {
-    var url;
-    var base_url = $('#form-2').attr('link');
-    var form = document.querySelector("#form-2");
-
-    if (method_2 == 'tambah') {
-        url = 'savePenulis';
-    } else {
-        url = 'saveEditPenulis';
-    }
-
-    clickSave_2.disabled = true;
-
-    $.ajax({
-        url: url,
-        data: new FormData(form),
-        type: "POST",
-        dataType: "JSON",
-        processData: false,
-        contentType: false,
-        cache: false,
-        success: function (result) {
-            clickSave_2.disabled = false;
-
-            if (result.Status == false) {
-                Swal.fire({
-                    position: 'top-end',
-                    type: 'error',
-                    title: result.Msg,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            } else {
-                modal_2.modal("hide");
-
-                Swal.fire({
-                    position: 'top-end',
-                    type: 'success',
-                    title: result.Msg,
-                    showConfirmButton: false,
-                    timer: 1500
-                }).then((result) => {
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        loadData(Kd_Jurnal);
-                    }
-                })
-            }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Error');
-        }
-    });
 });

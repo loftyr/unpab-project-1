@@ -168,6 +168,7 @@ class Sumberdayalppm extends CI_Controller
                 'Kd_Fakultas'   => htmlspecialchars($Kode[0]),
                 'Kd_Prodi'      => htmlspecialchars($Kode[1]),
                 'Jenjang'       => htmlspecialchars($this->input->post('Pendidikan')),
+                'Role'          => '2',
                 'Tgl_Input'     => date('Y-m-d H:i:s'),
                 'User_Input'    => $this->session->userdata['logged_in']['id_user']
             ];
@@ -209,7 +210,6 @@ class Sumberdayalppm extends CI_Controller
                 'Kd_Fakultas'   => htmlspecialchars($Kode[0]),
                 'Kd_Prodi'      => htmlspecialchars($Kode[1]),
                 'Jenjang'       => htmlspecialchars($this->input->post('Pendidikan')),
-                'Role'          => 2,
                 'Tgl_Update'    => date('Y-m-d H:i:s'),
                 'User_Update'   => $this->session->userdata['logged_in']['id_user']
             ];

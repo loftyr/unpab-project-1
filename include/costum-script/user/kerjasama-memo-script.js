@@ -1,67 +1,66 @@
 var method_1;
 const modal_1 = $('#modal-1');
 const judulModal_1 = $('#title-modal-1');
-const btnSave_1 = $('#btnSave');
-const clickSave_1 = document.querySelector('#btnSave');
+const btnSave_1 = $('#btnSave-1');
+const clickSave_1 = document.querySelector('#btnSave-1');
+
+
+/* Fungsi formatRupiah */
+function formatRupiah(angka, prefix) {
+    var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        split = number_string.split(","),
+        sisa = split[0].length % 3,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+    if (ribuan) {
+        separator = sisa ? "." : "";
+        rupiah += separator + ribuan.join(".");
+    }
+
+    rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+    return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+}
 
 $('#Tahun').on('change', function () {
     var Tahun = document.getElementById("Tahun").value;
-    getDataDosen(Tahun);
-});
-
-$('#Nidn').on('focusout', function () {
-    cekNidn = document.getElementById("Nidn").value;
-
-    $.ajax({
-        type: "POST",
-        url: "../penelitian/ceknidn",
-        data: { nidn: cekNidn },
-        dataType: "JSON",
-        success: function (result) {
-            if (result.status == true) {
-                clickSave_1.disabled = true;
-                $('#result-cek').text('Nidn Telah Digunakan pada Nama ' + result.data);
-            } else {
-                clickSave_1.disabled = false;
-                $('#result-cek').text(null);
-            }
-        },
-        error: function (xhr, stat, err) {
-            console.log('Tidak Diketahui');
-        }
-    });
+    getData(Tahun);
 });
 
 $(document).ready(function () {
     $('.tabel-1').DataTable();
 
     var Tahun = document.getElementById("Tahun").value;
-    getDataDosen(Tahun);
+    getData(Tahun);
 
     $('#modal-1').on('hidden.bs.modal', function (e) {
-        $(this).find('#form').trigger('reset');
-    });
+        $(this).find('#form-1').trigger('reset');
+    })
+
+    $('.uang').mask('000.000.000.000.000', { reverse: true });
+    var count = 0;
+
 });
 
 
 
-// Function CRUD
-
-// Create or Update
-$(document).on('click', '#btnAdd', function () {
+//CRUD
+// Create and Update
+$(document).on('click', '#btnAdd-1', function () {
     method_1 = 'tambah';
-    judulModal_1.html("Tambah Dosen");
+    judulModal_1.html("Tambah Perjanjian Kontrak");
     btnSave_1.html("Save Data");
     modal_1.modal({
         backdrop: 'static',
         keyboard: false
     });
     modal_1.modal("show");
-})
+});
 
 $(document).on('click', '.btnEdit', function () {
     method = 'edit';
-    judulModal_1.html("Edit Dosen");
+    judulModal_1.html("Edit Kerjasama MoU/MoA");
     btnSave_1.html("Save Change");
     modal_1.modal({
         backdrop: 'static',
@@ -72,18 +71,18 @@ $(document).on('click', '.btnEdit', function () {
     var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getEditDosen',
+        url: 'getEditMemo',
         data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
-            $('#id').val(result[0].id);
-            $('#Nidn').val(result[0].Nidn);
+            $('#id').val(result[0].Id);
             $('#Tahun-1').val(result[0].Tahun);
-            $('#Nama_Dosen').val(result[0].Nama);
-            $('#Jk').val(result[0].Jk);
-            $('#Prodi').val(result[0].Kd_Fakultas + '.' + result[0].Kd_Prodi);
-            $('#Pendidikan').val(result[0].Jenjang);
+            $('#Unit').val(result[0].Unit);
+            $('#Nama_Keg').val(result[0].Nama_Keg);
+            $('#Institusi_Mitra').val(result[0].Institusi_Mitra);
+            $('#No_Kontrak').val(result[0].No_Kontrak);
+            $('#Nilai').val(formatRupiah(result[0].Nilai_Kontrak, null));
         }
     });
 });
@@ -91,13 +90,13 @@ $(document).on('click', '.btnEdit', function () {
 clickSave_1.addEventListener('click', function (event) {
     event.preventDefault();
     var url;
-    var base_url = $('#form').attr('link');
-    var form = document.querySelector("#form");
+    var base_url = $('#form-1').attr('link');
+    var form = document.querySelector("#form-1");
 
     if (method_1 == 'tambah') {
-        url = 'save2';
+        url = 'saveMemo';
     } else {
-        url = 'saveEdit2';
+        url = 'saveEditData';
     }
 
     $('.progress').show();
@@ -148,7 +147,7 @@ clickSave_1.addEventListener('click', function (event) {
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         var Tahun = document.getElementById("Tahun").value;
-                        getDataDosen(Tahun);
+                        getData(Tahun);
                     }
                 })
             }
@@ -159,46 +158,51 @@ clickSave_1.addEventListener('click', function (event) {
     });
 });
 
-
 // Read
 function draw_data(result) {
     var no = 0;
 
     for (index in result) {
-        var id = result[index].id;
+        var Id = result[index].Id;
         var Tahun = result[index].Tahun;
-        var Nidn = result[index].Nidn;
-        var Nama = result[index].Nama;
-        var Jk = result[index].Jk;
-        var Nama_Prodi = result[index].Nama_Prodi;
-        var Jenjang = result[index].Jenjang;
+        var Unit = result[index].Unit;
+        var Nama_Keg = result[index].Nama_Keg;
+        var Institusi_Mitra = result[index].Institusi_Mitra;
+        var No_Kontrak = result[index].No_Kontrak;
+        var Nilai_Kontrak = result[index].Nilai_Kontrak;
+        var Doc = result[index].Dokumen;
 
         no += 1;
 
         var output = '<tr>';
         output += '<td>' + no + '</td>';
-        output += '<td>' + Nidn + '</td>';
-        output += '<td>' + Nama + '</td>';
-        output += '<td>' + Jk + '</td>';
-        output += '<td>' + Nama_Prodi + '</td>';
-        output += '<td>' + Jenjang + '</td>';
+        output += '<td>' + Unit + '</td>';
+        output += '<td>' + Nama_Keg + '</td>';
+        output += '<td>' + Institusi_Mitra + '</td>';
+        output += '<td>' + No_Kontrak + '</td>';
+        output += '<td>' + formatRupiah(Nilai_Kontrak, "Rp. ") + '</td>';
+        if (Doc == null) {
+            output += '<td><a title="No Link">PDF</a></td>';
+        } else {
+            output += '<td><a href="../file/upload/documents/document kerjasama/' + Doc + '" target="_blank">PDF</a></td>';
+        }
         output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus" title="Hapus"><i class="fas fa-trash"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit" title="Edit"><i class="fas fa-edit"></i></button>';
+        output += '<button dataID="' + Id + '" class="btn btn-danger btn-sm mr-2 btnHapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + Id + '" class="btn btn-info btn-sm mr-2 btnEdit"><i class="fas fa-edit"></i></button>';
         output += '</td>';
         output += '</tr>';
 
         $('#body-tabel-1').append(output);
     }
+
     $('.tabel-1').DataTable();
 }
 
-
-function getDataDosen($tahun) {
+function getData($tahun) {
     $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="8" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
-        url: 'getDataDosen/' + $tahun,
+        url: 'getDataMemo/' + $tahun,
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
@@ -209,7 +213,7 @@ function getDataDosen($tahun) {
     });
 }
 
-// Delete
+//Delete
 $(document).on('click', '.btnHapus', function () {
     var Tahun = document.getElementById("Tahun").value;
 
@@ -239,7 +243,7 @@ $(document).on('click', '.btnHapus', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                getDataDosen(Tahun);
+                                getData(Tahun);
                             }
                         })
                     } else {
@@ -251,7 +255,7 @@ $(document).on('click', '.btnHapus', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                getDataDosen(Tahun);
+                                getData(Tahun);
                             }
                         })
                     }

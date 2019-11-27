@@ -351,6 +351,7 @@ class Jurnal extends CI_Controller
         } else {
             $data = [
                 'Kd_Jurnal'     => htmlspecialchars($this->input->post('Kd_Jurnal')),
+                'Nidn'          => htmlspecialchars($this->input->post('Nidn')),
                 'Nama'          => htmlspecialchars($this->input->post('Nama')),
                 'Tgl_Input'     => date('Y-m-d H:i:s'),
                 'User_Input'    => $this->session->userdata['logged_in']['id_user']
@@ -382,6 +383,7 @@ class Jurnal extends CI_Controller
             $result['Status']       = false;
         } else {
             $data = [
+                'Nidn'          => htmlspecialchars($this->input->post('Nidn')),
                 'Nama'          => htmlspecialchars($this->input->post('Nama')),
                 'Tgl_Update'    => date('Y-m-d H:i:s'),
                 'User_Update'   => $this->session->userdata['logged_in']['id_user']

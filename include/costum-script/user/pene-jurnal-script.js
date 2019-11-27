@@ -10,6 +10,39 @@ const clickSave_1 = document.querySelector('#btnSave-1');
 const clickSave_2 = document.querySelector('#btnSave-2');
 const add_2 = document.querySelector('#btnAdd-2');
 
+$(document).on('keypress', '#Nidn', function (e) {
+    if (e.keyCode === 13) {
+        var id = $('#Nidn').val();
+
+        $.ajax({
+            type: "POST",
+            url: "../penelitian/ceknidn",
+            data: { nidn: id },
+            dataType: "JSON",
+            success: function (result) {
+                if (result.status == true) {
+                    $('#result-cek').text(result.ket);
+                    $('#Nama').val(result.data);
+                } else {
+                    $('#result-cek').text(result.ket);
+                    $('#Nama').val('');
+                }
+            },
+            error: function (xhr, stat, err) {
+                console.log('Tidak Diketahui');
+            }
+        });
+    }
+});
+
+$(document).on('keyup', '#Nidn', function (e) {
+    var id = $('#Nidn').val();
+    if (id == '') {
+        $('#result-cek').text('');
+        $('#Nama').val('');
+    }
+});
+
 function draw_data(result) {
     var no = 0;
 
@@ -61,6 +94,7 @@ function draw_data_2(result) {
     for (index in result) {
         var Id = result[index].Id;
         var Kd_Jurnal = result[index].Kd_Jurnal;
+        var Nidn = result[index].Nidn;
         var Tahun = result[index].Tahun;
         var Nama = result[index].Nama;
 
@@ -69,6 +103,7 @@ function draw_data_2(result) {
         var output = '<tr>';
         output += '<td>' + no + '</td>';
         output += '<td>' + Kd_Jurnal + '</td>';
+        output += '<td>' + Nidn + '</td>';
         output += '<td>' + Nama + '</td>';
         output += '<td>';
         output += '<div class="row"><div class="col-sm-12"><button dataID="' + Id + '" Kd_Jurnal="' + Kd_Jurnal + '" class="btn btn-danger btn-sm mb-1 btnHapus-2"> <i class="fa fa-trash"></i></button></div></div>';

@@ -26,6 +26,17 @@ class Home extends CI_Controller
         $data['Tahun']          = $this->base_m->getTahun();
         $data['data1']          = $this->base_m->getData1();
         $data['data2']          = $this->base_m->getData2();
+        $data['data3']          = $this->base_m->getData3(); //Penelitian Ristekdikti
+        $data['data4']          = $this->base_m->getData4(); //Penelitian Internal
+        $data['data5']          = $this->base_m->getData5(); //Pengabdian Ristekdikti
+        $data['data6']          = $this->base_m->getData6(); //Pengabdian Internal
+        $data['data7']          = $this->base_m->getData7(); //Penelitian Asing
+        $data['data8']          = $this->base_m->getData8(); //Fasiltias Pendukung
+        $data['data9']          = $this->base_m->getData9(); //Fasiltias Forum Ilmiah
+        $data['data10']         = $this->base_m->getData10(); //Publikasi Jurnal
+        $data['data11']         = $this->base_m->getData11(); //Publikasi Buku
+        $data['data12']         = $this->base_m->getData12(); //Publikasi HKI
+        $data['data13']         = $this->base_m->getData13(); //Publikasi Kerjasama
 
         $this->load->view('templates/header', $dataheader);
         $this->load->view('page/home_v', $data);

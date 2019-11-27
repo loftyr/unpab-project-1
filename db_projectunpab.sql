@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2019 pada 13.13
+-- Waktu pembuatan: 27 Nov 2019 pada 12.00
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.0.29
 
@@ -22,6 +22,27 @@ SET time_zone = "+00:00";
 -- Database: `db_projectunpab`
 --
 
+DELIMITER $$
+--
+-- Prosedur
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_diriPeneDikti` (IN `Nidn` VARCHAR(100))  NO SQL
+select COUNT(B.Nidn) AS Jumlah from ta_penelitian A inner join 
+ta_anggota_penelitian B ON A.Kd_Penelitian = B.Kd_Penelitian inner JOIN
+ta_staff C on B.Nidn = C.Nidn
+where B.Jabatan = 'Ketua' and C.Role = 2 and B.Nidn = Nidn$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_test` (`var1` INT)  BEGIN   
+    DECLARE start  INT unsigned DEFAULT 1;  
+    DECLARE finish INT unsigned DEFAULT 10;
+
+    SELECT  var1, start, finish;
+
+    SELECT * FROM places WHERE place BETWEEN start AND finish; 
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -35,15 +56,21 @@ CREATE TABLE `ap_user` (
   `password` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `Status` varchar(10) NOT NULL,
-  `Date_Create` datetime NOT NULL
+  `Date_Create` datetime NOT NULL,
+  `Tgl_Input` datetime DEFAULT NULL,
+  `User_Input` varchar(100) DEFAULT NULL,
+  `Tgl_Update` datetime DEFAULT NULL,
+  `User_Update` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `ap_user`
 --
 
-INSERT INTO `ap_user` (`id_user`, `Level`, `username`, `password`, `email`, `Status`, `Date_Create`) VALUES
-(4, 'sa', 'sa', '$2y$10$qzT0g7.gi4PflSm.SWKO7O1yqBWIuUI79kNPxaDGXNFQmUdjl1KcO', 'admin@gmail.com', '1', '2019-10-30 05:44:51');
+INSERT INTO `ap_user` (`id_user`, `Level`, `username`, `password`, `email`, `Status`, `Date_Create`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
+(4, 'sa', 'sa', '$2y$10$qzT0g7.gi4PflSm.SWKO7O1yqBWIuUI79kNPxaDGXNFQmUdjl1KcO', 'admin@gmail.com', '1', '2019-10-30 05:44:51', NULL, NULL, NULL, NULL),
+(5, 'Admin', 'admin', '$2y$10$p4bdFunX8bfjpNAZFEQatOOuFZDbsXbUWmRppDynRUaXgLTy3CXyS', 'internal@gmail.com', '1', '2019-11-26 16:52:52', '2019-11-26 16:52:52', '4', NULL, NULL),
+(6, 'Admin', 'lofty', '$2y$10$sHxL3DmkffKo1Is6fyVG.OCSYATCR.NPCHfbprxtKugZFbpVAh2Oi', 'lofty.raz@gmail.com', '1', '2019-11-26 16:55:44', '2019-11-26 16:55:44', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,6 +132,7 @@ INSERT INTO `ref_programstudi` (`Tahun`, `Kd_Fakultas`, `Kd_Prodi`, `Nama_Prodi`
 --
 
 CREATE TABLE `ref_tahun` (
+  `Id` int(11) NOT NULL,
   `Tahun` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -112,48 +140,47 @@ CREATE TABLE `ref_tahun` (
 -- Dumping data untuk tabel `ref_tahun`
 --
 
-INSERT INTO `ref_tahun` (`Tahun`) VALUES
-(1980),
-(1981),
-(1982),
-(1983),
-(1984),
-(1985),
-(1986),
-(1987),
-(1988),
-(1989),
-(1990),
-(1991),
-(1992),
-(1993),
-(1994),
-(1995),
-(1996),
-(1997),
-(1998),
-(1999),
-(2000),
-(2001),
-(2002),
-(2003),
-(2004),
-(2005),
-(2006),
-(2007),
-(2008),
-(2009),
-(2010),
-(2011),
-(2012),
-(2013),
-(2014),
-(2015),
-(2016),
-(2017),
-(2018),
-(2019),
-(2020);
+INSERT INTO `ref_tahun` (`Id`, `Tahun`) VALUES
+(1, 1980),
+(2, 1981),
+(3, 1982),
+(4, 1983),
+(5, 1984),
+(6, 1985),
+(7, 1986),
+(8, 1987),
+(9, 1988),
+(10, 1989),
+(11, 1990),
+(12, 1991),
+(13, 1992),
+(14, 1993),
+(15, 1994),
+(16, 1995),
+(17, 1996),
+(18, 1997),
+(19, 1998),
+(20, 1999),
+(21, 2000),
+(22, 2001),
+(23, 2002),
+(24, 2003),
+(25, 2004),
+(26, 2005),
+(27, 2006),
+(28, 2007),
+(29, 2008),
+(30, 2009),
+(31, 2010),
+(32, 2011),
+(33, 2012),
+(34, 2013),
+(35, 2014),
+(36, 2015),
+(37, 2016),
+(38, 2017),
+(39, 2018),
+(40, 2019);
 
 -- --------------------------------------------------------
 
@@ -179,7 +206,10 @@ CREATE TABLE `ta_anggota_penelitian` (
 
 INSERT INTO `ta_anggota_penelitian` (`No_Id`, `Kd_Penelitian`, `Nidn`, `Nama`, `Jabatan`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
 (1, 20192, '311047508', 'Dr. Rusiadi, SE., M.Si', 'Ketua', '2019-11-13 09:55:36', '4', NULL, NULL),
-(2, 20192, '3110040015', 'Rahmat Hidayat, SE., MM', 'Anggota', '2019-11-13 09:55:51', '4', '2019-11-13 12:03:37', '4');
+(2, 20192, '3110040015', 'Rahmat Hidayat, SE., MM', 'Anggota', '2019-11-13 09:55:51', '4', '2019-11-13 12:03:37', '4'),
+(4, 20195, '311042079', 'Henni Ramadani', 'Ketua', '2019-11-27 10:13:38', '4', NULL, NULL),
+(5, 20194, '311042077', 'Tirza Ramadani', 'Ketua', '2019-11-27 10:14:07', '4', NULL, NULL),
+(6, 20196, '311047508', 'Dr. Rusiadi, SE., M.Si', 'Ketua', '2019-11-27 10:23:15', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -400,6 +430,7 @@ CREATE TABLE `ta_karyailmiah` (
   `Forum` varchar(255) NOT NULL,
   `Dokumen` varchar(255) DEFAULT NULL,
   `Status` varchar(100) NOT NULL,
+  `Publikasi` varchar(150) NOT NULL,
   `Source` varchar(100) NOT NULL,
   `Tgl_Input` datetime DEFAULT NULL,
   `User_Input` varchar(100) DEFAULT NULL,
@@ -411,8 +442,10 @@ CREATE TABLE `ta_karyailmiah` (
 -- Dumping data untuk tabel `ta_karyailmiah`
 --
 
-INSERT INTO `ta_karyailmiah` (`Id_Karya`, `Tahun`, `Nidn`, `Nama`, `Judul`, `Institusi`, `Halaman`, `Tempat`, `Forum`, `Dokumen`, `Status`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
-(1, '2019', '0013127108', 'Dr Abdiyanto S.E., M.Si', 'Alat Pengontrol Baru untuk Mesin Air Otomatis Berbasis Arduino dengan Smartphone', 'FT UISU Medan', '1-5', 'Gedung Aula Yayasan UISU', 'Seminar Nasional', 'lorem-ipsum.pdf', 'Pemakalah', '', NULL, NULL, NULL, NULL);
+INSERT INTO `ta_karyailmiah` (`Id_Karya`, `Tahun`, `Nidn`, `Nama`, `Judul`, `Institusi`, `Halaman`, `Tempat`, `Forum`, `Dokumen`, `Status`, `Publikasi`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
+(1, '2019', '0013127108', 'Dr Abdiyanto S.E., M.Si', 'Alat Pengontrol Baru untuk Mesin Air Otomatis Berbasis Arduino dengan Smartphone', 'FT UISU Medan', '1-15', 'Gedung Aula Yayasan UISU', 'Seminar Nasional', 'lorem-ipsum.pdf', 'Pemakalah', 'Tingkat Nasional', '1', NULL, NULL, '2019-11-20 16:07:38', '4'),
+(2, '2019', '311040043', 'Abdul Khaliq S.Kom', 'Judul Makalah 1', 'FT USU Medan', '1-2', 'Medan', 'Seminar Nasional', NULL, 'Pemakalah', 'Tingkat Nasional', '1', '2019-11-20 16:09:13', '4', NULL, NULL),
+(4, '2019', '311040090', 'Isnar Sumartono S.Kom, M.Kom', 'Pengabdian Makalah 1', 'Unpab', '1-4', 'Gedung A', 'UnpabPress', NULL, 'Pemakalah', 'Tingkat Internasional', '2', '2019-11-21 09:04:37', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -425,21 +458,26 @@ CREATE TABLE `ta_kegiatan` (
   `Tahun` varchar(50) NOT NULL,
   `Tingkat_Forum` varchar(255) NOT NULL,
   `Nama_Keg` varchar(255) NOT NULL,
-  `Nama_Unit` varchar(255) NOT NULL,
+  `Kd_Fakultas` varchar(100) NOT NULL,
+  `Kd_Prodi` varchar(100) NOT NULL,
   `Mitra` varchar(255) NOT NULL,
   `Tempat` varchar(255) NOT NULL,
   `Tgl_Start` date NOT NULL,
   `Tgl_End` date NOT NULL,
-  `Narasumber` varchar(255) DEFAULT NULL
+  `Narasumber` varchar(255) DEFAULT NULL,
+  `Source` varchar(150) NOT NULL COMMENT '1 = Penelitian, 2 = Pengabdian',
+  `Tgl_Input` datetime DEFAULT NULL,
+  `User_Input` varchar(100) DEFAULT NULL,
+  `Tgl_Update` datetime DEFAULT NULL,
+  `User_Update` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `ta_kegiatan`
 --
 
-INSERT INTO `ta_kegiatan` (`Id`, `Tahun`, `Tingkat_Forum`, `Nama_Keg`, `Nama_Unit`, `Mitra`, `Tempat`, `Tgl_Start`, `Tgl_End`, `Narasumber`) VALUES
-(2, '2019', 'Internasional', 'Field Trip ke Universiti Sains Malaysia (USM) dan Universiti Teknologi Malaysia (UTM)', 'Prodi Teknik Arsitektur Fakultas Teknik Universitas Pembangunan Panca Budi (UNPAB)', 'USM, UTM', 'Kampus USM dan UTM, Malaysia', '2019-05-09', '2019-05-15', ''),
-(3, '2019', 'Internasional', 'Dosen Prodi Teknik Arsitektur Mengikuti International Seminar on Livable Space sebagai pembicara', 'Prodi Arsitektur Fakultas Teknik Universitas Trisakti', 'Fakultas Teknik Universitas Trisakti', 'Museum Nasional Indonesia, Jakarta', '2016-12-01', '2016-12-01', '');
+INSERT INTO `ta_kegiatan` (`Id`, `Tahun`, `Tingkat_Forum`, `Nama_Keg`, `Kd_Fakultas`, `Kd_Prodi`, `Mitra`, `Tempat`, `Tgl_Start`, `Tgl_End`, `Narasumber`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
+(5, '2019', 'Internasional', 'Dosen Prodi Teknik Arsitektur Mengikuti International Seminar on Livable Space sebagai pembicara', '1', '2', 'Fakultas Teknik Universitas Trisakti', 'Museum Nasional Indonesia, Jakarta', '2019-11-01', '2019-11-09', 'Narasumber I', '1', '2019-11-23 09:39:34', '4', '2019-11-23 10:26:14', '4');
 
 -- --------------------------------------------------------
 
@@ -455,16 +493,20 @@ CREATE TABLE `ta_kerjasama` (
   `Institusi_Mitra` varchar(225) NOT NULL,
   `No_Kontrak` varchar(220) NOT NULL,
   `Nilai_Kontrak` bigint(20) NOT NULL,
-  `Dokumen` varchar(225) DEFAULT NULL
+  `Dokumen` varchar(225) DEFAULT NULL,
+  `Source` varchar(50) NOT NULL COMMENT '1 = MoU / MoA, 2 = Hasil Riset',
+  `Tgl_Input` datetime DEFAULT NULL,
+  `User_Input` varchar(100) DEFAULT NULL,
+  `Tgl_Update` datetime DEFAULT NULL,
+  `User_Update` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `ta_kerjasama`
 --
 
-INSERT INTO `ta_kerjasama` (`Id`, `Tahun`, `Unit`, `Nama_Keg`, `Institusi_Mitra`, `No_Kontrak`, `Nilai_Kontrak`, `Dokumen`) VALUES
-(1, '2019', 'Lembaga Penelitian dan Pengabdian Kepada Masyarakat', 'Bimbingan Teknis Anggota dan Sekretariat DPRD Kabupaten Langkat Agustus 2016', 'Sekeretariat DPRD Kabupaten Langkat', '183.3-1318/Set.DPRD/2015', 262000000, 'lorem-ipsum.pdf'),
-(2, '2019', 'Lembaga Penelitian dan Pengabdian Kepada Masyarakat', 'Bimbingan Teknis Anggota dan Sekretariat DPRD Kabupaten Langkat Februari 2016', 'Sekretariat DPRD Kabupaten Langkat', '893.3-1418/Set.DPRD/2015', 279000000, NULL);
+INSERT INTO `ta_kerjasama` (`Id`, `Tahun`, `Unit`, `Nama_Keg`, `Institusi_Mitra`, `No_Kontrak`, `Nilai_Kontrak`, `Dokumen`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
+(1, '2019', 'Lembaga Penelitian dan Pengabdian Kepada Masyarakat', 'Bimbingan Teknis Anggota dan Sekretariat DPRD Kabupaten Langkat Agustus 2016', 'Sekeretariat DPRD Kabupaten Langkat', '183.3-1318/Set.DPRD/2016', 2620000000, 'lorem-ipsum.pdf', '1', NULL, NULL, '2019-11-25 09:23:41', '4');
 
 -- --------------------------------------------------------
 
@@ -477,15 +519,16 @@ CREATE TABLE `ta_pedoman` (
   `Tahun` varchar(50) NOT NULL,
   `Nama_Pedoman` varchar(255) NOT NULL,
   `No_Surat` varchar(255) NOT NULL,
-  `Dokumen` varchar(255) DEFAULT NULL
+  `Dokumen` varchar(255) DEFAULT NULL,
+  `Source` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `ta_pedoman`
 --
 
-INSERT INTO `ta_pedoman` (`Id`, `Tahun`, `Nama_Pedoman`, `No_Surat`, `Dokumen`) VALUES
-(1, '2019', 'Standar Mutu Penelitian', '001/LPPM/2019', 'lorem-ipsum1.pdf');
+INSERT INTO `ta_pedoman` (`Id`, `Tahun`, `Nama_Pedoman`, `No_Surat`, `Dokumen`, `Source`) VALUES
+(1, '2019', 'Standar Mutu Penelitian', '001/LPPM/2019', 'lorem-ipsum1.pdf', '');
 
 -- --------------------------------------------------------
 
@@ -545,7 +588,9 @@ INSERT INTO `ta_penelitian` (`Kd_Penelitian`, `Tahun`, `Judul`, `Skema`, `Kd_Fak
 ('20191', 2019, 'Judul Penelitian Asing 1', 'Hibah Dikti', '1', '2', 'Lainnya', 15000000, 'lorem-ipsum_-_Copy.pdf', '2019-11-12 11:13:28', '3', '2019-11-12 11:13:28', '4', '2019-11-13 09:22:42', '4', 1),
 ('20192', 2019, 'Judul Penelitian Asing 2', 'Hibah Dikti', '1', '3', 'Lainnya', 15000000, NULL, '2019-11-13 09:52:31', '3', '2019-11-13 09:52:31', '4', NULL, NULL, 2),
 ('20193', 2019, 'Penelitian Ristekdikti 1', 'Hibah Dikti', '1', '2', 'Ristekdikti', 25000000, 'lorem-ipsum_-_Copy1.pdf', '2019-11-15 10:13:44', '1', '2019-11-15 10:13:44', '4', '2019-11-15 10:14:03', '4', 3),
-('20194', 2019, 'Penelitian Internal Perguruan Tinggi 1', 'Hibah Internal', '1', '3', 'Internal Perguruan Tinggi', 200000000, 'lorem-ipsum_-_Copy_-_Copy.pdf', '2019-11-15 10:19:29', '2', '2019-11-15 10:19:29', '4', '2019-11-15 10:20:09', '4', 4);
+('20194', 2019, 'Penelitian Internal Perguruan Tinggi 1', 'Hibah Internal', '1', '3', 'Internal Perguruan Tinggi', 200000000, 'lorem-ipsum_-_Copy_-_Copy.pdf', '2019-11-15 10:19:29', '2', '2019-11-15 10:19:29', '4', '2019-11-15 10:20:09', '4', 4),
+('20195', 2019, 'Judul Penelitian Ristekdikti 2', 'Hibah Dikti', '1', '3', 'Ristekdikti', 10000000, NULL, '2019-11-21 09:47:48', '1', '2019-11-21 09:47:48', '4', NULL, NULL, 5),
+('20196', 2019, 'penelitian internal 1', 'Hibah Dikti', '1', '1', 'Ristekdikti', 1000000, NULL, '2019-11-27 10:22:45', '2', '2019-11-27 10:22:45', '4', NULL, NULL, 6);
 
 --
 -- Trigger `ta_penelitian`
@@ -642,8 +687,10 @@ CREATE TABLE `ta_penulis_ilmiah` (
 --
 
 INSERT INTO `ta_penulis_ilmiah` (`Id`, `Tahun`, `Id_Karya`, `Nama_Penulis`, `Urut`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
-(1, '2019', '1', 'Nur Afrina Siregar', 'Penulis Ke. I', NULL, NULL, NULL, NULL),
-(2, '2019', '1', 'Nina Andriani Nasution', 'Penulis Ke. II', NULL, NULL, NULL, NULL);
+(3, '2019', '2', 'Penulis 1-1', '1', NULL, NULL, NULL, NULL),
+(5, '2019', '4', 'Penulis 1', 'Ke 1', '2019-11-21 09:04:49', '4', NULL, NULL),
+(6, '2019', '4', 'Penulis', 'Ke II', '2019-11-21 09:05:06', '4', NULL, NULL),
+(7, '2019', '1', 'Penulis 1 ke', 'ke 12', '2019-11-22 08:47:16', '4', '2019-11-22 08:47:40', '4');
 
 -- --------------------------------------------------------
 
@@ -654,6 +701,7 @@ INSERT INTO `ta_penulis_ilmiah` (`Id`, `Tahun`, `Id_Karya`, `Nama_Penulis`, `Uru
 CREATE TABLE `ta_penulis_jurnal` (
   `Id` int(11) NOT NULL,
   `Kd_Jurnal` varchar(100) NOT NULL,
+  `Nidn` varchar(100) NOT NULL,
   `Nama` varchar(255) NOT NULL,
   `Tgl_Input` datetime DEFAULT NULL,
   `User_Input` varchar(100) DEFAULT NULL,
@@ -665,11 +713,9 @@ CREATE TABLE `ta_penulis_jurnal` (
 -- Dumping data untuk tabel `ta_penulis_jurnal`
 --
 
-INSERT INTO `ta_penulis_jurnal` (`Id`, `Kd_Jurnal`, `Nama`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
-(1, '1', 'Dr. Muhammad Isa Indrawan S.E., M.M.', '2019-11-18 10:45:59', '4', NULL, NULL),
-(3, '1', 'Nama 2', '2019-11-18 14:26:40', '4', NULL, NULL),
-(4, '4', 'Nama 1 ', '2019-11-18 14:38:55', '4', NULL, NULL),
-(5, '4', 'nama 2', '2019-11-18 14:39:00', '4', NULL, NULL);
+INSERT INTO `ta_penulis_jurnal` (`Id`, `Kd_Jurnal`, `Nidn`, `Nama`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
+(6, '1', '311040090', 'Isnar Sumartono S.Kom, M.Kom', '2019-11-22 08:31:48', '4', NULL, NULL),
+(7, '4', '311042072', 'Suheri., S.Kom,. M.Kom', '2019-11-22 08:36:38', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -711,7 +757,14 @@ INSERT INTO `ta_staff` (`id`, `Tahun`, `Nidn`, `Nip`, `Nama`, `Jk`, `Jabatan`, `
 (22, 2019, '311040043', NULL, 'Abdul Khaliq S.Kom', 'Laki-Laki', NULL, NULL, 'S-1', '1', '3', 2, '2019-11-11 09:17:11', '4', NULL, NULL),
 (23, 2019, '311040090', NULL, 'Isnar Sumartono S.Kom, M.Kom', 'Laki-Laki', NULL, NULL, 'S-2', '1', '5', 2, '2019-11-11 09:18:15', '4', '2019-11-11 11:15:25', '4'),
 (25, 2019, NULL, '1110042072', 'Azima Nurul Amrul, SE', 'Perempuan', 'Adminstrasi', 'Lembaga Penelitian (Lemlit) / LPPM', 'S-2', NULL, NULL, 1, '2019-11-11 09:23:49', '4', '2019-11-11 17:03:46', '4'),
-(26, 2019, '311042072', NULL, 'Suheri., S.Kom,. M.Kom', 'Laki-Laki', NULL, NULL, 'S-2', '1', '6', 2, '2019-11-11 09:32:23', '4', NULL, NULL);
+(26, 2019, '311042072', NULL, 'Suheri., S.Kom,. M.Kom', 'Laki-Laki', NULL, NULL, 'S-2', '1', '6', 2, '2019-11-11 09:32:23', '4', NULL, NULL),
+(28, 2019, '311042073', NULL, 'Nanda Syahputra S.Kom', 'Laki-Laki', NULL, NULL, 'S-1', '1', '1', 2, '2019-11-21 09:21:16', '4', NULL, NULL),
+(29, 2019, '311042074', NULL, 'Lofty Razani S.Kom', 'Laki-Laki', NULL, NULL, 'S-1', '1', '2', 2, '2019-11-21 09:21:42', '4', NULL, NULL),
+(30, 2019, '311042075', NULL, 'Suraji Hariyadi', 'Laki-Laki', NULL, NULL, 'S-1', '1', '3', 2, '2019-11-21 09:24:34', '4', NULL, NULL),
+(31, 2019, '311042076', NULL, 'Erma Dani Lubis', 'Perempuan', NULL, NULL, 'S-1', '3', '1', 2, '2019-11-21 09:24:53', '4', NULL, NULL),
+(33, 2019, '311042077', NULL, 'Tirza Ramadani', 'Perempuan', NULL, NULL, 'S-1', '3', '1', 2, '2019-11-21 09:45:36', '4', NULL, NULL),
+(34, 2019, '311042078', NULL, 'Rama Aditia', 'Laki-Laki', NULL, NULL, 'S-2', '1', '7', 2, '2019-11-21 09:46:03', '4', NULL, NULL),
+(35, 2019, '311042079', NULL, 'Henni Ramadani', 'Perempuan', NULL, NULL, 'S-2', '1', '5', 2, '2019-11-21 09:46:33', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -737,7 +790,8 @@ CREATE TABLE `ta_tim_pendukung` (
 INSERT INTO `ta_tim_pendukung` (`No_Id`, `Kd_Penelitian`, `Nama`, `Jabatan`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
 (1, 20192, 'Pendukung 1', 'Staff Lppm', '2019-11-13 10:19:06', '4', NULL, NULL),
 (2, 20192, 'Pendukung 2', 'Mahasiwa Aktif', '2019-11-13 10:19:14', '4', NULL, NULL),
-(4, 20192, 'Pendukung 3', 'Staff Lppm', '2019-11-13 10:41:45', '4', '2019-11-13 12:03:48', '4');
+(4, 20192, 'Pendukung 3', 'Staff Lppm', '2019-11-13 10:41:45', '4', '2019-11-13 12:03:48', '4'),
+(5, 20195, 'Indra Gunawan', 'Staff Lppm', '2019-11-21 09:48:45', '4', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -754,6 +808,12 @@ ALTER TABLE `ap_user`
 --
 ALTER TABLE `ref_fakultas`
   ADD UNIQUE KEY `Kd_Fakultas` (`Kd_Fakultas`);
+
+--
+-- Indeks untuk tabel `ref_tahun`
+--
+ALTER TABLE `ref_tahun`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indeks untuk tabel `ta_anggota_penelitian`
@@ -878,13 +938,19 @@ ALTER TABLE `ta_tim_pendukung`
 -- AUTO_INCREMENT untuk tabel `ap_user`
 --
 ALTER TABLE `ap_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `ref_tahun`
+--
+ALTER TABLE `ref_tahun`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_anggota_penelitian`
 --
 ALTER TABLE `ta_anggota_penelitian`
-  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_anggota_pengabdian`
@@ -926,19 +992,19 @@ ALTER TABLE `ta_jurnal`
 -- AUTO_INCREMENT untuk tabel `ta_karyailmiah`
 --
 ALTER TABLE `ta_karyailmiah`
-  MODIFY `Id_Karya` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_Karya` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_kegiatan`
 --
 ALTER TABLE `ta_kegiatan`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_kerjasama`
 --
 ALTER TABLE `ta_kerjasama`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_pedoman`
@@ -962,25 +1028,25 @@ ALTER TABLE `ta_penulis_buku`
 -- AUTO_INCREMENT untuk tabel `ta_penulis_ilmiah`
 --
 ALTER TABLE `ta_penulis_ilmiah`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_penulis_jurnal`
 --
 ALTER TABLE `ta_penulis_jurnal`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_staff`
 --
 ALTER TABLE `ta_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_tim_pendukung`
 --
 ALTER TABLE `ta_tim_pendukung`
-  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

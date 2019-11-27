@@ -270,7 +270,7 @@
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="Nidn" name="Nidn">
                             <small class="form-text text-muted">*Press Enter For Search NIDN</small>
-                            <small class="form-text text-danger" id="result-cek"></small>
+                            <small class="form-text" id="result-cek"></small>
                         </div>
                     </div>
 

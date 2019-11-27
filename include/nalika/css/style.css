@@ -3667,3 +3667,25 @@ th.fc-day-header.fc-widget-header {
 	border-color: #152036;
 	color:#fff;
 }
+
+/* Costum CSS */
+
+.konten {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    min-height: 680px;
+    margin-bottom: 1rem !important;
+    padding: 5px;
+}
+
+thead input {
+    width: 100%;
+}
+
+thead input.input-search {
+    padding: 2.5px;
+}
+
+.dataTables_filter {
+    visibility: hidden;
+}
