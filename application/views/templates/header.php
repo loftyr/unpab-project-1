@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <h3 class="">TRI DHARMA PERGURUAN TINGGI LEMBAGA PENELITIAN DAN PENGABDIAN MASYARAKAT UNIVERSITAS PEMBANGUNAN PANCA BUDI</h3>
         </div>
         <div class="img-right">
-            <img class="" src="<?= base_url('file/app/logo unpab 1.jpg') ?>" alt="">
+            <img class="" src="<?= base_url('file/app/logo unpab 1.png') ?>" alt="">
         </div>
     </div>
     <!--  -->
@@ -99,8 +99,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <li>
                             <a href="#">Pedoman</a>
                             <ul class="sub-menu-2">
-                                <li><a href="#">Penelitian</a></li>
-                                <li><a href="#">Pengabdian</a></li>
+                                <li><a href="<?= base_url('Pedoman/Penelitian') ?>">Penelitian</a></li>
+                                <li><a href="<?= base_url('Pedoman/Pengabdian') ?>">Pengabdian</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Income Generating</a></li>
@@ -141,8 +141,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <li>
                     <a href="#">Evaluasi Diri</a>
                     <ul class="sub-menu-1">
-                        <li><a href="<?= base_url('Evaluasi/prodi') ?>">Rekapitulasi Kinerja Perprodi</a></li>
-                        <li><a href="#">Rekapitulasi Kinerja Keseluruhan</a></li>
+                        <li><a href="<?= base_url('Evaluasi/Prodi') ?>">Rekapitulasi Kinerja Perprodi</a></li>
+                        <li><a href="<?= base_url('Evaluasi/Diri') ?>">Rekapitulasi Kinerja Keseluruhan</a></li>
                     </ul>
                 </li>
                 <li><a href="<?= base_url('home/logout') ?>">Log Out <i class="fas fa-sign-out-alt"></i></a></li>

@@ -23,7 +23,7 @@ body {
 .header-1 {
     position: relative;
     min-height: 120px;
-    background-color: rgb(37, 143, 25);
+    background-color: rgb(0, 209, 84);
     -webkit-box-shadow: 0px 10px 5px -6px rgba(168,168,168,1);
     -moz-box-shadow: 0px 10px 5px -6px rgba(168,168,168,1);
     box-shadow: 0px 10px 5px -6px rgba(168,168,168,1);
@@ -54,6 +54,8 @@ body {
 .menu-utama li {
     list-style: none;
     position: relative;
+    background: rgba(102, 102, 102);
+
 }
    
 .menu-utama a {
@@ -66,14 +68,14 @@ body {
 }
 
 .menu-utama li:hover, .menu-utama li.active-menu {
-    background: rgba(255, 255, 255, 0.322);
+    background: rgba(34, 34, 34);
     transition: .2s;
 }
 
 .sub-menu-1, .sub-menu-2 {
     position: absolute;
     display: none;
-    background: rgba(102, 102, 102);
+    /* background: rgba(102, 102, 102); */
     width: 260px;
     min-width: 255px;
     z-index: 10;
@@ -100,6 +102,7 @@ body {
 .menu-utama li:hover > .sub-menu-1{
     display: block;
     perspective: 1000px;
+    z-index: 9999;
 }
 
 .menu-utama li:hover > .sub-menu-1 li {
@@ -109,49 +112,49 @@ body {
 
 .menu-utama li:hover > .sub-menu-1 li:nth-child(1) {
     animation-name: menu1;
-    animation-duration: 75ms;
+    animation-duration: 200ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 .menu-utama li:hover > .sub-menu-1 li:nth-child(2) {
     animation-name: menu1;
-    animation-duration: 150ms;
+    animation-duration: 300ms;
     animation-delay: 100ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 .menu-utama li:hover > .sub-menu-1 li:nth-child(3) {
     animation-name: menu1;
-    animation-duration: 200ms;
-    animation-delay: 200ms;
+    animation-duration: 400ms;
+    animation-delay: 150ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 .menu-utama li:hover > .sub-menu-1 li:nth-child(4) {
     animation-name: menu1;
-    animation-duration: 150ms;
-    animation-delay: 300ms;
+    animation-duration: 500ms;
+    animation-delay: 200ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 .menu-utama li:hover > .sub-menu-1 li:nth-child(5) {
     animation-name: menu1;
-    animation-duration: 150ms;
-    animation-delay: 400ms;
+    animation-duration: 600ms;
+    animation-delay: 250ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 .menu-utama li:hover > .sub-menu-1 li:nth-child(6) {
     animation-name: menu1;
-    animation-duration: 150ms;
-    animation-delay: 500ms;
+    animation-duration: 700ms;
+    animation-delay: 300ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
 .menu-utama li:hover > .sub-menu-1 li:nth-child(7) {
     animation-name: menu1;
-    animation-duration: 150ms;
-    animation-delay: 600ms;
+    animation-duration: 800ms;
+    animation-delay: 350ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 }
@@ -162,6 +165,8 @@ body {
 
 .sub-menu-1 li:hover > .sub-menu-2{
     display: block;
+    perspective: 1000px;
+    z-index: 100;
 }
 
 .sub-menu-1 li:hover > .sub-menu-2 li{
@@ -173,6 +178,7 @@ body {
     background-color: rgba(255, 149, 0);
     height: 3px;
 }
+
 
 @keyframes menu1{
     0% {

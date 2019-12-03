@@ -13,100 +13,113 @@ class base_m extends CI_Model
     }
 
     //Get Count Dosen
-    public function getData1()
+    public function getData1($Tahun)
     {
         $this->db->from('ta_staff');
         $this->db->where('Role', 2);
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Staff
-    public function getData2()
+    public function getData2($Tahun)
     {
         $this->db->from('ta_staff');
         $this->db->where('Role', 1);
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Ristekdikti
-    public function getData3()
+    public function getData3($Tahun)
     {
         $this->db->from('ta_penelitian');
         $this->db->where('Source', 1);
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Internal
-    public function getData4()
+    public function getData4($Tahun)
     {
         $this->db->from('ta_penelitian');
         $this->db->where('Source', 2);
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Internal
-    public function getData7()
+    public function getData7($Tahun)
     {
         $this->db->from('ta_penelitian');
         $this->db->where('Source', 3);
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Ristekdikti
-    public function getData5()
+    public function getData5($Tahun)
     {
         $this->db->from('ta_pengabdian');
         $this->db->where('Source', 1);
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Internal
-    public function getData6()
+    public function getData6($Tahun)
     {
         $this->db->from('ta_pengabdian');
         $this->db->where('Source', 2);
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Fasilita PPM
-    public function getData8()
+    public function getData8($Tahun)
     {
+        $this->db->where('Tahun', $Tahun);
         $this->db->from('ta_fasilitas_pendukung');
         return $this->db->get()->num_rows();
     }
 
     //Get Count Karya Ilmiah
-    public function getData9()
+    public function getData9($Tahun)
     {
         $this->db->from('ta_karyailmiah');
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Publikasi Jurnal
-    public function getData10()
+    public function getData10($Tahun)
     {
         $this->db->from('ta_jurnal');
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count Buku
-    public function getData11()
+    public function getData11($Tahun)
     {
         $this->db->from('ta_buku');
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count HKI
-    public function getData12()
+    public function getData12($Tahun)
     {
         $this->db->from('ta_hki');
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 
     //Get Count HKI
-    public function getData13()
+    public function getData13($Tahun)
     {
         $this->db->from('ta_kerjasama');
+        $this->db->where('Tahun', $Tahun);
         return $this->db->get()->num_rows();
     }
 }

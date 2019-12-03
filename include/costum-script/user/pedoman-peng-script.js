@@ -1,64 +1,55 @@
 var method_1;
 const modal_1 = $('#modal-1');
 const judulModal_1 = $('#title-modal-1');
-const btnSave_1 = $('#btnSave');
-const clickSave_1 = document.querySelector('#btnSave');
+const btnSave_1 = $('#btnSave-1');
+const clickSave_1 = document.querySelector('#btnSave-1');
 
 $('#Tahun').on('change', function () {
     var Tahun = document.getElementById("Tahun").value;
-    getDataPegawai(Tahun);
-})
+    getData(Tahun);
+});
 
 $(document).ready(function () {
     $('.tabel-1').DataTable();
 
     var Tahun = document.getElementById("Tahun").value;
-    getDataPegawai(Tahun);
+    getData(Tahun);
 
     $('#modal-1').on('hidden.bs.modal', function (e) {
-        $(this).find('#form').trigger('reset');
+        $(this).find('#form-1').trigger('reset');
     });
 });
 
 // CRUD
-// Create or Update
-$(document).on('click', '#btnAdd', function () {
+// Create and Update
+$(document).on('click', '#btnAdd-1', function () {
     method_1 = 'tambah';
-    judulModal_1.html("Tambah Pegawai");
+    judulModal_1.html("Tambah Data Pedoman LPPM");
     btnSave_1.html("Save Data");
     modal_1.modal({
         backdrop: 'static',
         keyboard: false
     });
     modal_1.modal("show");
-})
+});
 
 $(document).on('click', '.btnEdit', function () {
-    method = 'edit';
-    judulModal_1.html("Edit Data Pegawai");
+    method_1 = 'edit';
+    judulModal_1.html("Edit Data Pedoman");
     btnSave_1.html("Save Change");
-    modal_1.modal({
-        backdrop: 'static',
-        keyboard: false
-    });
     modal_1.modal("show");
 
     var edit_id = $(this).attr('dataID');
 
     $.ajax({
-        url: 'getEditPegawai',
+        url: 'getEditPengabdian',
         data: { id: edit_id },
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
-            $('#id').val(result[0].id);
-            $('#Nip').val(result[0].Nip);
-            $('#Tahun-1').val(result[0].Tahun);
-            $('#Nama_Pegawai').val(result[0].Nama);
-            $('#Jk').val(result[0].Jk);
-            $('#Jabatan').val(result[0].Jabatan);
-            $('#Unit').val(result[0].Unit);
-            $('#Pendidikan').val(result[0].Jenjang);
+            $('#id').val(result[0].Id);
+            $('#Nama-Pedoman').val(result[0].Nama_Pedoman);
+            $('#No').val(result[0].No_Surat);
         }
     });
 });
@@ -66,13 +57,13 @@ $(document).on('click', '.btnEdit', function () {
 clickSave_1.addEventListener('click', function (event) {
     event.preventDefault();
     var url;
-    var base_url = $('#form').attr('link');
-    var form = document.querySelector("#form");
+    var base_url = $('#form-1').attr('link');
+    var form = document.querySelector("#form-1");
 
     if (method_1 == 'tambah') {
-        url = 'save';
+        url = 'saveDataPengabdian';
     } else {
-        url = 'saveEdit';
+        url = 'saveEditData';
     }
 
     $('.progress').show();
@@ -106,7 +97,7 @@ clickSave_1.addEventListener('click', function (event) {
             if (result.Status == false) {
                 Swal.fire({
                     position: 'top-end',
-                    type: 'error',
+                    type: 'info',
                     title: result.Msg,
                     showConfirmButton: false,
                     timer: 1500
@@ -123,7 +114,7 @@ clickSave_1.addEventListener('click', function (event) {
                 }).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         var Tahun = document.getElementById("Tahun").value;
-                        getDataPegawai(Tahun);
+                        getData(Tahun);
                     }
                 })
             }
@@ -134,34 +125,31 @@ clickSave_1.addEventListener('click', function (event) {
     });
 });
 
-
 // Read
 function draw_data(result) {
     var no = 0;
 
     for (index in result) {
-        var id = result[index].id;
+        var id = result[index].Id;
         var Tahun = result[index].Tahun;
-        var Nip = result[index].Nip;
-        var Nama = result[index].Nama;
-        var Jk = result[index].Jk;
-        var Jabatan = result[index].Jabatan;
-        var Unit = result[index].Unit;
-        var Jenjang = result[index].Jenjang;
+        var Nama_Pedoman = result[index].Nama_Pedoman;
+        var No_Surat = result[index].No_Surat;
+        var Doc = result[index].Dokumen;
 
         no += 1;
 
         var output = '<tr>';
         output += '<td>' + no + '</td>';
-        output += '<td>' + Nip + '</td>';
-        output += '<td>' + Nama + '</td>';
-        output += '<td>' + Jk + '</td>';
-        output += '<td>' + Jabatan + '</td>';
-        output += '<td>' + Unit + '</td>';
-        output += '<td>' + Jenjang + '</td>';
+        output += '<td>' + Nama_Pedoman + '</td>';
+        output += '<td>' + No_Surat + '</td>';
+        if (Doc == null) {
+            output += '<td><a title="No Link">PDF</a></td>';
+        } else {
+            output += '<td><a href="../file/upload/documents/document pedoman/' + Doc + '" target="_blank">PDF</a></td>';
+        }
         output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus mr-1" title="Hapus"><i class="fas fa-trash"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit" title="Edit"><i class="fas fa-edit"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus mr-2"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit"  data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></button>';
         output += '</td>';
         output += '</tr>';
 
@@ -170,11 +158,11 @@ function draw_data(result) {
     $('.tabel-1').DataTable();
 }
 
-function getDataPegawai($tahun) {
-    $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="8" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
+function getData($tahun) {
+    $('#body-tabel-1').html('<tr class="animated fadeIn"><td colspan="5" class="text-center"><img src="../file/app/loading-2.gif" alt=""></td></tr>');
 
     $.ajax({
-        url: 'getDataPegawai/' + $tahun,
+        url: 'getDataPengabdian/' + $tahun,
         type: 'POST',
         dataType: 'JSON',
         success: function (result) {
@@ -186,9 +174,9 @@ function getDataPegawai($tahun) {
 }
 
 // Delete
+
 $(document).on('click', '.btnHapus', function () {
     var Tahun = document.getElementById("Tahun").value;
-
     Swal.fire({
         title: 'Are You Sure?',
         text: 'Delete This Data !!!',
@@ -215,7 +203,7 @@ $(document).on('click', '.btnHapus', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                getDataPegawai(Tahun);
+                                getData(Tahun);
                             }
                         })
                     } else {
@@ -227,7 +215,7 @@ $(document).on('click', '.btnHapus', function () {
                             timer: 1000
                         }).then((result) => {
                             if (result.dismiss === Swal.DismissReason.timer) {
-                                getDataPegawai(Tahun);
+                                getData(Tahun);
                             }
                         })
                     }

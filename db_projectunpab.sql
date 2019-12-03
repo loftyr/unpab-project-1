@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Nov 2019 pada 12.00
--- Versi server: 10.1.31-MariaDB
--- Versi PHP: 7.0.29
+-- Waktu pembuatan: 03 Des 2019 pada 05.55
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -115,6 +115,15 @@ CREATE TABLE `ref_programstudi` (
 --
 
 INSERT INTO `ref_programstudi` (`Tahun`, `Kd_Fakultas`, `Kd_Prodi`, `Nama_Prodi`, `Jenjang`) VALUES
+('2019', '1', '1', 'Ilmu Komputer atau Informatika', 'S-1'),
+('2019', '1', '2', 'Kecerdasan Buatan', 'S-1'),
+('2019', '1', '3', 'Rekayasa Perangkat Lunak', 'S-1'),
+('2019', '1', '4', 'Rekayasa Sistem Komputer', 'S-1'),
+('2019', '1', '5', 'Sistem Informasi', 'S-1'),
+('2019', '1', '6', 'Sistem dan Teknologi Informasi', 'S-1'),
+('2019', '1', '7', 'Teknologi Informasi', 'S-1'),
+('2019', '3', '1', 'Ilmu Hukum', 'S-1'),
+('2019', '3', '2', 'Magister Hukum', 'S-2'),
 ('2019', '1', '1', 'Ilmu Komputer atau Informatika', 'S-1'),
 ('2019', '1', '2', 'Kecerdasan Buatan', 'S-1'),
 ('2019', '1', '3', 'Rekayasa Perangkat Lunak', 'S-1'),
@@ -520,15 +529,21 @@ CREATE TABLE `ta_pedoman` (
   `Nama_Pedoman` varchar(255) NOT NULL,
   `No_Surat` varchar(255) NOT NULL,
   `Dokumen` varchar(255) DEFAULT NULL,
-  `Source` varchar(100) NOT NULL
+  `Source` varchar(100) NOT NULL COMMENT '1 = Penelitian, 2 = Pengabdian',
+  `Tgl_Input` datetime DEFAULT NULL,
+  `User_Input` varchar(100) DEFAULT NULL,
+  `Tgl_Update` datetime DEFAULT NULL,
+  `User_Update` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `ta_pedoman`
 --
 
-INSERT INTO `ta_pedoman` (`Id`, `Tahun`, `Nama_Pedoman`, `No_Surat`, `Dokumen`, `Source`) VALUES
-(1, '2019', 'Standar Mutu Penelitian', '001/LPPM/2019', 'lorem-ipsum1.pdf', '');
+INSERT INTO `ta_pedoman` (`Id`, `Tahun`, `Nama_Pedoman`, `No_Surat`, `Dokumen`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
+(1, '2019', 'Standar Mutu Penelitian', '001/LPPM/2019', 'lorem-ipsum1.pdf', '2', NULL, NULL, NULL, NULL),
+(3, '2019', 'Pedoman Penelitian 1', '001/Pedoman/Penelitian-2019', 'lorem-ipsum.pdf', '1', '2019-12-03 05:16:05', '4', '2019-12-03 05:33:38', '4'),
+(4, '2019', 'Pedoman Pengabdian 1', '002/Pedoman-pengabdian/2019', 'lorem-ipsum_-_Copy.pdf', '2', '2019-12-03 05:45:31', '4', '2019-12-03 05:45:39', '4');
 
 -- --------------------------------------------------------
 
@@ -1010,7 +1025,7 @@ ALTER TABLE `ta_kerjasama`
 -- AUTO_INCREMENT untuk tabel `ta_pedoman`
 --
 ALTER TABLE `ta_pedoman`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_pendukung_pengabdian`

@@ -130,7 +130,7 @@ $(document).ready(function () {
 // Create and Update Penelitian Asing 
 $(document).on('click', '#btnAdd-1', function () {
     method_1 = 'tambah';
-    judulModal_1.html("Tambah Data Penelitian");
+    judulModal_1.html("Tambah Data Penelitian Asing");
     btnSave_1.html("Save Data");
     modal_1.modal({
         backdrop: 'static',
@@ -164,7 +164,7 @@ $(document).on('click', '#btnAdd-3', function () {
 
 $(document).on('click', '.btnEdit-1', function () {
     method_1 = 'edit';
-    judulModal_1.html("Edit Dosen");
+    judulModal_1.html("Edit Penelitian Asing");
     btnSave_1.html("Save Change");
     modal_1.modal({
         backdrop: 'static',

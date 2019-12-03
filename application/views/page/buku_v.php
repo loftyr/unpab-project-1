@@ -1,12 +1,14 @@
 <div class="container back-ground">
     <!--  -->
-    <div class="pt-3 pl-3">
-        <label for="Tahun" class="">Pilih Tahun</label>
-        <select class="form-control col-sm-3 select-2" name="" id="Tahun">
-            <?php foreach ($Tahun as $key) : ?>
-                <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
-            <?php endforeach; ?>
-        </select>
+    <div class="pt-2 col-sm-12">
+        <label for="Tahun" class="col">Pilih Tahun</label>
+        <div class="col-sm-12">
+            <select class="form-control col-sm-4 select-2" name="" id="Tahun">
+                <?php foreach ($Tahun as $key) : ?>
+                    <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
     </div>
     <!--  -->
 

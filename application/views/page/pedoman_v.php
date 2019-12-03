@@ -10,19 +10,21 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-3 pl-3">
-        <label for="Tahun" class="">Pilih Tahun</label>
-        <select class="form-control col-sm-3 select-2" name="" id="Tahun">
-            <?php foreach ($Tahun as $key) : ?>
-                <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
-            <?php endforeach; ?>
-        </select>
+    <div class="pt-2 col-sm-12">
+        <label for="Tahun" class="col">Pilih Tahun</label>
+        <div class="col-sm-12">
+            <select class="form-control col-sm-4 select-2" name="" id="Tahun">
+                <?php foreach ($Tahun as $key) : ?>
+                    <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
     </div>
     <!--  -->
 
     <div class="row pt-2 justify-content-end">
         <div class="col-sm-1">
-            <button class="btn btn-info" id="btnAdd-1">+</button>
+            <button class="btn btn-info" id="btnAdd-1"><i class="fas fa-plus"></i></button>
         </div>
     </div>
 
@@ -66,10 +68,10 @@
                 <form action="" id="form-1" link="<?= base_url(); ?>" enctype="multipart/form-data">
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
+                        <label class="col-sm-2 col-form-label" for="Tahun-1">Tahun</label>
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="Tahun" name="Tahun" value="<?= date('Y'); ?>">
+                            <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
                     </div>
 
