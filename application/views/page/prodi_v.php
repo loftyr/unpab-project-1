@@ -24,7 +24,9 @@
 
     <!--  -->
     <div class="tabel p-4">
-        <table class="table table-bordered table-hover tabel-1">
+        <button class="btn btn-primary btn-sm mb-2" id="export-excel">Export Excel</button>
+
+        <table class="table table-bordered table-hover tabel-1" id="table-export">
             <thead>
                 <tr>
                     <th class="text-center" style="max-width: 250px;" rowspan="2">Program Studi</th>

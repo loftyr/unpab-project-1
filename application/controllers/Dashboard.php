@@ -63,7 +63,7 @@ class Dashboard extends CI_Controller
             $data = [
                 'Level'         => htmlspecialchars($this->input->post('Level')),
                 'username'      => htmlspecialchars($this->input->post('Username')),
-                'password'      => password_hash($this->input->post('Nama_Pegawai'), PASSWORD_DEFAULT),
+                'password'      => password_hash($this->input->post('Password'), PASSWORD_DEFAULT),
                 'email'         => htmlspecialchars($this->input->post('Email')),
                 'Status'        => htmlspecialchars($this->input->post('Status')),
                 'Date_Create'   => date('Y-m-d H:i:s'),

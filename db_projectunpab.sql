@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Des 2019 pada 05.55
+-- Waktu pembuatan: 04 Des 2019 pada 05.52
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -69,8 +69,7 @@ CREATE TABLE `ap_user` (
 
 INSERT INTO `ap_user` (`id_user`, `Level`, `username`, `password`, `email`, `Status`, `Date_Create`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
 (4, 'sa', 'sa', '$2y$10$qzT0g7.gi4PflSm.SWKO7O1yqBWIuUI79kNPxaDGXNFQmUdjl1KcO', 'admin@gmail.com', '1', '2019-10-30 05:44:51', NULL, NULL, NULL, NULL),
-(5, 'Admin', 'admin', '$2y$10$p4bdFunX8bfjpNAZFEQatOOuFZDbsXbUWmRppDynRUaXgLTy3CXyS', 'internal@gmail.com', '1', '2019-11-26 16:52:52', '2019-11-26 16:52:52', '4', NULL, NULL),
-(6, 'Admin', 'lofty', '$2y$10$sHxL3DmkffKo1Is6fyVG.OCSYATCR.NPCHfbprxtKugZFbpVAh2Oi', 'lofty.raz@gmail.com', '1', '2019-11-26 16:55:44', '2019-11-26 16:55:44', '4', NULL, NULL);
+(8, 'User', 'lofty', '$2y$10$8a3yZ5yPtmkDpAB3zxj2uO33Lc7aSUd7vzG0Kzuw0DmT59LilB0pC', 'lighting.pcs@gmail.com', '1', '2019-12-04 03:50:30', '2019-12-04 03:50:30', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -103,6 +102,7 @@ INSERT INTO `ref_fakultas` (`Tahun`, `Kd_Fakultas`, `Nama_Fakultas`) VALUES
 --
 
 CREATE TABLE `ref_programstudi` (
+  `Id` int(11) NOT NULL,
   `Tahun` varchar(50) NOT NULL,
   `Kd_Fakultas` varchar(50) NOT NULL,
   `Kd_Prodi` varchar(50) NOT NULL,
@@ -114,25 +114,16 @@ CREATE TABLE `ref_programstudi` (
 -- Dumping data untuk tabel `ref_programstudi`
 --
 
-INSERT INTO `ref_programstudi` (`Tahun`, `Kd_Fakultas`, `Kd_Prodi`, `Nama_Prodi`, `Jenjang`) VALUES
-('2019', '1', '1', 'Ilmu Komputer atau Informatika', 'S-1'),
-('2019', '1', '2', 'Kecerdasan Buatan', 'S-1'),
-('2019', '1', '3', 'Rekayasa Perangkat Lunak', 'S-1'),
-('2019', '1', '4', 'Rekayasa Sistem Komputer', 'S-1'),
-('2019', '1', '5', 'Sistem Informasi', 'S-1'),
-('2019', '1', '6', 'Sistem dan Teknologi Informasi', 'S-1'),
-('2019', '1', '7', 'Teknologi Informasi', 'S-1'),
-('2019', '3', '1', 'Ilmu Hukum', 'S-1'),
-('2019', '3', '2', 'Magister Hukum', 'S-2'),
-('2019', '1', '1', 'Ilmu Komputer atau Informatika', 'S-1'),
-('2019', '1', '2', 'Kecerdasan Buatan', 'S-1'),
-('2019', '1', '3', 'Rekayasa Perangkat Lunak', 'S-1'),
-('2019', '1', '4', 'Rekayasa Sistem Komputer', 'S-1'),
-('2019', '1', '5', 'Sistem Informasi', 'S-1'),
-('2019', '1', '6', 'Sistem dan Teknologi Informasi', 'S-1'),
-('2019', '1', '7', 'Teknologi Informasi', 'S-1'),
-('2019', '3', '1', 'Ilmu Hukum', 'S-1'),
-('2019', '3', '2', 'Magister Hukum', 'S-2');
+INSERT INTO `ref_programstudi` (`Id`, `Tahun`, `Kd_Fakultas`, `Kd_Prodi`, `Nama_Prodi`, `Jenjang`) VALUES
+(1, '2019', '1', '1', 'Ilmu Komputer atau Informatika', 'S-1'),
+(2, '2019', '1', '2', 'Kecerdasan Buatan', 'S-1'),
+(3, '2019', '1', '3', 'Rekayasa Perangkat Lunak', 'S-1'),
+(4, '2019', '1', '4', 'Rekayasa Sistem Komputer', 'S-1'),
+(5, '2019', '1', '5', 'Sistem Informasi', 'S-1'),
+(6, '2019', '1', '6', 'Sistem dan Teknologi Informasi', 'S-1'),
+(7, '2019', '1', '7', 'Teknologi Informasi', 'S-1'),
+(8, '2019', '3', '1', 'Ilmu Hukum', 'S-1'),
+(9, '2019', '3', '2', 'Magister Hukum', 'S-2');
 
 -- --------------------------------------------------------
 
@@ -825,6 +816,12 @@ ALTER TABLE `ref_fakultas`
   ADD UNIQUE KEY `Kd_Fakultas` (`Kd_Fakultas`);
 
 --
+-- Indeks untuk tabel `ref_programstudi`
+--
+ALTER TABLE `ref_programstudi`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indeks untuk tabel `ref_tahun`
 --
 ALTER TABLE `ref_tahun`
@@ -953,7 +950,13 @@ ALTER TABLE `ta_tim_pendukung`
 -- AUTO_INCREMENT untuk tabel `ap_user`
 --
 ALTER TABLE `ap_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `ref_programstudi`
+--
+ALTER TABLE `ref_programstudi`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `ref_tahun`

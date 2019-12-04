@@ -3,6 +3,12 @@ $('#Tahun').on('change', function () {
     getData(Tahun);
 });
 
+$(document).on('click', '#export-excel', function () {
+    var htmltable = document.getElementById('table-export');
+    var html = htmltable.outerHTML;
+    window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+});
+
 $(document).ready(function () {
     $('.tabel-1').DataTable();
 
@@ -23,13 +29,7 @@ function getData($tahun) {
 
             $('#body-tabel-1').html(result);
             $('.tabel-1').DataTable({
-                "scrollX": true,
-                dom: 'Bfrtip',
-                buttons: [
-                    { extend: 'print', className: 'btn btn-primary btn-sm', orientation: 'landscape', pageSize: 'LEGAL' },
-                    // { extend: 'pdf', className: 'btn btn-primary btn-sm', orientation: 'landscape', pageSize: 'LEGAL' },
-                    { extend: 'excel', className: 'btn btn-primary btn-sm', orientation: 'landscape', pageSize: 'LEGAL' }
-                ]
+                "scrollX": true
             });
         }
     });
