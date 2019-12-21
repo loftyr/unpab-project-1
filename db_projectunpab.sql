@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Des 2019 pada 05.52
+-- Waktu pembuatan: 21 Des 2019 pada 04.11
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
@@ -770,7 +770,34 @@ INSERT INTO `ta_staff` (`id`, `Tahun`, `Nidn`, `Nip`, `Nama`, `Jk`, `Jabatan`, `
 (31, 2019, '311042076', NULL, 'Erma Dani Lubis', 'Perempuan', NULL, NULL, 'S-1', '3', '1', 2, '2019-11-21 09:24:53', '4', NULL, NULL),
 (33, 2019, '311042077', NULL, 'Tirza Ramadani', 'Perempuan', NULL, NULL, 'S-1', '3', '1', 2, '2019-11-21 09:45:36', '4', NULL, NULL),
 (34, 2019, '311042078', NULL, 'Rama Aditia', 'Laki-Laki', NULL, NULL, 'S-2', '1', '7', 2, '2019-11-21 09:46:03', '4', NULL, NULL),
-(35, 2019, '311042079', NULL, 'Henni Ramadani', 'Perempuan', NULL, NULL, 'S-2', '1', '5', 2, '2019-11-21 09:46:33', '4', NULL, NULL);
+(35, 2019, '311042079', NULL, 'Henni Ramadani', 'Perempuan', NULL, NULL, 'S-2', '1', '5', 2, '2019-11-21 09:46:33', '4', NULL, NULL),
+(36, 2019, '3112019001', NULL, 'Abraham', 'Laki-Laki', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:30:26', '4', NULL, NULL),
+(37, 2019, '3112019002', NULL, 'Alexander', 'Laki-Laki', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:30:50', '4', NULL, NULL),
+(38, 2019, '3112019003', NULL, 'Adrian', 'Laki-Laki', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:31:12', '4', NULL, NULL),
+(39, 2019, '3112019004', NULL, 'Affandi', 'Laki-Laki', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:31:56', '4', NULL, NULL),
+(40, 2019, '3112019005', NULL, 'Bambang', 'Laki-Laki', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:32:33', '4', NULL, NULL),
+(41, 2019, '3112019006', NULL, 'Lisa', 'Perempuan', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:33:50', '4', NULL, NULL),
+(42, 2019, '3112019007', NULL, 'Fatimah', 'Perempuan', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:34:18', '4', NULL, NULL),
+(43, 2019, '3112019008', NULL, 'Elyana', 'Perempuan', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:35:54', '4', NULL, NULL),
+(44, 2019, '3112019009', NULL, 'Feby', 'Perempuan', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:36:32', '4', NULL, NULL),
+(45, 2019, '3112019010', NULL, 'Flavia', 'Perempuan', NULL, NULL, 'S-1', '1', '1', 2, '2019-12-09 02:37:06', '4', NULL, NULL),
+(46, 2019, '3112019011', NULL, 'Nova', 'Perempuan', NULL, NULL, 'S-1', '1', '2', 2, '2019-12-09 02:37:40', '4', NULL, NULL),
+(47, 2019, '3112019012', NULL, 'David', 'Laki-Laki', NULL, NULL, 'S-2', '1', '2', 2, '2019-12-09 02:38:28', '4', NULL, NULL),
+(48, 2019, '3112019013', NULL, 'Edwin', 'Laki-Laki', NULL, NULL, 'S-2', '1', '2', 2, '2019-12-09 02:39:38', '4', NULL, NULL),
+(49, 2019, '3112019014', NULL, 'Edward', 'Laki-Laki', NULL, NULL, 'S-2', '1', '2', 2, '2019-12-09 02:40:25', '4', NULL, NULL),
+(50, 2019, '3112019015', NULL, 'Kirana', 'Perempuan', NULL, NULL, 'S-1', '1', '4', 2, '2019-12-09 02:40:53', '4', NULL, NULL),
+(51, 2019, '3112019016', NULL, 'Yoshiro', 'Laki-Laki', NULL, NULL, 'S-2', '1', '7', 2, '2019-12-09 02:42:15', '4', NULL, NULL),
+(52, 2019, '3112019017', NULL, 'Rachael', 'Perempuan', NULL, NULL, 'S-2', '3', '2', 2, '2019-12-09 02:43:16', '4', NULL, NULL),
+(53, 2019, '3112019018', NULL, 'Tamika', 'Perempuan', NULL, NULL, 'S-2', '3', '1', 2, '2019-12-09 02:43:56', '4', NULL, NULL),
+(54, 2019, '3112019019', NULL, 'Sakura', 'Perempuan', NULL, NULL, 'S-2', '1', '6', 2, '2019-12-09 02:44:32', '4', NULL, NULL),
+(55, 2019, '3112019020', NULL, 'Tania', 'Perempuan', NULL, NULL, 'S-2', '1', '5', 2, '2019-12-09 02:45:13', '4', NULL, NULL),
+(56, 2019, '3112019021', NULL, 'Agnes', 'Perempuan', NULL, NULL, 'S-2', '1', '4', 2, '2019-12-09 02:45:54', '4', NULL, NULL),
+(57, 2019, '311201022', NULL, 'Ulfa', 'Perempuan', NULL, NULL, 'S-2', '1', '5', 2, '2019-12-09 02:46:17', '4', NULL, NULL),
+(58, 2019, '3112019023', NULL, 'Miya', 'Perempuan', NULL, NULL, 'S-2', '1', '3', 2, '2019-12-09 02:46:44', '4', NULL, NULL),
+(59, 2019, '3112019024', NULL, 'Neisya', 'Perempuan', NULL, NULL, 'S-2', '1', '6', 2, '2019-12-09 02:47:28', '4', NULL, NULL),
+(60, 2019, '3112019025', NULL, 'Naimah', 'Perempuan', NULL, NULL, 'S-2', '1', '2', 2, '2019-12-09 02:48:06', '4', NULL, NULL),
+(61, 2019, '3112019026', NULL, 'Halimah', 'Perempuan', NULL, NULL, 'S-1', '1', '2', 2, '2019-12-09 04:21:29', '4', NULL, NULL),
+(62, 2019, NULL, '2112019001', 'Fina', 'Perempuan', 'Staff', 'BPSI', 'S-1', NULL, NULL, 1, '2019-12-09 05:45:48', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1058,7 +1085,7 @@ ALTER TABLE `ta_penulis_jurnal`
 -- AUTO_INCREMENT untuk tabel `ta_staff`
 --
 ALTER TABLE `ta_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta_tim_pendukung`

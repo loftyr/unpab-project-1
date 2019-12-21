@@ -15,3 +15,11 @@
     box-shadow: 10px 9px 5px -6px rgba(0,0,0,0.54);
     border-radius: 30px;
 }
+
+.icon-card {
+    max-width: 70px;
+}
+
+img.icon-red {
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.9));
+}

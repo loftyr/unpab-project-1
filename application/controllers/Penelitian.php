@@ -80,6 +80,25 @@ class Penelitian extends CI_Controller
         echo json_encode($result);
     }
 
+    public function ceknik()
+    {
+        $nik   = $this->input->post('nik');
+
+        $data   = $this->penelitian_m->ceknik($nik);
+
+        if ($data == NULL) {
+            $result['status']   = FALSE;
+            $result['ket']      = "Data Tidak Ditemukan !!!";
+            $result['data']     = '';
+        } else {
+            $result['status']   = TRUE;
+            $result['ket']      = "";
+            $result['data']     = $data[0]->Nama;
+        }
+
+        echo json_encode($result);
+    }
+
     public function getDataRistekdikti($tahun)
     {
         $data   = $this->penelitian_m->getDataRistekdikti($tahun);

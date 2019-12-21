@@ -45,14 +45,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <!-- Header -->
     <div class="header-1">
-        <div class="img-left">
-            <img class="" src="<?= base_url('file/app/logo unpab.gif') ?>" alt="">
-        </div>
-        <div class="judul-header text-center">
-            <h3 class="">TRI DHARMA PERGURUAN TINGGI LEMBAGA PENELITIAN DAN PENGABDIAN MASYARAKAT UNIVERSITAS PEMBANGUNAN PANCA BUDI</h3>
-        </div>
-        <div class="img-right">
-            <img class="" src="<?= base_url('file/app/logo unpab 1.png') ?>" alt="">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="img-left">
+                    <img class="" src="<?= base_url('file/app/logo unpab.gif') ?>" alt="">
+                </div>
+                <div class="judul-header text-center">
+                    <h3 class="">TRI DHARMA PERGURUAN TINGGI</h3>
+                    <h3>LEMBAGA PENELITIAN DAN PENGABDIAN MASYARAKAT</h3>
+                    <h3>UNIVERSITAS PEMBANGUNAN PANCA BUDI</h3>
+                </div>
+                <div class="img-right">
+                    <img class="" src="<?= base_url('file/app/logo unpab 1.png') ?>" alt="">
+                </div>
+            </div>
         </div>
     </div>
     <!--  -->

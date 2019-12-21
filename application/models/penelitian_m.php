@@ -121,6 +121,14 @@ class penelitian_m extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function ceknik($nik)
+    {
+        $this->db->from($this->staff);
+        $this->db->where('Nip', $nik);
+        $this->db->where('Role', '1'); //Pegawai
+        return $this->db->get()->result();
+    }
+
     public function getMaxid()
     {
         $this->db->select_max('No_Urut');

@@ -4,6 +4,34 @@ const judulModal_1 = $('#title-modal-1');
 const btnSave_1 = $('#btnSave');
 const clickSave_1 = document.querySelector('#btnSave');
 
+$('#Nip').on('focusout', function () {
+    cekNik = document.getElementById("Nip").value;
+    if (cekNik == "" || cekNik == null) {
+        $('#result-cek').text('Harap isi form ini !!!');
+        clickSave_1.disabled = true;
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../penelitian/ceknik",
+            data: { nik: cekNik },
+            dataType: "JSON",
+            success: function (result) {
+                if (result.status == true) {
+                    clickSave_1.disabled = true;
+                    $('#result-cek').text('NIK Telah Digunakan pada Nama ' + result.data);
+                } else {
+                    clickSave_1.disabled = false;
+                    $('#result-cek').text(null);
+                }
+            },
+            error: function (xhr, stat, err) {
+                console.log('Tidak Diketahui');
+            }
+        });
+    }
+
+});
+
 $('#Tahun').on('change', function () {
     var Tahun = document.getElementById("Tahun").value;
     getDataPegawai(Tahun);
@@ -17,6 +45,8 @@ $(document).ready(function () {
 
     $('#modal-1').on('hidden.bs.modal', function (e) {
         $(this).find('#form').trigger('reset');
+        $('#result-cek').text('');
+        clickSave_1.disabled = false;
     });
 });
 

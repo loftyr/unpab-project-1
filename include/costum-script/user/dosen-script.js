@@ -12,24 +12,29 @@ $('#Tahun').on('change', function () {
 $('#Nidn').on('focusout', function () {
     cekNidn = document.getElementById("Nidn").value;
 
-    $.ajax({
-        type: "POST",
-        url: "../penelitian/ceknidn",
-        data: { nidn: cekNidn },
-        dataType: "JSON",
-        success: function (result) {
-            if (result.status == true) {
-                clickSave_1.disabled = true;
-                $('#result-cek').text('Nidn Telah Digunakan pada Nama ' + result.data);
-            } else {
-                clickSave_1.disabled = false;
-                $('#result-cek').text(null);
+    if (cekNidn == "" || cekNidn == null) {
+        $('#result-cek').text('Harap isi form ini !!!');
+        clickSave_1.disabled = true;
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../penelitian/ceknidn",
+            data: { nidn: cekNidn },
+            dataType: "JSON",
+            success: function (result) {
+                if (result.status == true) {
+                    clickSave_1.disabled = true;
+                    $('#result-cek').text('Nidn Telah Digunakan pada Nama ' + result.data);
+                } else {
+                    clickSave_1.disabled = false;
+                    $('#result-cek').text(null);
+                }
+            },
+            error: function (xhr, stat, err) {
+                console.log('Tidak Diketahui');
             }
-        },
-        error: function (xhr, stat, err) {
-            console.log('Tidak Diketahui');
-        }
-    });
+        });
+    }
 });
 
 $(document).ready(function () {
@@ -40,6 +45,8 @@ $(document).ready(function () {
 
     $('#modal-1').on('hidden.bs.modal', function (e) {
         $(this).find('#form').trigger('reset');
+        $('#result-cek').text('');
+        clickSave_1.disabled = false;
     });
 });
 

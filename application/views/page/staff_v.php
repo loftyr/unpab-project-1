@@ -106,6 +106,7 @@
                         <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="Nip" name="Nip" onkeypress="return Angka(event)">
+                            <small class="form-text text-muted" id="result-cek"></small>
                         </div>
                     </div>
 
