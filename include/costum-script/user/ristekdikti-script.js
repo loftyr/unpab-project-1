@@ -37,13 +37,16 @@ function formatRupiah(angka, prefix) {
     return prefix == undefined ? rupiah : prefix + rupiah;
 }
 
-$(document).on('keypress', '#Nidn', function (e) {
-    if (e.keyCode === 13) {
-        var id = $('#Nidn').val();
-        if (id == '') {
-            $('#result-cek').text(null);
-            $('#Nama-1').val('');
-        }
+$(document).on('focusout', '#Nidn', function (e) {
+    // if (e.keyCode === 13) {
+
+    // }
+
+    var id = $('#Nidn').val();
+    if (id == '') {
+        $('#result-cek').text('Mohon Isi NIDN Pegawai/Dosen');
+        $('#Nama-1').val('');
+    } else {
         $.ajax({
             type: "POST",
             url: "ceknidn",
@@ -63,6 +66,7 @@ $(document).on('keypress', '#Nidn', function (e) {
             }
         });
     }
+
 });
 
 $(document).on('click', '#view-anggota', function () {

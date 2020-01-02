@@ -10,9 +10,9 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="Tahun">
         <label for="Tahun" class="col">Pilih Tahun</label>
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">
                 <?php foreach ($Tahun as $key) : ?>
                     <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
@@ -23,7 +23,7 @@
     <!--  -->
 
     <!--  -->
-    <div class="m-3">
+    <div class="field">
         <!--  -->
         <ul class="nav nav-tabs pl-2 pr-2" id="tab-1" role="tablist">
             <li class="nav-item">
@@ -46,8 +46,8 @@
                     </div>
                 </div>
                 <!--  -->
-                <div class="tabel p-4">
-                    <table class="table table-hover tabel-1">
+                <div class="tabel pt-2">
+                    <table class="table table-hover tabel-1 table-responsive-sm">
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 50px;">No</th>
@@ -59,7 +59,7 @@
                                 <th class="">Halaman</th>
                                 <th class="">URL</th>
                                 <th class="">Berkas Jurnal </th>
-                                <th class="text-center" style="max-width: 80px;">Aksi</th>
+                                <th class="text-center" style="min-width: 130px;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="body-tabel-1">
@@ -80,7 +80,7 @@
                 </div>
                 <!--  -->
                 <div class="tabel pt-2">
-                    <table class="table table-hover tabel-2">
+                    <table class="table table-hover tabel-2 table-responsive-sm">
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 10%;">No</th>
@@ -128,7 +128,6 @@
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
@@ -136,7 +135,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Judul">Judul</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="Judul" id="Judul" rows="2"></textarea>
                         </div>
@@ -144,7 +142,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Jurnal">Jurnal</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="Jurnal" name="Jurnal">
                         </div>
@@ -152,7 +149,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="ISSN">ISSN</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="ISSN" name="ISSN">
                         </div>
@@ -160,7 +156,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Volume">Volume</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="Volume" name="Volume">
                         </div>
@@ -168,7 +163,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="No">No</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="No" name="No">
                         </div>
@@ -176,7 +170,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Halaman">Halaman</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="Halaman" name="Halaman">
                         </div>
@@ -184,7 +177,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Url">URL</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="Url" name="Url">
                         </div>
@@ -192,7 +184,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Publikasi">Publikasi</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <select name="Publikasi" id="Publikasi" class="form-control">
                                 <option value="">Pilih</option>
@@ -205,7 +196,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="File">File</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="file" class="form-control" id="File" name="File">
                             <small id="info" class="form-text text-muted">Max File 1 MB</small>

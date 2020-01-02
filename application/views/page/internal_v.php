@@ -10,9 +10,9 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="Tahun">
         <label for="Tahun" class="col">Pilih Tahun</label>
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">
                 <?php foreach ($Tahun as $key) : ?>
                     <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
@@ -23,7 +23,7 @@
     <!--  -->
 
     <!--  -->
-    <div class="m-3">
+    <div class="field">
         <!--  -->
         <ul class="nav nav-tabs pl-2 pr-2" id="tab-1" role="tablist">
             <li class="nav-item">
@@ -50,15 +50,15 @@
                 </div>
                 <!--  -->
                 <div class="tabel pt-2">
-                    <table class="table table-hover tabel-1">
+                    <table class="table table-hover tabel-1 table-responsive">
                         <thead>
                             <tr>
                                 <th class="text-center" style="width: 3%;">No</th>
-                                <th class="text-center" style="">Judul Penelitian</th>
-                                <th class="text-center" style="">Program Studi</th>
+                                <th class="text-center" style="min-width: 150px">Judul Penelitian</th>
+                                <th class="text-center" style="min-width: 100px">Program Studi</th>
                                 <th class="text-center" style="">Dana</th>
                                 <th class="text-center" style="max-width: 80px;">Dokumen</th>
-                                <th class="text-center" style="max-width: 150px;">Aksi</th>
+                                <th class="text-center" style="min-width: 130px;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="body-tabel-1">
@@ -79,7 +79,7 @@
                 </div>
                 <!--  -->
                 <div class="tabel pt-2">
-                    <table class="table table-hover tabel-2">
+                    <table class="table table-hover tabel-2 table-responsive">
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 10%;">No</th>
@@ -107,7 +107,7 @@
                 </div>
                 <!--  -->
                 <div class="tabel pt-2">
-                    <table class="table table-hover tabel-3">
+                    <table class="table table-hover tabel-3 table-responsive">
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 10%;">No</th>
@@ -155,7 +155,6 @@
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun-1">Tahun</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
@@ -163,7 +162,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Judul">Judul</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="Judul" name="Judul">
                         </div>
@@ -171,7 +169,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Skema">Skema</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <select name="Skema" id="Skema" class="form-control">
                                 <option value="">Pilih</option>
@@ -184,7 +181,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Prodi">Bidang Keilmuan</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-6">
                             <select name="Prodi" id="Prodi" class="form-control">
                                 <option value="">Pilih</option>
@@ -197,7 +193,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Sumber">Sumber Dana</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <select name="Sumber" id="Sumber" class="form-control">
                                 <option value="Pemerintah">Pemerintah</option>
@@ -212,7 +207,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="JumlahDana">Jumlah Dana</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9 input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">Rp.</span>
@@ -223,7 +217,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="File">File</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="file" class="form-control" id="File" name="File">
                             <small id="info" class="form-text text-muted">Max File 1 MB</small>
@@ -268,7 +261,6 @@
                     <input type="hidden" id="Kd-Penelitian-1" name="Kd-Penelitian-1">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="Nidn" name="Nidn">
                             <small class="form-text text-muted">*Press Enter For Search NIDN</small>
@@ -278,7 +270,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nama-1">Nama</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="Nama-1" name="Nama-1" readonly="">
                         </div>
@@ -286,7 +277,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Jabatan-1">Jabatan</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <select name="Jabatan-1" id="Jabatan-1" class="form-control">
                                 <option value="Ketua">Ketua</option>
@@ -323,7 +313,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nama-2">Nama</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="Nama-2" name="Nama-2">
                         </div>
@@ -331,7 +320,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Jabatan-2">Jabatan</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <select name="Jabatan-2" id="Jabatan-2" class="form-control">
                                 <option value="Staff Lppm">Staff LPPM</option>

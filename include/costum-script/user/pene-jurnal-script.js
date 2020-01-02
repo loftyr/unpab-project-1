@@ -76,7 +76,7 @@ function draw_data(result) {
         }
         output += '<td class="text-center">';
         output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus-1 mr-2"  data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fas fa-trash"></i></button>';
-        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit-1"  data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-edit"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit-1 mr-2"  data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-edit"></i></button>';
         output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnLihat"  data-toggle="tooltip" data-placement="top" title="Lihat"><i class="fas fa-book"></i></button>';
         output += '</td>';
         output += '</tr>';

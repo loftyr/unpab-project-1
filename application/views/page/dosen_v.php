@@ -10,9 +10,9 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="Tahun">
         <label for="Tahun" class="col">Pilih Tahun</label>
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">
                 <?php foreach ($Tahun as $key) : ?>
                     <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
@@ -23,7 +23,7 @@
     <!--  -->
 
     <!--  -->
-    <div class="ml-3 mr-3 pb-2 pt-2">
+    <div class="field">
         <!--  -->
         <ul class="nav nav-tabs pl-2 pr-2" id="tab-1" role="tablist">
             <li class="nav-item">
@@ -42,17 +42,17 @@
                     </div>
                 </div>
                 <!--  -->
-                <div class="tabel pt-2 table-responsive">
-                    <table class="table table-hover tabel-1">
+                <div class="tabel pt-2">
+                    <table class="table table-hover tabel-1 table-responsive">
                         <thead>
                             <tr>
                                 <th class="text-center" style="max-width: 30px;">No</th>
-                                <th class="text-center" style="width: 15%;">Nidn Dosen</th>
-                                <th class="text-center" style="max-width: 150px;">Nama</th>
+                                <th class="text-center" style="">Nidn Dosen</th>
+                                <th class="text-center" style="min-width: 150px;">Nama</th>
                                 <th class="text-center" style="max-width: 75px;">Jenis Kelamin</th>
-                                <th class="text-center" style="width: 20%;">Prodi</th>
+                                <th class="text-center" style="min-width: 200px;">Prodi</th>
                                 <th class="text-center" style="max-width: 80px;">Jenjang Pendidikan</th>
-                                <th class="text-center" style="width: 10%;">Aksi</th>
+                                <th class="text-center" style="min-width: 80px">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="body-tabel-1">
@@ -88,7 +88,6 @@
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun-1">Tahun</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
@@ -96,7 +95,6 @@
 
                     <div class=" form-group row">
                         <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="Nidn" name="Nidn" onkeypress="return Angka(event)">
                             <small class="form-text text-muted" id="result-cek"></small>
@@ -105,7 +103,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nama_Dosen">Nama Dosen</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="Nama_Dosen" name="Nama_Dosen">
                         </div>
@@ -113,7 +110,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Prodi">Prodi</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-6">
                             <select name="Prodi" id="Prodi" class="form-control">
                                 <option value="">Pilih</option>
@@ -126,7 +122,6 @@
 
                     <label class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Jk">Jenis Kelamin</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <select name="Jk" id="Jk" class="form-control">
                                 <option value="">Pilih</option>
@@ -138,7 +133,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Pendidikan">Jenjang Pendidikan</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <select name="Pendidikan" id="Pendidikan" class="form-control">
                                 <option value="">Pilih</option>

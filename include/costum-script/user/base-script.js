@@ -1,9 +1,16 @@
 $(document).ready(function () {
+    var wnd = $(window);
+
     $('.menu-icon').click(function () {
         $('.menu-utama').toggleClass('active');
         $('.menu-icon').toggleClass('active');
+        $('.menu-utama').toggleClass('disactive');
     })
-    $(".select-2").select2();
+    $(".select-2").select2({
+        width: '100%',
+        theme: "bootstrap"
+    });
+
 })
 
 function Angka(evt) {

@@ -16,7 +16,7 @@
                 <H4>PENELITIAN, PENGABDIAN, JURNAL, PROSIDING, BUKU DAN HA KEKAYAAN INTELEKTUAL SERTA KARYA ILMIYAH LAINNYA</H4>
             </div>
 
-            <div class="row">
+            <div class="row box-4">
                 <div class="img">
                     <img src="<?= base_url('file/app/logo unpab.gif') ?>" alt="">
                 </div>
@@ -27,7 +27,7 @@
                     <button class="btn btninfo btnPressMe">Press Me For Login >>></button>
                 </div>
             </div>
-            <div class="row">
+            <div class="box-5">
                 <h4>KINERJA DOSEN TETAP UNIVERSITAS PEMBANGUNAN PANCA BUDI</h4>
             </div>
         </div>

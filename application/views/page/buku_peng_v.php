@@ -10,9 +10,9 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="Tahun">
         <label for="Tahun" class="col">Pilih Tahun</label>
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">
                 <?php foreach ($Tahun as $key) : ?>
                     <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
@@ -23,7 +23,7 @@
     <!--  -->
 
     <!--  -->
-    <div class="m-3">
+    <div class="field">
         <!--  -->
         <ul class="nav nav-tabs pl-2 pr-2" id="tab-1" role="tablist">
             <li class="nav-item">
@@ -40,14 +40,14 @@
 
             <!--  -->
             <div class="tab-pane fade show active" id="data-tab-1">
-                <div class="row pt-2">
+                <div class="row pt-2 pb-2">
                     <div class="col-sm-1">
                         <button class="btn btn-info btn-sm" id="btnAdd-1">Tambah Buku Ajar / Teks</button>
                     </div>
                 </div>
                 <!--  -->
-                <div class="tabel p-4">
-                    <table class="table table-hover tabel-1">
+                <div class="tabel">
+                    <table class="table table-hover tabel-1 table-responsive">
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 50px;">No</th>
@@ -58,7 +58,7 @@
                                 <th class="text-center">Jumlah Halaman</th>
                                 <th class="text-center">Penerbit</th>
                                 <th class="text-center">Berkas Jurnal </th>
-                                <th class="text-center" style="max-width: 80px;">Aksi</th>
+                                <th class="text-center" style="min-width: 100px;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="body-tabel-1">
@@ -72,21 +72,21 @@
 
             <!--  -->
             <div class="tab-pane fade" id="data-tab-2">
-                <div class="row pt-2">
+                <div class="row pt-2 pb-2">
                     <div class="col-sm-1">
                         <button class="btn btn-info btn-sm" id="btnAdd-2" disabled="" Kd_Jurnal="">Tambah Penulis</button>
                     </div>
                 </div>
                 <!--  -->
                 <div class="tabel pt-2">
-                    <table class="table table-hover tabel-2">
+                    <table class="table table-hover tabel-2 table-responsive">
                         <thead>
                             <tr>
                                 <th class="col text-center" style="width: 10%;">No</th>
                                 <th class="text-center" style="width: 15%;">Id Buku</th>
                                 <th class="text-center" style="width: 20%;">Nama Penulis</th>
                                 <th class="text-center" style="width: 20%;">Penulis Ke.</th>
-                                <th class="text-center" style="width: 10%;">Aksi</th>
+                                <th class="text-center" style="min-width: 80px;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody id="body-tabel-2">
@@ -127,7 +127,6 @@
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun">Tahun</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
@@ -135,7 +134,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Judul">Judul</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="Judul" id="Judul" rows="2"></textarea>
                         </div>
@@ -143,7 +141,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Isbn">ISBN</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="Isbn" name="Isbn">
                         </div>
@@ -151,7 +148,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Penerbit">Penerbit</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="Penerbit" name="Penerbit">
                         </div>
@@ -159,7 +155,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Jml_Hal">Jumlah Halaman</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="Jml_Hal" name="Jml_Hal">
                         </div>
@@ -167,7 +162,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nidn">NIDN</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="Nidn" name="Nidn">
                             <small id="info" class="form-text text-muted">*Press Enter For Search NIDN</small>
@@ -177,7 +171,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Pencipta">Pencipta</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="Pencipta" name="Pencipta" readonly>
                         </div>
@@ -185,7 +178,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="File">File</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="file" class="form-control" id="File" name="File">
                             <small id="info" class="form-text text-muted">Max File 1 MB</small>
@@ -230,7 +222,6 @@
                     <input type="hidden" id="id-2" name="id-2">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun-2">Tahun</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="Tahun-2" name="Tahun-2" value="<?= date('Y'); ?>">
                         </div>
@@ -238,7 +229,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Nama">Nama Penulis</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="Nama" name="Nama">
                         </div>
@@ -246,7 +236,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Urut">Penulis Ke.</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="Urut" name="Urut">
                         </div>

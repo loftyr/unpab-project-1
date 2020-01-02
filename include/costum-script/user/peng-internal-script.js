@@ -41,9 +41,37 @@ $(document).on('keypress', '#Nidn', function (e) {
     if (e.keyCode === 13) {
         var id = $('#Nidn').val();
         if (id == '') {
-            $('#result-cek').text(null);
+            $('#result-cek').text('Mohon Isi NIDN Pegawai');
             $('#Nama-1').val('');
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "ceknidn",
+                data: { nidn: id },
+                dataType: "JSON",
+                success: function (result) {
+                    if (result.status == true) {
+                        $('#result-cek').text(null);
+                        $('#Nama-1').val(result.data);
+                    } else {
+                        $('#result-cek').text(result.ket);
+                        $('#Nama-1').val('');
+                    }
+                },
+                error: function (xhr, stat, err) {
+                    console.log('Tidak Diketahui');
+                }
+            });
         }
+    }
+});
+
+$(document).on('focusout', '#Nidn', function (e) {
+    var id = $('#Nidn').val();
+    if (id == '') {
+        $('#result-cek').text('Mohon Isi NIDN Pegawai');
+        $('#Nama-1').val('');
+    } else {
         $.ajax({
             type: "POST",
             url: "ceknidn",

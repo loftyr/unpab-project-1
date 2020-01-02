@@ -10,9 +10,9 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="Tahun">
         <label for="Tahun" class="col">Pilih Tahun</label>
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">
                 <?php foreach ($Tahun as $key) : ?>
                     <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
@@ -23,8 +23,8 @@
     <!--  -->
 
     <!--  -->
-    <div class="tabel p-4">
-        <button class="btn btn-primary btn-sm mb-2" id="export-excel">Export Excel</button>
+    <div class="tabel pt-4 pb-4">
+        <button class="ml-2 btn btn-primary btn-sm mb-2" id="export-excel">Export Excel</button>
 
         <table class="table table-bordered table-hover tabel-1" id="table-export">
             <thead>

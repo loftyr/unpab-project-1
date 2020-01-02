@@ -59,9 +59,7 @@ $(document).on('click', '.btnLihat', function () {
 });
 
 $(document).ready(function () {
-    $('.tabel-1').DataTable({
-        "scrollX": true
-    });
+    $('.tabel-1').DataTable();
     $('.tabel-2').DataTable();
 
     $('.nav-link').on('click', function () {
@@ -328,9 +326,7 @@ function draw_data(result) {
 
         $('#body-tabel-1').append(output);
     }
-    $('.tabel-1').DataTable({
-        "scrollX": true
-    });
+    $('.tabel-1').DataTable();
 }
 
 function draw_data_2(result) {

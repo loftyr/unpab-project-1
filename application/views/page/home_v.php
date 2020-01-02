@@ -1,20 +1,22 @@
 <div class="container back-ground">
-    <!--  -->
-    <div class="pt-2 col-sm-12">
-        <label for="Tahun" class="col">Pilih Tahun</label>
-        <div class="col-sm-12">
-            <select class="form-control col-sm-4 select-2" name="" id="Tahun">
-                <?php foreach ($Tahun as $key) : ?>
-                    <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
-                <?php endforeach; ?>
-            </select>
+    <div class="row">
+        <!--  -->
+        <div class="col-sm-12 Tahun">
+            <label for="Tahun" class="col">Pilih Tahun</label>
+            <div class="col-sm-3">
+                <select class="form-control col-sm-4 select-2" name="" id="Tahun">
+                    <?php foreach ($Tahun as $key) : ?>
+                        <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
         </div>
+        <!--  -->
     </div>
-    <!--  -->
 
     <!--  -->
     <div class="row">
-        <div class="col-sm-4 pl-4 pt-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/multiple-users.png') ?>" alt="">
@@ -24,7 +26,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pt-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/multiple-users.png') ?>" alt="">
@@ -34,7 +36,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pr-4 pt-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/credit-cards-payment.png') ?>" alt="">
@@ -44,7 +46,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pl-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/credit-cards-payment.png') ?>" alt="">
@@ -54,7 +56,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/credit-cards-payment.png') ?>" alt="">
@@ -64,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pb-4 pr-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/credit-cards-payment.png') ?>" alt="">
@@ -74,7 +76,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pl-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/folder.png') ?>" alt="">
@@ -84,7 +86,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/writing.png') ?>" alt="">
@@ -94,7 +96,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pr-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/folder.png') ?>" alt="">
@@ -104,7 +106,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pl-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/newspaper.png') ?>" alt="">
@@ -114,7 +116,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/blog.png') ?>" alt="">
@@ -124,7 +126,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pr-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/open-book.png') ?>" alt="">
@@ -134,7 +136,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pl-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/copyright.png') ?>" alt="">
@@ -144,7 +146,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card animated fadeIn">
                 <div class="card-body">
                     <img class="icon-card icon-red" src="<?= base_url('file/app/icon/hand-shake.png') ?>" alt="">
@@ -158,7 +160,7 @@
 
     <!--  -->
     <div class="row pt-5">
-        <div class="col-sm-4 pb-4 pl-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div>Manajemen Penelitian</div>
@@ -167,7 +169,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pb-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div>Evaluasi Diri</div>
@@ -175,7 +177,7 @@
             </div>
         </div>
 
-        <div class="col-sm-4 pb-4 pr-4">
+        <div class="col-lg-4 col-md-6">
             <div class="card">
                 <div class="card-body">
                     <div>Manajemen Pengabdian Masyarakat</div>

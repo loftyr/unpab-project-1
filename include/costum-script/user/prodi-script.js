@@ -28,9 +28,7 @@ function getData($tahun) {
             $('#body-tabel-1').html(''); //Id Tabel Body
 
             $('#body-tabel-1').html(result);
-            $('.tabel-1').DataTable({
-                "scrollX": true
-            });
+            $('.tabel-1').DataTable();
         }
     });
 }

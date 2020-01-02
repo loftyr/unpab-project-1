@@ -7,7 +7,7 @@
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.11
 
-SET SQL_MODE = "";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_projectunpab`
 --
+
+DELIMITER $$
+--
+-- Prosedur
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_diriPeneDikti` (IN `Nidn` VARCHAR(100))  NO SQL
+select COUNT(B.Nidn) AS Jumlah from ta_penelitian A inner join 
+ta_anggota_penelitian B ON A.Kd_Penelitian = B.Kd_Penelitian inner JOIN
+ta_staff C on B.Nidn = C.Nidn
+where B.Jabatan = 'Ketua' and C.Role = 2 and B.Nidn = Nidn$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_test` (`var1` INT)  BEGIN   
+    DECLARE start  INT unsigned DEFAULT 1;  
+    DECLARE finish INT unsigned DEFAULT 10;
+
+    SELECT  var1, start, finish;
+
+    SELECT * FROM places WHERE place BETWEEN start AND finish; 
+END$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `ap_user`

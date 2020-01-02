@@ -10,7 +10,7 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="Tahun">
         <label for="Tahun" class="col">Pilih Tahun</label>
         <div class="col-sm-12">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">
@@ -23,8 +23,8 @@
     <!--  -->
 
     <!--  -->
-    <div class="tabel p-4">
-        <table class="table table-bordered table-hover tabel-1">
+    <div class="tabel pt-2">
+        <table class="table table-bordered table-hover tabel-1 table-responsive-sm">
             <thead>
                 <tr>
                     <th class="text-center" style="max-width: 250px;" rowspan="2">Nama Dosen</th>

@@ -23,6 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" href="<?= base_url('include/fontawesome/css/all.min.css') ?>">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="<?= base_url('include/select2/css/select2.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('include/select2/css/select2-bootstrap.css') ?>">
     <!-- Custom styles for this page -->
     <link rel="stylesheet" href="<?= base_url('include/datatables/dataTables.bootstrap4.min.css') ?>">
     <!-- Jquery UI -->
@@ -71,9 +72,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
     <!-- Menu -->
-    <div class="container">
+    <div class="container sticky">
         <div class="menu">
-            <ul class="menu-utama">
+            <ul class="menu-utama disactive">
                 <li><a href="<?= base_url('Home') ?>">Beranda</a></li>
                 <li>
                     <a href="#">Sumberdaya Penelitian dan Pengabdian</a>

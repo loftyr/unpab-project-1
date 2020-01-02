@@ -32,7 +32,7 @@ function draw_data(result) {
             output += '<td><a href="file/upload/documents/document fasilitas pendukung/' + Doc + '" target="_blank">PDF</a></td>';
         }
         output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus mr-2" title="Hapus"><i class="fas fa-trash"></i></button>';
         output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit" title="Edit"><i class="fas fa-edit"></i></button>';
         output += '</td>';
         output += '</tr>';

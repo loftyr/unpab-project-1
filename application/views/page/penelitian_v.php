@@ -1,6 +1,6 @@
 <div class="container back-ground">
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="pt-2 col-sm-8">
         <label for="Tahun" class="col">Pilih Tahun</label>
         <div class="col-sm-12">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">

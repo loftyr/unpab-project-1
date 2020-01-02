@@ -190,7 +190,7 @@ function draw_data(result) {
         output += '<td>' + Nama_Prodi + '</td>';
         output += '<td>' + Jenjang + '</td>';
         output += '<td class="text-center">';
-        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus" title="Hapus"><i class="fas fa-trash"></i></button>';
+        output += '<button dataID="' + id + '" class="btn btn-danger btn-sm btnHapus mr-2" title="Hapus"><i class="fas fa-trash"></i></button>';
         output += '<button dataID="' + id + '" class="btn btn-info btn-sm btnEdit" title="Edit"><i class="fas fa-edit"></i></button>';
         output += '</td>';
         output += '</tr>';

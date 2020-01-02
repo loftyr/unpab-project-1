@@ -10,9 +10,9 @@
     <!--  -->
 
     <!--  -->
-    <div class="pt-2 col-sm-12">
+    <div class="Tahun">
         <label for="Tahun" class="col">Pilih Tahun</label>
-        <div class="col-sm-12">
+        <div class="col-sm-3">
             <select class="form-control col-sm-4 select-2" name="" id="Tahun">
                 <?php foreach ($Tahun as $key) : ?>
                     <option value="<?= $key->Tahun ?>"><?= $key->Tahun; ?></option>
@@ -29,8 +29,8 @@
     </div>
 
     <!--  -->
-    <div class="tabel p-4">
-        <table class="table table-hover tabel-1">
+    <div class="tabel pt-2">
+        <table class="table table-hover tabel-1 table-responsive-sm">
             <thead>
                 <tr>
                     <th class="col text-center" style="width: 50px;">No</th>
@@ -69,7 +69,6 @@
                     <input type="hidden" value="" id="id" name="id">
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="Tahun-1">Tahun</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-3">
                             <input type="text" class="form-control" id="Tahun-1" name="Tahun-1" value="<?= date('Y'); ?>">
                         </div>
@@ -77,7 +76,6 @@
 
                     <div class=" form-group row">
                         <label class="col-sm-2 col-form-label" for="Nama-Pedoman">Nama Pedoman</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" name="Nama-Pedoman" id="Nama-Pedoman" rows="2"></textarea>
                         </div>
@@ -85,7 +83,6 @@
 
                     <div class=" form-group row">
                         <label class="col-sm-2 col-form-label" for="No">No. Surat Keputusan</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="No" name="No">
                         </div>
@@ -93,7 +90,6 @@
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="File">Berkas Pedoman</label>
-                        <label for="" class="col-sm-1 col-form-label text-center">:</label>
                         <div class="col-sm-9">
                             <input type="file" class="form-control" id="File" name="File">
                             <small id="info" class="form-text text-muted">Max File 1 MB</small>
