@@ -6,7 +6,7 @@ class penelitian_m extends CI_Model
     var $program    = 'ref_programstudi';
     var $staff      = 'ta_staff';
     var $table      = 'ta_penelitian'; /*Tabel Ta Penelitian*/
-    var $table2     = 'ta_anggota_Penelitian';
+    var $table2     = 'ta_anggota_penelitian';
     var $table3     = 'ta_tim_pendukung';
 
     public function getDataRistekdikti($tahun)
@@ -118,6 +118,14 @@ class penelitian_m extends CI_Model
         $this->db->from($this->staff);
         $this->db->where('Nidn', $nidn);
         $this->db->where('Role', '2'); //Dosen
+        return $this->db->get()->result();
+    }
+
+    public function cekjabatan($id)
+    {
+        $this->db->from('ta_anggota_penelitian');
+        $this->db->where('Kd_Penelitian', $id);
+        $this->db->where('Jabatan', 'Ketua'); //Dosen
         return $this->db->get()->result();
     }
 

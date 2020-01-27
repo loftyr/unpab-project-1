@@ -3,11 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Des 2019 pada 04.11
--- Versi server: 10.4.8-MariaDB
--- Versi PHP: 7.3.11
+-- Generation Time: Jan 27, 2020 at 10:21 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
-SET SQL_MODE = "";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -22,8 +22,10 @@ SET time_zone = "+00:00";
 -- Database: `db_projectunpab`
 --
 
+-- --------------------------------------------------------
+
 --
--- Struktur dari tabel `ap_user`
+-- Table structure for table `ap_user`
 --
 
 CREATE TABLE `ap_user` (
@@ -41,7 +43,7 @@ CREATE TABLE `ap_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ap_user`
+-- Dumping data for table `ap_user`
 --
 
 INSERT INTO `ap_user` (`id_user`, `Level`, `username`, `password`, `email`, `Status`, `Date_Create`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -51,7 +53,7 @@ INSERT INTO `ap_user` (`id_user`, `Level`, `username`, `password`, `email`, `Sta
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ref_fakultas`
+-- Table structure for table `ref_fakultas`
 --
 
 CREATE TABLE `ref_fakultas` (
@@ -61,7 +63,7 @@ CREATE TABLE `ref_fakultas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ref_fakultas`
+-- Dumping data for table `ref_fakultas`
 --
 
 INSERT INTO `ref_fakultas` (`Tahun`, `Kd_Fakultas`, `Nama_Fakultas`) VALUES
@@ -75,7 +77,7 @@ INSERT INTO `ref_fakultas` (`Tahun`, `Kd_Fakultas`, `Nama_Fakultas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ref_programstudi`
+-- Table structure for table `ref_programstudi`
 --
 
 CREATE TABLE `ref_programstudi` (
@@ -88,7 +90,7 @@ CREATE TABLE `ref_programstudi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ref_programstudi`
+-- Dumping data for table `ref_programstudi`
 --
 
 INSERT INTO `ref_programstudi` (`Id`, `Tahun`, `Kd_Fakultas`, `Kd_Prodi`, `Nama_Prodi`, `Jenjang`) VALUES
@@ -105,7 +107,7 @@ INSERT INTO `ref_programstudi` (`Id`, `Tahun`, `Kd_Fakultas`, `Kd_Prodi`, `Nama_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ref_tahun`
+-- Table structure for table `ref_tahun`
 --
 
 CREATE TABLE `ref_tahun` (
@@ -114,7 +116,7 @@ CREATE TABLE `ref_tahun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ref_tahun`
+-- Dumping data for table `ref_tahun`
 --
 
 INSERT INTO `ref_tahun` (`Id`, `Tahun`) VALUES
@@ -157,12 +159,13 @@ INSERT INTO `ref_tahun` (`Id`, `Tahun`) VALUES
 (37, 2016),
 (38, 2017),
 (39, 2018),
-(40, 2019);
+(40, 2019),
+(41, 2020);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_anggota_penelitian`
+-- Table structure for table `ta_anggota_penelitian`
 --
 
 CREATE TABLE `ta_anggota_penelitian` (
@@ -178,7 +181,7 @@ CREATE TABLE `ta_anggota_penelitian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_anggota_penelitian`
+-- Dumping data for table `ta_anggota_penelitian`
 --
 
 INSERT INTO `ta_anggota_penelitian` (`No_Id`, `Kd_Penelitian`, `Nidn`, `Nama`, `Jabatan`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -186,12 +189,13 @@ INSERT INTO `ta_anggota_penelitian` (`No_Id`, `Kd_Penelitian`, `Nidn`, `Nama`, `
 (2, 20192, '3110040015', 'Rahmat Hidayat, SE., MM', 'Anggota', '2019-11-13 09:55:51', '4', '2019-11-13 12:03:37', '4'),
 (4, 20195, '311042079', 'Henni Ramadani', 'Ketua', '2019-11-27 10:13:38', '4', NULL, NULL),
 (5, 20194, '311042077', 'Tirza Ramadani', 'Ketua', '2019-11-27 10:14:07', '4', NULL, NULL),
-(6, 20196, '311047508', 'Dr. Rusiadi, SE., M.Si', 'Ketua', '2019-11-27 10:23:15', '4', NULL, NULL);
+(6, 20196, '311047508', 'Dr. Rusiadi, SE., M.Si', 'Ketua', '2019-11-27 10:23:15', '4', NULL, NULL),
+(7, 20207, '311047508', 'Dr. Rusiadi, SE., M.Si', 'Ketua', '2020-01-22 14:02:50', '4', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_anggota_pengabdian`
+-- Table structure for table `ta_anggota_pengabdian`
 --
 
 CREATE TABLE `ta_anggota_pengabdian` (
@@ -207,7 +211,7 @@ CREATE TABLE `ta_anggota_pengabdian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_anggota_pengabdian`
+-- Dumping data for table `ta_anggota_pengabdian`
 --
 
 INSERT INTO `ta_anggota_pengabdian` (`No_Id`, `Kd_Pengabdian`, `Nidn`, `Nama`, `Jabatan`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -217,7 +221,7 @@ INSERT INTO `ta_anggota_pengabdian` (`No_Id`, `Kd_Pengabdian`, `Nidn`, `Nama`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_buku`
+-- Table structure for table `ta_buku`
 --
 
 CREATE TABLE `ta_buku` (
@@ -238,7 +242,7 @@ CREATE TABLE `ta_buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_buku`
+-- Dumping data for table `ta_buku`
 --
 
 INSERT INTO `ta_buku` (`Id_Buku`, `Tahun`, `Nidn`, `Pencipta`, `Judul`, `ISBN`, `Jml_Hal`, `Penerbit`, `Dokumen`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -246,7 +250,7 @@ INSERT INTO `ta_buku` (`Id_Buku`, `Tahun`, `Nidn`, `Pencipta`, `Judul`, `ISBN`, 
 (5, '2019', '311047508', 'Dr. Rusiadi, SE., M.Si', 'Judul Buku Pengabdian 1', '827', '12', 'USU Press', 'lorem-ipsum_-_Copy.pdf', '2', '2019-11-20 08:37:51', '4', '2019-11-20 08:42:37', '4');
 
 --
--- Trigger `ta_buku`
+-- Triggers `ta_buku`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_buku` BEFORE DELETE ON `ta_buku` FOR EACH ROW delete from ta_penulis_buku where Id_Buku = old.Id_Buku
@@ -256,7 +260,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_fasilitas_pendukung`
+-- Table structure for table `ta_fasilitas_pendukung`
 --
 
 CREATE TABLE `ta_fasilitas_pendukung` (
@@ -275,7 +279,7 @@ CREATE TABLE `ta_fasilitas_pendukung` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_fasilitas_pendukung`
+-- Dumping data for table `ta_fasilitas_pendukung`
 --
 
 INSERT INTO `ta_fasilitas_pendukung` (`Id`, `Tahun`, `No_Surat`, `Nama_Unit`, `Fasilitas`, `Status`, `Keterangan`, `Dokumen`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -286,7 +290,7 @@ INSERT INTO `ta_fasilitas_pendukung` (`Id`, `Tahun`, `No_Surat`, `Nama_Unit`, `F
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_hak_hki`
+-- Table structure for table `ta_hak_hki`
 --
 
 CREATE TABLE `ta_hak_hki` (
@@ -303,7 +307,7 @@ CREATE TABLE `ta_hak_hki` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_hak_hki`
+-- Dumping data for table `ta_hak_hki`
 --
 
 INSERT INTO `ta_hak_hki` (`Id`, `Id_Hki`, `Tahun`, `Nidn`, `Nama`, `Urut`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -313,7 +317,7 @@ INSERT INTO `ta_hak_hki` (`Id`, `Id_Hki`, `Tahun`, `Nidn`, `Nama`, `Urut`, `Tgl_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_hki`
+-- Table structure for table `ta_hki`
 --
 
 CREATE TABLE `ta_hki` (
@@ -333,7 +337,7 @@ CREATE TABLE `ta_hki` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_hki`
+-- Dumping data for table `ta_hki`
 --
 
 INSERT INTO `ta_hki` (`Id_Hki`, `Tahun`, `Judul`, `Jenis`, `No_Pendaftaran`, `No_Sertifikat`, `Status`, `Dokumen`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -341,7 +345,7 @@ INSERT INTO `ta_hki` (`Id_Hki`, `Tahun`, `Judul`, `Jenis`, `No_Pendaftaran`, `No
 (5, '2019', 'Judul HKI Pengabdian 1', 'HKI', '01/No', '01/No', 'Terdaftar', NULL, '2', '2019-11-20 11:54:48', '4', NULL, NULL);
 
 --
--- Trigger `ta_hki`
+-- Triggers `ta_hki`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_hki` BEFORE DELETE ON `ta_hki` FOR EACH ROW delete from ta_hak_hki where Id_Hki = old.Id_Hki
@@ -351,7 +355,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_jurnal`
+-- Table structure for table `ta_jurnal`
 --
 
 CREATE TABLE `ta_jurnal` (
@@ -374,7 +378,7 @@ CREATE TABLE `ta_jurnal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_jurnal`
+-- Dumping data for table `ta_jurnal`
 --
 
 INSERT INTO `ta_jurnal` (`Kd_Jurnal`, `Tahun`, `Judul`, `Jurnal`, `ISSN`, `Volume`, `Nomor`, `Halaman`, `Url`, `Publikasi`, `Dokumen`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -382,7 +386,7 @@ INSERT INTO `ta_jurnal` (`Kd_Jurnal`, `Tahun`, `Judul`, `Jurnal`, `ISSN`, `Volum
 (4, '2019', 'Jurnal Pengabdian 1', 'SMS', '100-123', '3', '18', '108', 'fb.com', 'Jurnal Nasional Terakreditasi', 'lorem-ipsum.pdf', '2', '2019-11-18 14:37:59', '4', '2019-11-18 14:38:43', '4');
 
 --
--- Trigger `ta_jurnal`
+-- Triggers `ta_jurnal`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_delete` BEFORE DELETE ON `ta_jurnal` FOR EACH ROW delete from ta_penulis_jurnal where Kd_Jurnal = old.Kd_Jurnal
@@ -392,7 +396,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_karyailmiah`
+-- Table structure for table `ta_karyailmiah`
 --
 
 CREATE TABLE `ta_karyailmiah` (
@@ -416,7 +420,7 @@ CREATE TABLE `ta_karyailmiah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_karyailmiah`
+-- Dumping data for table `ta_karyailmiah`
 --
 
 INSERT INTO `ta_karyailmiah` (`Id_Karya`, `Tahun`, `Nidn`, `Nama`, `Judul`, `Institusi`, `Halaman`, `Tempat`, `Forum`, `Dokumen`, `Status`, `Publikasi`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -427,7 +431,7 @@ INSERT INTO `ta_karyailmiah` (`Id_Karya`, `Tahun`, `Nidn`, `Nama`, `Judul`, `Ins
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_kegiatan`
+-- Table structure for table `ta_kegiatan`
 --
 
 CREATE TABLE `ta_kegiatan` (
@@ -450,7 +454,7 @@ CREATE TABLE `ta_kegiatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_kegiatan`
+-- Dumping data for table `ta_kegiatan`
 --
 
 INSERT INTO `ta_kegiatan` (`Id`, `Tahun`, `Tingkat_Forum`, `Nama_Keg`, `Kd_Fakultas`, `Kd_Prodi`, `Mitra`, `Tempat`, `Tgl_Start`, `Tgl_End`, `Narasumber`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -459,7 +463,7 @@ INSERT INTO `ta_kegiatan` (`Id`, `Tahun`, `Tingkat_Forum`, `Nama_Keg`, `Kd_Fakul
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_kerjasama`
+-- Table structure for table `ta_kerjasama`
 --
 
 CREATE TABLE `ta_kerjasama` (
@@ -479,7 +483,7 @@ CREATE TABLE `ta_kerjasama` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_kerjasama`
+-- Dumping data for table `ta_kerjasama`
 --
 
 INSERT INTO `ta_kerjasama` (`Id`, `Tahun`, `Unit`, `Nama_Keg`, `Institusi_Mitra`, `No_Kontrak`, `Nilai_Kontrak`, `Dokumen`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -488,7 +492,7 @@ INSERT INTO `ta_kerjasama` (`Id`, `Tahun`, `Unit`, `Nama_Keg`, `Institusi_Mitra`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_pedoman`
+-- Table structure for table `ta_pedoman`
 --
 
 CREATE TABLE `ta_pedoman` (
@@ -505,7 +509,7 @@ CREATE TABLE `ta_pedoman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_pedoman`
+-- Dumping data for table `ta_pedoman`
 --
 
 INSERT INTO `ta_pedoman` (`Id`, `Tahun`, `Nama_Pedoman`, `No_Surat`, `Dokumen`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -516,7 +520,7 @@ INSERT INTO `ta_pedoman` (`Id`, `Tahun`, `Nama_Pedoman`, `No_Surat`, `Dokumen`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_pendukung_pengabdian`
+-- Table structure for table `ta_pendukung_pengabdian`
 --
 
 CREATE TABLE `ta_pendukung_pengabdian` (
@@ -531,7 +535,7 @@ CREATE TABLE `ta_pendukung_pengabdian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_pendukung_pengabdian`
+-- Dumping data for table `ta_pendukung_pengabdian`
 --
 
 INSERT INTO `ta_pendukung_pengabdian` (`No_Id`, `Kd_Pengabdian`, `Nama`, `Jabatan`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -541,7 +545,7 @@ INSERT INTO `ta_pendukung_pengabdian` (`No_Id`, `Kd_Pengabdian`, `Nama`, `Jabata
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_penelitian`
+-- Table structure for table `ta_penelitian`
 --
 
 CREATE TABLE `ta_penelitian` (
@@ -564,7 +568,7 @@ CREATE TABLE `ta_penelitian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_penelitian`
+-- Dumping data for table `ta_penelitian`
 --
 
 INSERT INTO `ta_penelitian` (`Kd_Penelitian`, `Tahun`, `Judul`, `Skema`, `Kd_Fakultas`, `Kd_Prodi`, `Sumber_Dana`, `Dana`, `Dokumen`, `Date_Create`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`, `No_Urut`) VALUES
@@ -573,10 +577,11 @@ INSERT INTO `ta_penelitian` (`Kd_Penelitian`, `Tahun`, `Judul`, `Skema`, `Kd_Fak
 ('20193', 2019, 'Penelitian Ristekdikti 1', 'Hibah Dikti', '1', '2', 'Ristekdikti', 25000000, 'lorem-ipsum_-_Copy1.pdf', '2019-11-15 10:13:44', '1', '2019-11-15 10:13:44', '4', '2019-11-15 10:14:03', '4', 3),
 ('20194', 2019, 'Penelitian Internal Perguruan Tinggi 1', 'Hibah Internal', '1', '3', 'Internal Perguruan Tinggi', 200000000, 'lorem-ipsum_-_Copy_-_Copy.pdf', '2019-11-15 10:19:29', '2', '2019-11-15 10:19:29', '4', '2019-11-15 10:20:09', '4', 4),
 ('20195', 2019, 'Judul Penelitian Ristekdikti 2', 'Hibah Dikti', '1', '3', 'Ristekdikti', 10000000, NULL, '2019-11-21 09:47:48', '1', '2019-11-21 09:47:48', '4', NULL, NULL, 5),
-('20196', 2019, 'penelitian internal 1', 'Hibah Dikti', '1', '1', 'Ristekdikti', 1000000, NULL, '2019-11-27 10:22:45', '2', '2019-11-27 10:22:45', '4', NULL, NULL, 6);
+('20196', 2019, 'penelitian internal 1', 'Hibah Dikti', '1', '1', 'Ristekdikti', 1000000, NULL, '2019-11-27 10:22:45', '2', '2019-11-27 10:22:45', '4', NULL, NULL, 6),
+('20207', 2020, 'Sistem Keamanan Gambar Digital', 'Hibah Dikti', '1', '1', 'Ristekdikti', 700000, 'lorem-ipsum1.pdf', '2020-01-22 13:55:13', '3', '2020-01-22 13:55:13', '4', NULL, NULL, 7);
 
 --
--- Trigger `ta_penelitian`
+-- Triggers `ta_penelitian`
 --
 DELIMITER $$
 CREATE TRIGGER `trg_penelitian1` BEFORE DELETE ON `ta_penelitian` FOR EACH ROW BEGIN
@@ -590,7 +595,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_pengabdian`
+-- Table structure for table `ta_pengabdian`
 --
 
 CREATE TABLE `ta_pengabdian` (
@@ -613,7 +618,7 @@ CREATE TABLE `ta_pengabdian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_pengabdian`
+-- Dumping data for table `ta_pengabdian`
 --
 
 INSERT INTO `ta_pengabdian` (`Kd_Pengabdian`, `Tahun`, `Judul`, `Skema`, `Kd_Fakultas`, `Kd_Prodi`, `Sumber_Dana`, `Dana`, `Dokumen`, `Date_Create`, `Source`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`, `No_Urut`) VALUES
@@ -623,7 +628,7 @@ INSERT INTO `ta_pengabdian` (`Kd_Pengabdian`, `Tahun`, `Judul`, `Skema`, `Kd_Fak
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_penulis_buku`
+-- Table structure for table `ta_penulis_buku`
 --
 
 CREATE TABLE `ta_penulis_buku` (
@@ -639,7 +644,7 @@ CREATE TABLE `ta_penulis_buku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_penulis_buku`
+-- Dumping data for table `ta_penulis_buku`
 --
 
 INSERT INTO `ta_penulis_buku` (`Id`, `Tahun`, `Id_Buku`, `Nama`, `Urut`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -650,7 +655,7 @@ INSERT INTO `ta_penulis_buku` (`Id`, `Tahun`, `Id_Buku`, `Nama`, `Urut`, `Tgl_In
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_penulis_ilmiah`
+-- Table structure for table `ta_penulis_ilmiah`
 --
 
 CREATE TABLE `ta_penulis_ilmiah` (
@@ -666,7 +671,7 @@ CREATE TABLE `ta_penulis_ilmiah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_penulis_ilmiah`
+-- Dumping data for table `ta_penulis_ilmiah`
 --
 
 INSERT INTO `ta_penulis_ilmiah` (`Id`, `Tahun`, `Id_Karya`, `Nama_Penulis`, `Urut`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -678,7 +683,7 @@ INSERT INTO `ta_penulis_ilmiah` (`Id`, `Tahun`, `Id_Karya`, `Nama_Penulis`, `Uru
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_penulis_jurnal`
+-- Table structure for table `ta_penulis_jurnal`
 --
 
 CREATE TABLE `ta_penulis_jurnal` (
@@ -693,7 +698,7 @@ CREATE TABLE `ta_penulis_jurnal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_penulis_jurnal`
+-- Dumping data for table `ta_penulis_jurnal`
 --
 
 INSERT INTO `ta_penulis_jurnal` (`Id`, `Kd_Jurnal`, `Nidn`, `Nama`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -703,7 +708,7 @@ INSERT INTO `ta_penulis_jurnal` (`Id`, `Kd_Jurnal`, `Nidn`, `Nama`, `Tgl_Input`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_staff`
+-- Table structure for table `ta_staff`
 --
 
 CREATE TABLE `ta_staff` (
@@ -726,7 +731,7 @@ CREATE TABLE `ta_staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_staff`
+-- Dumping data for table `ta_staff`
 --
 
 INSERT INTO `ta_staff` (`id`, `Tahun`, `Nidn`, `Nip`, `Nama`, `Jk`, `Jabatan`, `Unit`, `Jenjang`, `Kd_Fakultas`, `Kd_Prodi`, `Role`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
@@ -779,7 +784,7 @@ INSERT INTO `ta_staff` (`id`, `Tahun`, `Nidn`, `Nip`, `Nama`, `Jk`, `Jabatan`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ta_tim_pendukung`
+-- Table structure for table `ta_tim_pendukung`
 --
 
 CREATE TABLE `ta_tim_pendukung` (
@@ -794,281 +799,282 @@ CREATE TABLE `ta_tim_pendukung` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ta_tim_pendukung`
+-- Dumping data for table `ta_tim_pendukung`
 --
 
 INSERT INTO `ta_tim_pendukung` (`No_Id`, `Kd_Penelitian`, `Nama`, `Jabatan`, `Tgl_Input`, `User_Input`, `Tgl_Update`, `User_Update`) VALUES
 (1, 20192, 'Pendukung 1', 'Staff Lppm', '2019-11-13 10:19:06', '4', NULL, NULL),
 (2, 20192, 'Pendukung 2', 'Mahasiwa Aktif', '2019-11-13 10:19:14', '4', NULL, NULL),
 (4, 20192, 'Pendukung 3', 'Staff Lppm', '2019-11-13 10:41:45', '4', '2019-11-13 12:03:48', '4'),
-(5, 20195, 'Indra Gunawan', 'Staff Lppm', '2019-11-21 09:48:45', '4', NULL, NULL);
+(5, 20195, 'Indra Gunawan', 'Staff Lppm', '2019-11-21 09:48:45', '4', NULL, NULL),
+(6, 20194, 'Lofty Razani', 'Staff Lppm', '2020-01-02 05:25:32', '4', NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `ap_user`
+-- Indexes for table `ap_user`
 --
 ALTER TABLE `ap_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indeks untuk tabel `ref_fakultas`
+-- Indexes for table `ref_fakultas`
 --
 ALTER TABLE `ref_fakultas`
   ADD UNIQUE KEY `Kd_Fakultas` (`Kd_Fakultas`);
 
 --
--- Indeks untuk tabel `ref_programstudi`
+-- Indexes for table `ref_programstudi`
 --
 ALTER TABLE `ref_programstudi`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ref_tahun`
+-- Indexes for table `ref_tahun`
 --
 ALTER TABLE `ref_tahun`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_anggota_penelitian`
+-- Indexes for table `ta_anggota_penelitian`
 --
 ALTER TABLE `ta_anggota_penelitian`
   ADD PRIMARY KEY (`No_Id`);
 
 --
--- Indeks untuk tabel `ta_anggota_pengabdian`
+-- Indexes for table `ta_anggota_pengabdian`
 --
 ALTER TABLE `ta_anggota_pengabdian`
   ADD PRIMARY KEY (`No_Id`);
 
 --
--- Indeks untuk tabel `ta_buku`
+-- Indexes for table `ta_buku`
 --
 ALTER TABLE `ta_buku`
   ADD PRIMARY KEY (`Id_Buku`);
 
 --
--- Indeks untuk tabel `ta_fasilitas_pendukung`
+-- Indexes for table `ta_fasilitas_pendukung`
 --
 ALTER TABLE `ta_fasilitas_pendukung`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_hak_hki`
+-- Indexes for table `ta_hak_hki`
 --
 ALTER TABLE `ta_hak_hki`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_hki`
+-- Indexes for table `ta_hki`
 --
 ALTER TABLE `ta_hki`
   ADD PRIMARY KEY (`Id_Hki`);
 
 --
--- Indeks untuk tabel `ta_jurnal`
+-- Indexes for table `ta_jurnal`
 --
 ALTER TABLE `ta_jurnal`
   ADD PRIMARY KEY (`Kd_Jurnal`);
 
 --
--- Indeks untuk tabel `ta_karyailmiah`
+-- Indexes for table `ta_karyailmiah`
 --
 ALTER TABLE `ta_karyailmiah`
   ADD PRIMARY KEY (`Id_Karya`);
 
 --
--- Indeks untuk tabel `ta_kegiatan`
+-- Indexes for table `ta_kegiatan`
 --
 ALTER TABLE `ta_kegiatan`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_kerjasama`
+-- Indexes for table `ta_kerjasama`
 --
 ALTER TABLE `ta_kerjasama`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_pedoman`
+-- Indexes for table `ta_pedoman`
 --
 ALTER TABLE `ta_pedoman`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_pendukung_pengabdian`
+-- Indexes for table `ta_pendukung_pengabdian`
 --
 ALTER TABLE `ta_pendukung_pengabdian`
   ADD PRIMARY KEY (`No_Id`);
 
 --
--- Indeks untuk tabel `ta_penelitian`
+-- Indexes for table `ta_penelitian`
 --
 ALTER TABLE `ta_penelitian`
   ADD PRIMARY KEY (`Kd_Penelitian`);
 
 --
--- Indeks untuk tabel `ta_pengabdian`
+-- Indexes for table `ta_pengabdian`
 --
 ALTER TABLE `ta_pengabdian`
   ADD PRIMARY KEY (`Kd_Pengabdian`);
 
 --
--- Indeks untuk tabel `ta_penulis_buku`
+-- Indexes for table `ta_penulis_buku`
 --
 ALTER TABLE `ta_penulis_buku`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_penulis_ilmiah`
+-- Indexes for table `ta_penulis_ilmiah`
 --
 ALTER TABLE `ta_penulis_ilmiah`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_penulis_jurnal`
+-- Indexes for table `ta_penulis_jurnal`
 --
 ALTER TABLE `ta_penulis_jurnal`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indeks untuk tabel `ta_staff`
+-- Indexes for table `ta_staff`
 --
 ALTER TABLE `ta_staff`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `Nidn` (`Nidn`);
 
 --
--- Indeks untuk tabel `ta_tim_pendukung`
+-- Indexes for table `ta_tim_pendukung`
 --
 ALTER TABLE `ta_tim_pendukung`
   ADD PRIMARY KEY (`No_Id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `ap_user`
+-- AUTO_INCREMENT for table `ap_user`
 --
 ALTER TABLE `ap_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `ref_programstudi`
+-- AUTO_INCREMENT for table `ref_programstudi`
 --
 ALTER TABLE `ref_programstudi`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `ref_tahun`
+-- AUTO_INCREMENT for table `ref_tahun`
 --
 ALTER TABLE `ref_tahun`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_anggota_penelitian`
+-- AUTO_INCREMENT for table `ta_anggota_penelitian`
 --
 ALTER TABLE `ta_anggota_penelitian`
-  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_anggota_pengabdian`
+-- AUTO_INCREMENT for table `ta_anggota_pengabdian`
 --
 ALTER TABLE `ta_anggota_pengabdian`
   MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_buku`
+-- AUTO_INCREMENT for table `ta_buku`
 --
 ALTER TABLE `ta_buku`
   MODIFY `Id_Buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_fasilitas_pendukung`
+-- AUTO_INCREMENT for table `ta_fasilitas_pendukung`
 --
 ALTER TABLE `ta_fasilitas_pendukung`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_hak_hki`
+-- AUTO_INCREMENT for table `ta_hak_hki`
 --
 ALTER TABLE `ta_hak_hki`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_hki`
+-- AUTO_INCREMENT for table `ta_hki`
 --
 ALTER TABLE `ta_hki`
   MODIFY `Id_Hki` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_jurnal`
+-- AUTO_INCREMENT for table `ta_jurnal`
 --
 ALTER TABLE `ta_jurnal`
   MODIFY `Kd_Jurnal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_karyailmiah`
+-- AUTO_INCREMENT for table `ta_karyailmiah`
 --
 ALTER TABLE `ta_karyailmiah`
   MODIFY `Id_Karya` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_kegiatan`
+-- AUTO_INCREMENT for table `ta_kegiatan`
 --
 ALTER TABLE `ta_kegiatan`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_kerjasama`
+-- AUTO_INCREMENT for table `ta_kerjasama`
 --
 ALTER TABLE `ta_kerjasama`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_pedoman`
+-- AUTO_INCREMENT for table `ta_pedoman`
 --
 ALTER TABLE `ta_pedoman`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_pendukung_pengabdian`
+-- AUTO_INCREMENT for table `ta_pendukung_pengabdian`
 --
 ALTER TABLE `ta_pendukung_pengabdian`
   MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_penulis_buku`
+-- AUTO_INCREMENT for table `ta_penulis_buku`
 --
 ALTER TABLE `ta_penulis_buku`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_penulis_ilmiah`
+-- AUTO_INCREMENT for table `ta_penulis_ilmiah`
 --
 ALTER TABLE `ta_penulis_ilmiah`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_penulis_jurnal`
+-- AUTO_INCREMENT for table `ta_penulis_jurnal`
 --
 ALTER TABLE `ta_penulis_jurnal`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_staff`
+-- AUTO_INCREMENT for table `ta_staff`
 --
 ALTER TABLE `ta_staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT untuk tabel `ta_tim_pendukung`
+-- AUTO_INCREMENT for table `ta_tim_pendukung`
 --
 ALTER TABLE `ta_tim_pendukung`
-  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `No_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -171,11 +171,43 @@ $(document).on('click', '#btnAdd-2', function () {
     judulModal_2.html("Tambah Anggota");
     btnSave_2.html("Save Data");
     $('#Kd-Penelitian-1').attr(Kd_Penelitian_1);
+
     modal_2.modal({
         backdrop: 'static',
         keyboard: false
     });
     modal_2.modal("show");
+});
+
+$(document).on('change', '#Jabatan-1', function () {
+    var id_penelitian = $('#view-anggota').attr('DataID');
+    var nama_jabatan = $("#Jabatan-1 option:selected").text();
+    // console.log(id_penelitian);
+
+    if (nama_jabatan == 'Ketua') {
+        $.ajax({
+            type: "POST",
+            url: "cekjabatan",
+            data: { id: id_penelitian },
+            dataType: "JSON",
+            success: function (result) {
+                if (result.status == true) {
+                    Swal.fire({
+                        position: 'top-end',
+                        type: 'error',
+                        title: 'Jabatan Ketua Sudah Terinput',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+
+                }
+            },
+            error: function (xhr, stat, err) {
+                console.log('Tidak Diketahui');
+            }
+        });
+    }
 });
 
 $(document).on('click', '#btnAdd-3', function () {

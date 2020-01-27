@@ -80,6 +80,21 @@ class Penelitian extends CI_Controller
         echo json_encode($result);
     }
 
+    public function cekjabatan()
+    {
+        $id     = $this->input->post('id');
+
+        $data   = $this->penelitian_m->cekjabatan($id);
+
+        if ($data == NULL) {
+            $result['status']   = FALSE;
+        } else {
+            $result['status']   = TRUE;
+        }
+
+        echo json_encode($result);
+    }
+
     public function ceknik()
     {
         $nik   = $this->input->post('nik');

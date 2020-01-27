@@ -279,6 +279,7 @@
                         <label class="col-sm-2 col-form-label" for="Jabatan-1">Jabatan</label>
                         <div class="col-sm-8">
                             <select name="Jabatan-1" id="Jabatan-1" class="form-control">
+                                <option value="">Pilih</option>
                                 <option value="Ketua">Ketua</option>
                                 <option value="Wakil Ketua">Wakil Ketua</option>
                                 <option value="Anggota">Anggota</option>

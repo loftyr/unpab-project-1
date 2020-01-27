@@ -43,7 +43,7 @@
                 </div>
                 <!--  -->
                 <div class="tabel pt-2">
-                    <table class="table table-hover tabel-1 table-responsive">
+                    <table class="table table-hover tabel-1 table-responsive-sm">
                         <thead>
                             <tr>
                                 <th class="text-center" style="max-width: 30px;">No</th>
